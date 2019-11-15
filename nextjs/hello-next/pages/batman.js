@@ -8,7 +8,7 @@ const Index = props => (
     <ul>
       {props.shows.map(show => (
         <li key={show.id}>
-          <Link href="/p/[id]" as={`/p/${show.id}`}>
+          <Link href="/p/batman/[id]" as={`/p/batman/${show.id}`}>
             <a>{show.name}</a>
           </Link>
         </li>
@@ -21,6 +21,8 @@ Index.getInitialProps = async function () {
   const apiURL = 'https://api.tvmaze.com/search/shows?q=batman'
   const res = await fetch(apiURL)
   const data = await res.json()
+
+  // server side : 数据获取在服务端完成
   console.log(`Show data fetched. Count: ${data.length}`)
 
   return {
