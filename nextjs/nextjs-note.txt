@@ -131,11 +131,21 @@ style individual components
 
 Styles 必须写入 template string 
 
+对内部组件无效
 
+给内部组件添加样式
+
+- 在内部组件内添加
+
+- 用 global style 
+<style jsx global></style>
+
+With styled-jsx all necessary prefixing and CSS validation is done inside a babel plugin, so there is no additional runtime overhead.
 
 
 
 https://api.tvmaze.com/search/shows?q=batman
 
 
- 
+4 packages are looking for funding.
+Run "npm fund" to find out more.
