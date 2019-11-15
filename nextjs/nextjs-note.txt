@@ -148,6 +148,15 @@ zeit
 
 npm run build 
 
+Excel 
+
+1. export to HTML App 
+
+npm run build 
+npm run export 
+
+npx serve -p 8080
+
 
 
 
