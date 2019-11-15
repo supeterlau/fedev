@@ -142,6 +142,13 @@ Styles 必须写入 template string
 
 With styled-jsx all necessary prefixing and CSS validation is done inside a babel plugin, so there is no additional runtime overhead.
 
+8.1 deploy 
+
+zeit 
+
+npm run build 
+
+
 
 
 https://api.tvmaze.com/search/shows?q=batman
