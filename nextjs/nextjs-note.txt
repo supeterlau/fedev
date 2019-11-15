@@ -119,6 +119,19 @@ id 对应 query 中的 /p/[id]
 
 首先安装 need to install isomorphic-unfetch
 
+7.1 组件样式
+
+- 传统基于文件的样式 SASS PostCSS
+
+- CSS in JS 
+
+Next.js 使用 a CSS in JS framework called styled-jsx
+
+style individual components
+
+Styles 必须写入 template string 
+
+
 
 
 
