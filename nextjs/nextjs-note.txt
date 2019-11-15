@@ -68,9 +68,21 @@ Link 内部组件需要支持 onClick prop
 
 可以在 pages 内写 Component 但是会生成直接指向的 URL
 
+创建 Layout Component 方法
 
+- 使用 HOC 将整个 Page 作为参数传入
 
+<Page />
 
+- 将 Page 内容作为 prop
+
+<Layout content={aboutPageContent} /> 从 props.content 读取
+
+<Layout><div></div></Layout> 从 props.children 读取
+
+组件可以从 npm 模块中导入
+
+4.1 
 
 
 https://github.com/milvus-io/milvus
