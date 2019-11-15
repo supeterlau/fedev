@@ -157,6 +157,13 @@ npm run export
 
 npx serve -p 8080
 
+2. TypeScript 
+
+support for TypeScript out of the box
+
+npm install --save-dev typescript @types/react @types/node
+
+touch index.tsx 
 
 
 
