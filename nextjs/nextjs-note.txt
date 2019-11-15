@@ -82,7 +82,21 @@ Link 内部组件需要支持 onClick prop
 
 组件可以从 npm 模块中导入
 
-4.1 
+4.1 动态路由
+
+显示动态内容的方法有很多
+
+- 使用 query strings 
+
+创建一个简单的博客
+
+点击后出现 404 因为还没有内容
+
+title=${props.title} 传递参数 title 给组件
+
+可以传递任意类型数据
+
+
 
 
 https://github.com/milvus-io/milvus
