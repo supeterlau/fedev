@@ -3,9 +3,12 @@ import Layout from '../components/MyLayout'
 
 const PostLink = props => (
   <li>
-    <Link href={`/post?title=${props.title}`}>
-      <a>{props.title}</a>
+    <Link href="/p/[id]" as={`/p/${props.id}`}>
+      <a>{props.id}</a>
     </Link>
+    {/* <Link href={`/post?title=${props.title}`}>
+      <a>{props.title}</a>
+    </Link> */}
   </li>
 )
 
@@ -15,9 +18,12 @@ export default function Index() {
       {/* <p>Hello Next.js</p> */}
       <h1>Little Blog</h1>
       <ul>
-        <PostLink title="Hello Next.js" />
+        <PostLink id="hello-nextjs" />
+        <PostLink id="learn-nextjs" />
+        <PostLink id="deploy-nextjs" />
+        {/* <PostLink title="Hello Next.js" />
         <PostLink title="Learn Next.js is awesome" />
-        <PostLink title="Deploy apps with Zeit" />
+        <PostLink title="Deploy apps with Zeit" /> */}
       </ul>
     </Layout>
   )

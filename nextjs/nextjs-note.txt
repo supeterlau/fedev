@@ -1,3 +1,6 @@
+https://nextjs.org/learn/
+https://nextjs.org/docs
+
 single-page JavaScript applications
 
 SPA 
@@ -98,9 +101,16 @@ title=${props.title} 传递参数 title 给组件
 
 useRouter() 读取 route query string 内容
 
-5.1 
+5.1 Clean URL
 
+/p/[id].js 会匹配 /p/hello-next.js 
+而不匹配 /p/post-1/another
 
+支持 full_name 动态不支持一部分动态变化
+
+[id].js 而不是 post-[id].js
+
+id 对应 query 中的 /p/[id]
 
 https://github.com/milvus-io/milvus
 
