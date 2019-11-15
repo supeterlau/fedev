@@ -96,6 +96,9 @@ title=${props.title} 传递参数 title 给组件
 
 可以传递任意类型数据
 
+useRouter() 读取 route query string 内容
+
+5.1 
 
 
 
