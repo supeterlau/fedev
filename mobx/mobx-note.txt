@@ -1,0 +1,68 @@
+https://mobx.js.org/getting-started.html
+
+Mobx 
+
+simple scalable battle-tested State Management solution
+
+核心
+
+State 
+
+使得无法产生不一致状态 inconsistent state 的策略: Make sure that everything that can be derived from the application state, will be derived. Automatically.
+
+MobX 将应用看作 电子表格 spreadsheet
+
+1. application state 形成应用模型的数据
+
+Graphs of objects arrays primittives references 形成应用模型
+
+应用的 data cell 
+
+2. derivations 
+
+任何可以通过 state 计算出来的值。包括单个值或 UI 界面
+
+类似表格的 公式和图表
+
+3. reactions 
+
+类似 derivations 主要区别是不产生值，而是执行一些任务。通常与 IO 有关。
+确保 DOM 更新或请求网络。
+
+4. actions 
+
+修改状态
+
+MobX 确保 actions 引起的状态变化都会被 derivations 和 reactions 处理
+
+
+https://levelup.gitconnected.com/state-management-with-mobx-db464399481d
+
+npm install mobx-react
+npm install mobx
+npm start
+
+版本过期
+npm uninstall -g create-react-app
+or
+yarn global remove create-react-app
+
+npx create-react-app my-app
+
+https://medium.com/@shoaibbhimani1392/getting-started-with-mobx-82306df92d90
+
+https://google.github.io/styleguide/htmlcssguide.html
+
+CSS 
+
+#meta-green 
+
+.App-header
+
+.App-meta-green 
+
+React Component 
+
+<CoolHeader>
+
+https://discuss.codecademy.com/t/self-closing-vs-non-self-closing-tags/243530
