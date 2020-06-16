@@ -1,0 +1,57 @@
+Workplace/example/remaxjs
+  contactchain 群成员信息
+  群
+    版聊
+    动态
+    活动
+  联系人
+  我（设置）
+    编辑信息
+    预览信息
+
+  个人信息主页
+    加为联系人
+    收藏
+    回到首页
+
+
+创建项目
+$ npx degit remaxjs/template-wechat my-app
+$ cd my-app && npm install
+运行项目
+$ npm run dev
+
+npx degit remaxjs/template-wechat booktracking (JavaScript)
+npx degit remaxjs/template-wechat-typescript my-app (TypeScript)
+
+https://github.com/remaxjs/examples/tree/master/wechat/src/pages/index
+
+https://github.com/diegohaz/constate
+
+https://remaxjs.org/guide/typescript
+
+https://github.com/remaxjs/examples/blob/master/wechat/src/pages/index/index.js
+
+https://remaxjs.org/guide/style
+
+https://github.com/remaxjs/remax/blob/master/packages/remax-wechat/src/hostComponents/Camera/index.ts
+
+前端面试之简历篇
+https://www.jianshu.com/p/a3802f6f4499
+
+微信小程序/上拉加载/下拉刷新
+https://zhuanlan.zhihu.com/p/39590738
+微信小程序|实现界面滑动切换
+https://blog.csdn.net/gschen_cn/article/details/104085718
+
+小程序多平台同构方案分析-kbone 与 remax
+https://zhuanlan.zhihu.com/p/91408586
+
+https://www.npmjs.com/package/clsx
+
+kbone
+kbone 是一个致力于微信小程序和 Web 端同构的解决方案
+https://github.com/Tencent/kbone
+
+一套把React Native代码转换成微信小程序代码的转换引擎工具
+https://github.com/areslabs/alita
