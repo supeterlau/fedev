@@ -1,0 +1,273 @@
+npx degit sveltejs/template demo
+
+npm install
+npm run dev
+
+yarn 
+yarn run dev
+
+1. Introduction
+
+File Structure
+
+  <script></script>
+
+  <!-- HTML tags -->
+  <h1></h1>
+  <main></main>
+
+  <style></style>
+
+动态属性
+
+Shorthand attributes
+
+<img src={src}> => <img {src}>
+
+样式
+
+样式规则作用域限制在 component 中
+rules are scoped to the component
+
+嵌套组件
+
+从其他文件导入组件
+
+import SomeComp from './SomeComp.svelte'
+
+user-defined tag 用大写开头的标签表示。区分 user-defined tag 和 HTML tag
+
+note: 导入标签名和被导入文件名无关 （有关，最好一致 4.e.thing.svelte (guessing 'Thing')
+
+  import Thing from '4.e.thing.svelte'
+  import Thing from './4.e.thing.svelte' 名字可以不一致
+
+HTML 标签
+
+正常情况 strings 被作为 plain text 插入。特殊字符没有特殊含义。如果需要渲染 HTML (如插入 Markdown 渲染结果) a blob of HTML
+
+<p>{@html YourStrings}</p>
+
+note: 需要自己 manually escape HTML，否则有遭到 XSS 攻击的风险
+
+2. Reactivity
+
+2.1 赋值 Assignment
+
+Svelte 核心是一个强大的保持 DOM 和应用状态同步的系统。
+
+a powerful system of reactivity for keeping the DOM in sync with your application state
+
+如 事件响应 response to an event 
+
+on:click={handleClick}
+
+2.2 Declaration 声明
+
+Reactive values (Computed values)
+
+some parts of a component's state need to be computed from other parts
+
+let count = 0;
+
+$: doubled = count * 2; 
+
+Svelte 会将 $: 解释为 当依赖数据变动时重新计算这个值
+
+2.3 Statements 语句
+
+$: console.log(`show count ${count}`)
+
+多个语句
+
+$: {
+
+}
+
+$: if (count >= 10) {
+
+}
+
+2.4 更新 arrays 和 objects 
+
+Svelte 的 reactivity 是由 赋值 assignment 触发的。
+
+array 方法 push 和 splice 不会触发更新
+
+push splice pop shift unshift 都不会触发
+
+解决方法: 多加一步赋值 或者 用 destructuring
+
+对 arrays objects 属性赋值，和直接对它们自身赋值效果相同
+
+简单的规则: 更新一个变量，这个变量必须出现在 赋值符号 = left hand 
+
+3. Props (properties) 组件属性
+
+3.1 声明 props 
+
+在 script 中声明 
+
+export let answer
+
+3.2 默认 props 
+
+export let answer = 'your mystery';
+
+3.3 props 展开
+
+如果 props 是一个对象。可以用展开操作符，不需要为每个属性赋值
+
+<Info {...profile}/>
+
+可以用 $$props 获取传递给一个组件的全部属性，包括未在组件中声明的属性
+
+缺点: 使得 svelte 难以优化，极少情况下使用
+
+4. Logic 逻辑操作
+
+4.1 if block 
+
+HTML 无法表达 条件和循环，因此需要特殊的 block 语法 Svelte 
+
+conditionally render 
+
+{#if user.loggedIn}
+{/if}
+
+4.2 Else block 
+
+{#if condition}
+  <Component/>
+{:else}
+  <Component/>
+{/if}
+
+# 表示 block 开始
+: 表示 block continuation 
+/ 表示 block 结束
+
+4.3 Else-if blocks 
+
+...
+
+{:else if condition}
+
+...
+
+4.4 Each block 
+
+遍历 array 或 array-like object (有 length 属性)
+
+对于 generic iterables 
+
+{#each [...iterable]}
+{/each}
+
+当前索引 index 为第二个参数
+
+{#each cats as cat, catIndex}
+{/each}
+
+可以使用 destructuring
+
+each cats as {id, name}, catIndex
+
+4.5 Keyed each blocks 
+
+The (thing.id) tells Svelte how to figure out what changed.
+
+each block 的 key 可以是任意 object，内部实现是 Map 
+
+通常用 string 或 number，避免 referential equality
+
+4.6 await block 
+
+直接在 markup 中 await promise 的值
+
+{#await aPromise}
+{:then aResult}
+{:catch aError}
+  <p>{aError.message}</p>
+{/await}
+
+只处理 most recent promise 不需要考虑 race conditions
+
+假如 promise 不会 reject 可以 omit catch block 
+
+{#await aPromise then aResult}
+  <p>{aResult}</p>
+{/await}
+
+5. Events 事件
+
+5.1 DOM 事件
+
+通过 on: 指令监听元素任意事件
+
+on:mousemove
+
+5.2 行内事件监听 标签内
+
+on:mousemove="{e => m = {x: e.clientX, y: e.clientY}}"
+
+一些框架不建议使用 inline event handlers. 但 Svelte compiler 会做正确的事情 do the right thing
+
+可以任意选择 event handler 形式
+
+5.3 事件修饰符 Event modifiers 
+
+on:click|once={...}
+
+可以串联多个修饰符
+
+on:click|once|capture={...}
+
+preventDefault
+
+stopPropagation
+
+passive 提高滚动性能 touch/wheel events 
+
+capture 在 capture 阶段，触发 handler 而不是在 bubbling 阶段
+
+once 第一次触发后移除 handler 
+
+self 只有当 event.target 是元素自身才触发 handler 
+
+
+
+
+
+
+
+
+
+# Build 
+
+npm run build / yarn run build 
+
+输出到 public 下的 bundle.js
+
+npm run start / yarn run start 
+
+# Deploy 
+
+# Using CSS-in-JS with Svelte 
+Do not need to, but can do
+
+# Vim Svelte 
+
+{/if} indent
+
+<!--  -->
+
+<script>
+</script>
+
+<!-- HTML tags -->
+<main>
+</main>
+
+<style>
+</style>
