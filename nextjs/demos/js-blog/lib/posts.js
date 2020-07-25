@@ -1,6 +1,8 @@
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
+import remark from 'remark'
+import html from 'remark-html'
 
 const postsDirectory = path.join(process.cwd(), 'posts')
 
@@ -31,14 +33,20 @@ export const getSortedPostsData = () => {
   })
 }
 
-export const getPostDta = id => {
+// use await for remark
+export const getPostDta = async id => {
   const fullPath = path.join(postsDirectory, `${id}.md`)
   const fileContents = fs.readFileSync(
     fullPath, 'utf8'
   )
   const matterResult = matter(fileContents)
+
+  // convert markdown to HTML
+  const processedContent = await remark().use(html).process(matterResult.content)
+  const contentHTML = processedContent.toString()
   return {
     id,
+    contentHTML,
     ...matterResult.data
   }
 }
