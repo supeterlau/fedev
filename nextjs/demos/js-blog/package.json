@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "classname": "^0.0.0",
+    "date-fns": "^2.15.0",
     "gray-matter": "^4.0.2",
     "next": "latest",
     "postcss-flexbugs-fixes": "^4.2.1",
