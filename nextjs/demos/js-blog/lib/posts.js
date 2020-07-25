@@ -31,9 +31,21 @@ export const getSortedPostsData = () => {
   })
 }
 
+export const getPostDta = id => {
+  const fullPath = path.join(postsDirectory, `${id}.md`)
+  const fileContents = fs.readFileSync(
+    fullPath, 'utf8'
+  )
+  const matterResult = matter(fileContents)
+  return {
+    id,
+    ...matterResult.data
+  }
+}
+
 // return the list of file names
 export const getAllPostIds = () => {
-  const fileNames = fs.readFileSync(
+  const fileNames = fs.readdirSync(
     postsDirectory
   )
   return fileNames.map(fileName => {
