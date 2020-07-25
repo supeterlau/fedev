@@ -30,3 +30,17 @@ export const getSortedPostsData = () => {
     }
   })
 }
+
+// return the list of file names
+export const getAllPostIds = () => {
+  const fileNames = fs.readFileSync(
+    postsDirectory
+  )
+  return fileNames.map(fileName => {
+    return {
+      params: {
+        id: fileName.replace(/\.md$/, '')
+      }
+    }
+  })
+}
