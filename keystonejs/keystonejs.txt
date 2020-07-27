@@ -1,0 +1,10 @@
+keystonejs_start
+postgres://localhost:5432/keystonejs_start
+
+postgres://<username>:<password>@localhost/my-keystone-project
+
+postgres://dg_db_admin:NGFmNTYyOWJlZDk@localhost/keystonejs_start
+
+- cd start
+- npx keystone create-tables
+- yarn dev
