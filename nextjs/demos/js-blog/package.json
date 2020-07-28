@@ -8,6 +8,10 @@
     "start": "next start"
   },
   "dependencies": {
+    "@emotion/babel-preset-css-prop": "^10.0.27",
+    "@emotion/core": "^10.0.28",
+    "@emotion/styled": "^10.0.27",
+    "bulma": "^0.9.0",
     "classname": "^0.0.0",
     "date-fns": "^2.15.0",
     "gray-matter": "^4.0.2",
@@ -19,6 +23,7 @@
     "remark": "^12.0.1",
     "remark-html": "^11.0.2",
     "sass": "^1.26.10",
-    "tailwindcss": "^1.5.2"
+    "tailwindcss": "^1.5.2",
+    "twin.macro": "^1.6.0"
   }
 }
