@@ -1,0 +1,44 @@
+
+### GET STARTED
+
+1. set up
+
+https://code.visualstudio.com/api/get-started/your-first-extension
+
+安装
+npm install -g yo generator-code
+yarn global add yo  generator-code
+
+新建项目
+npx yo code 
+
+what is New Extension Pack?
+  https://code.visualstudio.com/blogs/2017/03/07/extension-pack-roundup
+  https://code.visualstudio.com/api/references/extension-manifest#extension-packs
+  You can bundle separate extensions together in Extension Packs. An Extension Pack is a set of extensions that will be installed together. 
+
+press F5 compile and run the extension in a new Extension Development Host window.
+
+2. anatomy
+
+https://code.visualstudio.com/api/get-started/extension-anatomy
+
+
+
+https://www.digitalocean.com/community/tutorials/how-to-create-your-first-visual-studio-code-extension
+https://opensource.com/article/20/6/vs-code-extension
+
+
+
+- a todo ext for vscode 
+
+1. mark as todo (insert emoji)
+2. toggle todo and done 
+3. sub-task ?
+
+
+### Wait List ###
+
+vscode-alfred
+vscode-mark-sensitive-information
+  miniapp appid
