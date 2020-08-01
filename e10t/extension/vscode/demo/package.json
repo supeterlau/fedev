@@ -1,7 +1,8 @@
 {
 	"name": "demo",
-	"displayName": "demo",
-	"description": "vscode extension demo",
+	"displayName": "Demo",
+	"publisher": "piratemaker",
+	"description": "just a little demo",
 	"version": "0.0.1",
 	"engines": {
 		"vscode": "^1.47.0"
@@ -10,16 +11,43 @@
 		"Other"
 	],
 	"activationEvents": [
-        "onCommand:piratemaker-demo.helloWorld"
+		"onCommand:demo.helloWorld",
+		"onCommand:demo.cmdCall",
+		"onCommand:demo.menuCall"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [
 			{
-				"command": "piratemaker-demo.helloWorld",
+				"command": "demo.helloWorld",
 				"title": "Hello World"
+			},
+			{
+				"command": "demo.cmdCall",
+				"title": "CMD Call"
+			},
+			{
+				"command": "demo.menuCall",
+				"title": "Menu Call"
 			}
-		]
+		],
+		"menus": {
+			"editor/title/context": [
+				{
+					"command": "demo.menuCall",
+					"alt": "demo.menuCall",
+					"group": "navigation"
+				}
+			]
+		},
+		"keybindings": [
+      {
+        "command": "demo.menuCall",
+        "key": "ctrl+shift+r",
+        "mac": "cmd+shift+r",
+        "when": "editorTextFocus"
+      }
+    ]
 	},
 	"scripts": {
 		"vscode:prepublish": "yarn run compile",
