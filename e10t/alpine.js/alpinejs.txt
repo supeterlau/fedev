@@ -1,0 +1,74 @@
+https://github.com/alpinejs/alpine
+
+npm i alpinejs
+
+<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+
+<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.3.5/dist/alpine.min.js" defer></script>
+(For production environments, it's recommended to pin a specific version number in the link to avoid unexpected breakage from newer versions)
+
+
+
+use Snowpack
+
+npx create-snowpack-app new-dir --template @snowpack/app-template-NAME [--use-yarn | --use-pnpm]
+
+npx create-snowpack-app . --template @snowpack/app-template-blank --use-yarn
+
+npm config list
+
+npm config set registry https://registry.npm.taobao.org
+
+yarn config list
+
+yarn config set registry https://registry.npm.taobao.org
+
+https://docs.npmjs.com/configuring-your-registry-settings-as-an-npm-enterprise-user
+
+https://github.com/stefanfrede/11st-starter-kit
+https://dev.to/boywithsilverwings/tailwind-css-with-snowpack-3c7g
+
+https://github.com/lukejacksonn/servor Dependency free file server for single page app development
+
+https://codechips.me/snowpack-svelte-typescript-tailwindcss/
+
+snowpack + esbuild
+
+https://lukasznojek.com/blog/2020/02/add-behavior-to-html-using-alpine-js-a-todo-app/
+
+https://codewithhugo.com/alpinejs-component-communication-event-bus/
+
+https://developer.mozilla.org/en-US/docs/Web/Web_Components
+https://github.com/mdn/web-components-examples
+
+https://codeburst.io/understanding-jsx-9bfcdc7fe01b
+
+
+
+
+
+https://github.com/stefanfrede/11st-starter-kit
+
+[ERROR] Unable to find "https://github.com/stefanfrede/11st-starter-kit" in the npm registry.
+
+
+
+
+
+
+
+<script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.11/vue.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.min.js"></script>
+
+https://cdn.bootcdn.net/ajax/libs/react/16.13.1/cjs/react.development.js
+
+https://cdn.jsdelivr.net/npm/react@16.13.1/cjs/react.development.js
+
+https://cdn.jsdelivr.net/npm/react@16.13.1/index.min.js
+
+https://www.bootcdn.cn/
+https://www.jsdelivr.com/
+
+https://romefrontend.dev/ Rome is a linter, compiler, bundler, and more for JavaScript, TypeScript, HTML, Markdown, and CSS.
+
