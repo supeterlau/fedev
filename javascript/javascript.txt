@@ -1,0 +1,51 @@
+
+switch 
+
+const action = 'say_hello';
+switch (action) {
+  case 'say_hello':
+    let message = 'hello';
+    console.log(message);
+    break;
+  case 'say_hi':
+    let message = 'hi';
+    console.log(message);
+    break;
+  default:
+    console.log('Empty action received.');
+    break;
+}
+
+
+
+
+
+
+
+
+ECMAScript 2015 
+ES2015 
+ES6 
+
+https://www.javascripttutorial.net/es-next/
+https://www.freecodecamp.org/news/write-less-do-more-with-javascript-es6-5fd4a8e50ee2/
+https://exploringjs.com/index.html
+https://exploringjs.com/es6.html
+http://es6-features.org/#Constants
+https://es6.io/ Paid
+
+
+
+https://book.douban.com/subject/10546125/ JavaScript 高级程序设计
+
+https://es6.ruanyifeng.com/#docs/module ES6 
+
+http://www.typescriptlang.org/docs/handbook/basic-types.html Handbook
+
+https://ts.xcatliu.com/ TS TypeScript 入门教程
+
+https://deno.land/manual deno 官方手册
+
+https://manual.deno.js.cn/ deno 中文手册
+
+https://land.kaikeba.com/a/18 ES6 实战教程限时免费领取
