@@ -1,0 +1,33 @@
+# LOCAL
+
+push_to_remote
+
+alias run_rsync='rsync -azP -e "ssh -i ~/.ssh/xubuntu_rsa" --exclude node_modules --exclude dist . lxy@192.168.1.5:/home/lxy/remote/booktracking/.'
+
+fswatch -0 . -e node_modules -e yarn.lock -e .git -e dist | while read -d "" event;
+do
+  echo ${event}
+  run_rsync
+done
+
+pull_from_remote 
+
+alias run_rsync='rsync -azP -e "ssh -i ~/.ssh/xubuntu_rsa" lxy@192.168.1.5:/home/lxy/remote/booktracking/dist/. .'
+
+ssh -i ~/.ssh/xubuntu_rsa lxy@192.168.1.5 'fswatch -0 fswatch -0 /home/lxy/remote/booktracking/dist' | while read -d "" event;
+do
+  echo ${event}
+  run_rsync
+done
+
+# REMOTE 
+
+
+npx create-remax-app my-app
+npx create-remax-app booktracking
+
+npm run dev
+
+npm run build
+
+# Dev 

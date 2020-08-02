@@ -1,66 +1,23 @@
-import React, { useState } from "react";
-import {
-  View,
-  Text,
-  Image,
-  Button,
-  Swiper,
-  SwiperItem,
-} from 'remax/wechat';
-import constate from "constate";
-
-import styles from './index.module.css';
-
-
-// 1️⃣ Create a custom hook as usual
-function useCounter() {
-  const [count, setCount] = useState(0);
-  const increment = () => setCount(prevCount => prevCount + 1);
-  return { count, increment };
-}
-
-// 2️⃣ Wrap your hook with the constate factory
-const [CounterProvider, useCounterContext] = constate(useCounter);
-
-function AddButton() {
-  // 3️⃣ Use context instead of custom hook
-  const { increment } = useCounterContext();
-  return <Button onClick={increment}>+</Button>;
-}
-
-function Count() {
-  // 4️⃣ Use context in other components
-  const { count } = useCounterContext();
-  return <Text>{count}</Text>;
-}
-
-function App() {
-  // 5️⃣ Wrap your components with Provider
-  return (
-    <CounterProvider>
-      <Count />
-      <Button />
-    </CounterProvider>
-  );
-}
+import * as React from 'react';
+import { View, Text, Image } from 'remax/wechat';
+import styles from './index.css';
 
 export default () => {
   return (
     <View className={styles.app}>
-      {/* <View className={styles.header}>
-        Header
+      <View className={styles.header}>
+        {/* <Image
+          src="https://gw.alipayobjects.com/mdn/rms_b5fcc5/afts/img/A*OGyZSI087zkAAAAAAAAAAABkARQnAQ"
+          className={styles.logo}
+          alt="logo"
+        /> */}
         <View className={styles.text}>
-          <CounterProvider>
-            <Count />
-            <AddButton />
-          </CounterProvider>
+          编辑 <Text className={styles.path}>src/pages/index/index.js</Text>{' '}
+          开始
+          开始
+          开始
         </View>
-      </View> */}
-      <Swiper>
-        <SwiperItem>To Read / 想读</SwiperItem>
-        <SwiperItem>Reading / 在读</SwiperItem>
-        <SwiperItem>Read History / 已读</SwiperItem>
-      </Swiper>
+      </View>
     </View>
   );
 };

@@ -1,42 +1,33 @@
-# Remax Wechat Template
+# Remax Wechat
 
-使用 Remax 开发微信小程序的模板。
+使用 Remax 开发微信小程序。
 
-通过该模板创建一个新项目：
-
-```bash
-$ npx degit remaxjs/template-wechat my-app
-$ cd my-app
-```
-
-## 开始开发
+## Getting Start
 
 安装依赖
 
 ```bash
-$ npm install
+npm install
 ```
 
-开始构建
+调试项目
 
 ```bash
+# 执行调试命令
 $ npm run dev
+or
+yarn dev
 ```
 
-使用微信小程序开发者工具打开项目下的 `dist` 目录。
+使用小程序开发者工具打开项目下的 `dist` 目录
 
-## 发布
+## 构建
 
 ```bash
+# 执行构建命令
 $ npm run build
+or
+$ yarn build
 ```
 
-使用微信小程序开发者工具上传版本。
-
-JavaScript 版本
-
-BookTracking
-
-3 栏式，滑动切换
-  页面左右滑动切换页面
-下拉刷新，点击 + 调起相机
+使用小程序开发者工具打开项目下的 `dist` 目录，上传代码即可。

@@ -1,11 +1,7 @@
 module.exports = {
-  pages: [
-    'pages/index/index',
-    'pages/test/index',
-    'pages/scanCode/index',
-  ],
+  pages: ['pages/index/index'],
   window: {
-    navigationBarTitleText: 'BookTracking',
+    navigationBarTitleText: 'Booktrackin',
     navigationBarBackgroundColor: '#282c34'
   }
 };
