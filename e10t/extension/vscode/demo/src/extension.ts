@@ -38,48 +38,49 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(menuCallDisposable)
 
 	// context.subscriptions.push(vscode.languages.registerCompletionItemProvider('*', {
-  //   provideCompletionItems(document: vscode.TextDocument, position: vscode.Position, token: vscode.CancellationToken) {
-  //       return [new vscode.CompletionItem("Hello World")];
-  //   }
+	//   provideCompletionItems(document: vscode.TextDocument, position: vscode.Position, token: vscode.CancellationToken) {
+	//       return [new vscode.CompletionItem("Hello World")];
+	//   }
 	// 	},'.'));
-		
-		const datetimeProvider = vscode.languages.registerCompletionItemProvider(
-			// {
-			// 	scheme: 'file',
-			// 	// language: 'typescript',
-			// },
-			'*',
-			{
-				provideCompletionItems(
-					document: vscode.TextDocument,
-					position: vscode.Position,
-					token: vscode.CancellationToken
-				) {
-					const completionItem = new vscode.CompletionItem('title date', vscode.CompletionItemKind.Text);
-					let insertText = new Date(Date.now() - new Date().getTimezoneOffset() * 60000).toISOString().split('T')[0];
-					completionItem.insertText = `### ${insertText}`
-					return [completionItem];
-				}
-			}
-		);
-		context.subscriptions.push(datetimeProvider)
 
-		const provider1 = vscode.languages.registerCompletionItemProvider(
-			'cpp',
-			{
-					provideCompletionItems(document: vscode.TextDocument, position: vscode.Position) {
-	
-							let linePrefix = document.lineAt(position).text.substr(0, position.character);
-							if (!linePrefix.endsWith('a')) {
-									return undefined;
-							}
-	
-							return [
-									new vscode.CompletionItem('add',vscode.CompletionItemKind.Function),
-							];
-					}
-			},
-			'.' // triggered whenever a 'a' is being typed
+	const datetimeProvider = vscode.languages.registerCompletionItemProvider(
+		{
+			// scheme: 'file',
+			// language: '*',
+			pattern: '**'
+		},
+		// '*',
+		{
+			provideCompletionItems(
+				document: vscode.TextDocument,
+				position: vscode.Position,
+				token: vscode.CancellationToken
+			) {
+				const completionItem = new vscode.CompletionItem('title date', vscode.CompletionItemKind.Text);
+				let insertText = new Date(Date.now() - new Date().getTimezoneOffset() * 60000).toISOString().split('T')[0];
+				completionItem.insertText = `### ${insertText}`
+				return [completionItem];
+			}
+		}
+	);
+	context.subscriptions.push(datetimeProvider)
+
+	const provider1 = vscode.languages.registerCompletionItemProvider(
+		'cpp',
+		{
+			provideCompletionItems(document: vscode.TextDocument, position: vscode.Position) {
+
+				let linePrefix = document.lineAt(position).text.substr(0, position.character);
+				if (!linePrefix.endsWith('a')) {
+					return undefined;
+				}
+
+				return [
+					new vscode.CompletionItem('add', vscode.CompletionItemKind.Function),
+				];
+			}
+		},
+		'.' // triggered whenever a 'a' is being typed
 	);
 	context.subscriptions.push(provider1)
 
