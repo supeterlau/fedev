@@ -3,7 +3,7 @@
 	"displayName": "Demo",
 	"publisher": "piratemaker",
 	"description": "just a little demo",
-	"version": "0.0.1",
+	"version": "0.1.0",
 	"engines": {
 		"vscode": "^1.47.0"
 	},
@@ -13,7 +13,9 @@
 	"activationEvents": [
 		"onCommand:demo.helloWorld",
 		"onCommand:demo.cmdCall",
-		"onCommand:demo.menuCall"
+		"onCommand:demo.menuCall",
+		"onCommand:demo.epdDate",
+		"*"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
@@ -29,6 +31,10 @@
 			{
 				"command": "demo.menuCall",
 				"title": "Menu Call"
+			},
+			{
+				"command": "demo.epdDate",
+				"title": "Expand Date"
 			}
 		],
 		"menus": {
@@ -43,6 +49,12 @@
 		"keybindings": [
       {
         "command": "demo.menuCall",
+        "key": "ctrl+shift+r",
+        "mac": "cmd+shift+r",
+        "when": "editorTextFocus"
+			},
+			{
+        "command": "demo.epdDate",
         "key": "ctrl+shift+r",
         "mac": "cmd+shift+r",
         "when": "editorTextFocus"
@@ -71,3 +83,4 @@
 		"vscode-test": "^1.3.0"
 	}
 }
+This is the end

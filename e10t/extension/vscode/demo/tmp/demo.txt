@@ -1,0 +1,90 @@
+Character that triggered the completion item provider.
+
+undefined if provider was not triggered by a character.
+
+The trigger character is already in the document when the completion provider is triggered.
+
+### 2020-08-03
+
+
+	let allDoc: vscode.DocumentSelector = {
+		pattern: '**/*'
+	}
+	// let dateCompletionItem: vscode.CompletionItemProvider = 
+	// dateCompletionItem.provideCompletionItems = (doc, pos, token, ctx) => {
+	// 	vscode.ProviderResult<vscode.CompletionList> {
+	// 		return new vscode.CompletionList('Hello World');
+	// }
+	// }
+	const datetimeProvider = vscode.languages.registerCompletionItemProvider(
+		// {
+		// 	scheme: 'file',
+		// 	// language: 'typescript',
+		// },
+		'*',
+		{
+			provideCompletionItems(
+				document: vscode.TextDocument,
+				position: vscode.Position,
+				token: vscode.CancellationToken
+			) {
+				const completionItem = new vscode.CompletionItem('datetime ⌚', vscode.CompletionItemKind.Snippet);
+				completionItem.insertText = new Date(Date.now() - new Date().getTimezoneOffset() * 60000).toISOString().split('.')[0];
+				return [completionItem];
+			}
+		},
+		// ''// trigger character
+		// '.'
+	);
+	context.subscriptions.push(datetimeProvider)
+
+	let _provideCompletionItems = {
+    provideCompletionItems(
+      document: vscode.TextDocument,
+      position: vscode.Position,
+      token: vscode.CancellationToken,
+      context: vscode.CompletionContext
+    ) {
+      console.log('provide');
+      const c = new vscode.CompletionItem('Hello World!');
+      return [c];
+    },
+  };
+
+
+  context.subscriptions.push(
+    vscode.languages.registerCompletionItemProvider('plaintext', _provideCompletionItems)
+  );
+
+	context.subscriptions.push(vscode.languages.registerCompletionItemProvider('*', {
+    provideCompletionItems(document: vscode.TextDocument, position: vscode.Position, token: vscode.CancellationToken) {
+        return [new vscode.CompletionItem("Hello")];
+    }
+    }));
+
+
+	let expandDateDisposable = vscode.languages.registerCompletionItemProvider(
+		allDoc,
+		{
+			provideCompletionItems(
+				document: vscode.TextDocument,
+				pos: vscode.Position,
+				token: vscode.CancellationToken
+			): Promise<vscode.CompletionItem[]> {
+				console.log('expandDateDisposable')
+				return new Promise((resolve, reject) => {
+					let completionItems: vscode.CompletionItem[] = [];
+					let completionItem: vscode.CompletionItem = new vscode.CompletionItem(
+						'currentdate',
+						vscode.CompletionItemKind.Text,
+					)
+					completionItem.filterText = 'falsy'
+					completionItem.insertText = 'insertText'
+					completionItems.push(completionItem)
+					return resolve(completionItems)
+				})
+			}
+			// resolveCompletionItem,
+		}
+	)
+	// context.subscriptions.push(expandDateDisposable)
