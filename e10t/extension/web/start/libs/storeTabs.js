@@ -69,14 +69,16 @@ chrome.tabs.removeAsync = (tabIds, count=0, gap=0) => new Promise(
   }
 )
 
-const getTabs = async () => {
+const getTabs = async (current=false) => {
   let result = []
+  let queryInfo = {
+    // active: true, 
+    pinned: false,  // 未 pin
+    currentWindow: true,  // 当前窗口
+  }
+  if(current) queryInfo.active = true
   try {
-    let tabs = await chrome.tabs.queryAsync({
-      // active: true, 
-      pinned: false,  // 未 pin
-      currentWindow: true,  // 当前窗口
-    })
+    let tabs = await chrome.tabs.queryAsync(queryInfo)
     console.log(tabs.length);
     let result = tabs
       .filter(tab => isUrl(tab.url))
@@ -136,6 +138,11 @@ const storeTabs = async () => {
   // getHistory()
   // getBookmark()
   // Send Message
+}
+
+const storeTab = async () => {
+  let tabs = await getTabs(true)
+  return tabs
 }
 
 // module.exports = {

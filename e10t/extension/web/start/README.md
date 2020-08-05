@@ -22,6 +22,11 @@ copy all unpinned tabs url and name
 - config keyshort
 - store opened unpinned tab info and prompt to close all
 
+
+- qrcode 
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
 extension store 
 
 search bar
@@ -47,6 +52,9 @@ backup: zhihu weibo douban
 
 play music
 
+###
+
+make all api promised
 
 ###
 
@@ -107,3 +115,8 @@ include scripts from a Chrome extension
 https://stackoverflow.com/questions/9057292/requirejs-in-a-chrome-extension
 
 https://github.com/otiai10/chrome-extension-es6-import/
+
+
+Deps
+zepto
+https://github.com/davidshimjs/qrcodejs

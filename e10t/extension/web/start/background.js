@@ -3,6 +3,7 @@
 // const { storeTabs } = require('./libs/storeTabs')
 
 const STORE_TABS = 'store-tabs'
+const STORE_TAB = 'store-tab'
 
 chrome.runtime.onInstalled.addListener(function () {
 
@@ -28,12 +29,16 @@ chrome.declarativeContent.onPageChanged.removeRules(undefined, function () {
 
 chrome.commands.onCommand.addListener(async function (command) {
   console.log('Command:', command)
+  let data;
   switch (command) {
     case STORE_TABS:
-      let data = await storeTabs()
+      data = await storeTabs()
       sendToPage('copy', data)
       // sendToPage('copy', 'from background')
       break;
+    case STORE_TAB:
+      data = await storeTab()
+      sendToPage('copy', data)
     default:
       break;
   }
@@ -48,8 +53,12 @@ const sendToPage = (type, data) => {
     }, async function (response) {
       console.log(response);
       if(response.type == 'copyOk') {
-        // delete tabs
-        await deleteTabs()
+        
+        if(tabs.length > 1)
+          // delete tabs
+          await deleteTabs()
+        else
+          console.log(tabs)
       }
     });
   });
