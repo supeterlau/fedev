@@ -1,0 +1,50 @@
+<script>
+  let todos = [
+    {done: false, text: 'finish Svelte tutorial'},
+    {done: false, text: 'build an app'},
+    {done: false, text: 'world domination'}
+  ]
+
+  function add() {
+    todos = todos.concat({
+      done: false,
+      text: ''
+    })
+  }
+
+  function clear() {
+    todos = todos.filter(t => !t.done)
+  }
+
+  $: remaining = todos.filter(t => !t.done).length
+</script>
+
+<!-- HTML tags -->
+<main>
+  <h2>6.9</h2>
+  <h3>Todos</h3>
+  <!-- class direcctive -->
+  {#each todos as todo}
+  <div class:done={todo.done}>
+    <input 
+      type=checkbox
+      bind:checked={todo.done}
+    >
+    <input
+      placeholder="What need to be done"
+      bind:value={todo.text}
+    >
+  </div>
+  {/each}
+
+  <p>{remaining} remaining</p>
+
+  <button on:click={add}>Add new</button>
+  <button on:click={clear}>Clear completed</button>
+</main>
+
+<style>
+.done{
+  opacity: 0.4;
+}
+</style>
