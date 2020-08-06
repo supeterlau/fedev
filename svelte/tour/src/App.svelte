@@ -5,6 +5,9 @@
   import ComponentH from './6.h.svelte'
   import ComponentI from './6.i.svelte'
   import ComponentJ from './6.j.svelte'
+  import ComponentK from './6.k.svelte'
+  import ComponentL from './6.l.svelte'
+  import ComponentM from './6.m.svelte'
 
   let name = 'John'
 
@@ -103,6 +106,12 @@
   <ComponentI />
 
   <ComponentJ />
+
+  <ComponentK />
+
+  <ComponentL />
+
+  <ComponentM />
 </main>
 
 <style>
