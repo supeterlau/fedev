@@ -38,7 +38,8 @@ chrome.commands.onCommand.addListener(async function (command) {
       break;
     case STORE_TAB:
       data = await storeTab()
-      sendToPage('copy', data)
+      sendToPage('copyOne', data)
+      break;
     default:
       break;
   }
@@ -52,11 +53,13 @@ const sendToPage = (type, data) => {
       data,
     }, async function (response) {
       console.log(response);
+      console.log('send data', data)
       if(response.type == 'copyOk') {
         
-        if(tabs.length > 1)
+        if(type !== 'copyOne')
           // delete tabs
           await deleteTabs()
+          // console.log('copy All')
         else
           console.log(tabs)
       }

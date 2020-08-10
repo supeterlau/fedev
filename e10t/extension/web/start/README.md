@@ -26,6 +26,20 @@ copy all unpinned tabs url and name
 - qrcode 
 
     <script src="https://cdn.bootcdn.net/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  - history
+  
+- backup weibo
+
+- show github contributions
+  style iframe
+
+- add gitclone link to github CloneButton
+
+- replace google cdn js
+
+
+
+### Plan
 
 extension store 
 
@@ -120,3 +134,5 @@ https://github.com/otiai10/chrome-extension-es6-import/
 Deps
 zepto
 https://github.com/davidshimjs/qrcodejs
+
+
