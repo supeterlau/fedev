@@ -63,7 +63,7 @@ chrome.runtime.onMessage.addListener(
       "from the extension");
     if (request.type == "hello")
       sendResponse({ farewell: "goodbye" });
-    else if (request.type == 'copy') {
+    else if (request.type == 'copy' || request.type == 'copyOne') {
       let code = copy2Clipboard(request.data)
       if(code == 'ok')
         sendResponse({
