@@ -10,7 +10,7 @@ swip loop
   reading 
   read 
 [to read] [filter]
-
+dropdown/swip
 
 Book Manager:
   authors
@@ -19,12 +19,15 @@ Book Manager:
   100 authors 
 
 Book info API:
-  fake data + 已被下载的数据
+  fake data + 已下载的数据
 
 good point:
   3D book model 
   author 每日集卡 (random)
   https://finiteheap.com/mybooks/
+
+
+
 
 
 ## LeanDict Svelte

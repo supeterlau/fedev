@@ -1,0 +1,26 @@
+.app {
+  text-align: center;
+  padding: 0 24px;
+}
+
+.header {
+  display: none;
+  padding-top: 30%;
+  background-color: #282c34;
+  font-size: 40px;
+  color: white;
+}
+
+.add {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  padding: 0;
+  line-height: normal;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

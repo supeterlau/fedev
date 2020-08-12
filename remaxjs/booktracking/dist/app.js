@@ -8041,7 +8041,7 @@ try {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _home_lxy_remote_booktracking_node_modules_remax_react_devtools_core_dist_backend_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@remax/react-devtools-core/dist/backend.js */ "./node_modules/@remax/react-devtools-core/dist/backend.js");
+/* harmony import */ var _Users_lxy_Workspace_peterlau_fedev_remaxjs_booktracking_node_modules_remax_react_devtools_core_dist_backend_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@remax/react-devtools-core/dist/backend.js */ "./node_modules/@remax/react-devtools-core/dist/backend.js");
 
 
 /***/ }),
@@ -8100,9 +8100,9 @@ module.exports = require('/__remax_runtime_options__');
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/lxy/remote/booktracking/node_modules/webpack-inject-plugin/dist/webpack-inject-plugin.loader?id=webpack-inject-module-1! */"./node_modules/webpack-inject-plugin/dist/webpack-inject-plugin.loader.js?id=webpack-inject-module-1!./");
+__webpack_require__(/*! /Users/lxy/Workspace/peterlau/fedev/remaxjs/booktracking/node_modules/webpack-inject-plugin/dist/webpack-inject-plugin.loader?id=webpack-inject-module-1! */"./node_modules/webpack-inject-plugin/dist/webpack-inject-plugin.loader.js?id=webpack-inject-module-1!./");
 __webpack_require__(/*! @remax/apply-runtime-options */"./node_modules/@remax/apply-runtime-options.js");
-module.exports = __webpack_require__(/*! /home/lxy/remote/booktracking/src/app.js */"./src/app.js");
+module.exports = __webpack_require__(/*! /Users/lxy/Workspace/peterlau/fedev/remaxjs/booktracking/src/app.js */"./src/app.js");
 
 
 /***/ })

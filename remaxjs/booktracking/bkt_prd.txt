@@ -1,0 +1,32 @@
+
+TabBar:
+book booklist explore setting
+
+
+## Page
+
+### Book Page
+
+#### Feature
+
+add book 
+  to
+    read
+    to read
+    reading
+remove book 
+filter book 
+update book ? user edit info 
+
+
+#### UI 
+
+addBtn
+
+switchBtn filterBtn
+
+listView
+  itemView
+    -> bookDetail Page
+
+

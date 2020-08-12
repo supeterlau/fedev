@@ -804,6 +804,10 @@ module.exports = {
   }
 },
           pageEvents: {
+  "pages/book/book": [],
+  "pages/booklist/booklist": [],
+  "pages/explore/explore": [],
+  "pages/settings/settings": [],
   "pages/index/index": []
 },
           appEvents: []
