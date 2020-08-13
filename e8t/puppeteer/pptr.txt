@@ -1,0 +1,73 @@
+yarn init -fy
+
+yarn add puppeteer
+
+with proxy 
+  https://dev.to/princepeterhansen/use-a-proxy-with-puppeteer-2ndc Use a proxy with Puppeteer - DEV Community 👩‍💻👨‍💻
+  const browser = await puppeteer.launch({
+    args: [ `--proxy-server=${proxy}` ]
+  });
+  
+  Test Website: 
+    https://whatismyipaddress.com/
+    https://whatismyipaddress.com/api
+    http ipv4bot.whatismyipaddress.com
+
+take fullPage screenshot
+  https://medium.com/@viviancpy/save-screenshot-of-websites-with-puppeteer-cloudinary-and-heroku-1-3-bba6082d21d0 Save screenshot of websites with Puppeteer, Cloudinary and Heroku with Node.js | by Vivian Chan | Medium
+  https://www.checklyhq.com/docs/browser-checks/screenshots/ Taking screenshots | Checkly
+  await page.screenshot({
+    fullPage: true,
+    path: 'example.png'
+  });
+
+use tor
+  https://gist.github.com/schollz/4dcd045a95196f567ba0abdd0ac70452
+  const browser = await puppeteer.launch({args:['--proxy-server=socks5://127.0.0.1:9050']});
+
+run with cookie
+
+browser download location:
+
+Tool:
+
+https://www.npmjs.com/package/website-scraper website-scraper - npm
+
+https://github.com/dosyago/22120 dosyago/22120: 22120 - Self-host the Internet with an Offline Archive. Like binaries? https://github.com/dosyago/22120/releases
+
+Ref:
+
+https://dev.to/waqasabbasi/turn-any-webpage-into-your-personal-api-with-puppeteer-4a6 Turn Any Webpage into your Personal API with Puppeteer - DEV Community 👩‍💻👨‍💻
+
+https://buttercms.com/blog/generating-pdfs-with-node Generating PDFs with Node | ButterCMS
+
+https://blog.kowalczyk.info/article/ea07db1b9bff415ab180b0525f3898f6/advanced-web-spidering-with-puppeteer.html Advanced web spidering with Puppeteer
+
+https://justmarkup.com/articles/2019-01-04-using-puppeteer-to-crawl-pages-and-save-them-as-markdown-files/ Using Puppeteer to crawl pages and save them as Markdown files
+
+https://stackoverflow.com/questions/53640405/puppeteer-save-webpage-and-images javascript - Puppeteer, save webpage and images - Stack Overflow
+
+https://gist.github.com/schollz/4dcd045a95196f567ba0abdd0ac70452 Use Puppeteer to download a webpage after its been processed by javascript
+
+https://dev.to/5t3ph/automated-social-sharing-images-with-puppeteer-11ty-and-netlify-22ln Automated Social Sharing Images with Puppeteer, 11ty, and Netlify - DEV Community 👩‍💻👨‍💻
+
+https://medium.com/swlh/an-introduction-to-web-scraping-with-puppeteer-3d35a51fdca0 An Introduction to Web Scraping with Puppeteer | by CodeDraken | The Startup | Medium
+
+
+https://nitayneeman.com/posts/getting-to-know-puppeteer-using-practical-examples/
+https://oncletom.io/2018/puppeteer-download-file/
+https://help.apify.com/en/articles/1929322-handling-file-download-with-puppeteer
+https://stackoverflow.com/questions/46966341/puppeteer-how-to-set-download-location
+
+https://github.com/puppeteer/puppeteer/issues/288
+
+https://github.com/puppeteer/puppeteer/issues/679
+const Downloader = require('puppeteer/utils/ChromiumDownloader');
+const {chromium_revision} = require('puppeteer/package.json').puppeteer;
+const info = Downloader.revisionInfo(Downloader.currentPlatform(), chromium_revision);
+console.log(info);
+
+https://www.infoq.com/news/2020/04/puppeteer-3-firefox-support/
+https://chercher.tech/puppeteer/puppeteer-with-firefox
+https://datarebellion.com/blog/using-headless-firefox-with-selenium-in-python/
+https://hacks.mozilla.org/2017/12/using-headless-mode-in-firefox/

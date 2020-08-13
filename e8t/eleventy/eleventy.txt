@@ -1,0 +1,55 @@
+Eleventy is a simpler static site generator.
+
+npm install -g @11ty/eleventy # yarn global add @11ty/eleventy
+echo '# Page header' > README.md
+eleventy
+
+
+
+mkdir eleventy-sample
+cd eleventy-sample
+
+yarn init -fy
+
+yarn add -D @11ty/eleventy
+
+npx @11ty/eleventy
+
+创建模板
+
+echo '<!doctype html><html><head><title>Demo</title></head><body><p>Hi Demo</p></body></html>' > index.html 
+
+echo '# Header' > README.md
+
+npx @11ty/eleventy --serve 启动 hot-reloading local web server 
+
+(Editing README.md won't refresh your browser automatically, because Browsersync requires a <body> tag in your template for live-reload to work properly)
+
+
+## Command Line Usage
+
+  # Searches the current directory, outputs to ./_site
+  npx @11ty/eleventy
+
+  # Global installation 不需要 npx 
+  eleventy
+
+  npx @11ty/eleventy --input=. --output=_site
+
+  npx @11ty/eleventy --input=SINGLE.md --output=_site
+
+
+https://www.11ty.dev/docs/templates/
+https://www.11ty.dev/docs/tutorials/
+
+## Tutorials 
+
+- Blog 
+
+https://keepinguptodate.com/pages/2019/06/creating-blog-with-eleventy/
+
+configured via an .eleventy.js config file in the root directory
+
+配置 
+  default output folder is _site
+  default input folder is the root directory

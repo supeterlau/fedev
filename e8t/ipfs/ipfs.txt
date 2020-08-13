@@ -1,0 +1,136 @@
+https://ipfs.io/
+
+https://proto.school/tutorials?course=ipfs
+
+IPFS powers the Distributed Web
+
+A peer-to-peer hypermedia protocol
+designed to make the web faster, safer, and more open.
+
+No matter what you do with the web, IPFS helps make it better today.
+
+
+## how IPFS works [https://ipfs.io/#how]
+
+when you add a file to IPFS 
+
+文件及其组成块，被分配唯一指纹（unique fingerprint）密码学哈希（cryptographic hash）
+
+IPFS 移除网络上重复文件 IPFS removes duplications across the network
+
+每个节点只保存自己相关的文件以及一些记录其他节点保存了什么文件的索引
+
+当用户查询想浏览或下载文件时，要询问网络哪个节点保存查询哈希值对应的文件
+
+用户无需记录哈希值，通过一个去中心化的系统 IPNS，可以通过人类可读的名字找到每个文件。
+
+## 安装 IPFS Install IPFS
+
+Join the future of the web right now — just choose the option that's right for you.
+
+
+IPFS Desktop
+
+  https://github.com/ipfs-shipyard/ipfs-desktop
+
+  Handle ipfs://, ipns:// and dweb: links
+
+  Electron
+
+Command-line
+
+  https://docs.ipfs.io/how-to/command-line-quick-start
+
+  go-ipfs
+
+  Web console http://localhost:5001/webui
+
+IPFS Companion Add IPFS to your browser
+
+IPFS Cluster For servers or big data
+
+Go implementation go-ipfs
+
+  The original IPFS, with core implementation, daemon server, CLI tooling, and more.
+
+JS implementation js-ipfss
+
+  Written entirely in JavaScript for a world of possibilities in browser implementations.
+
+
+## Action
+
+Download CLI
+
+curl -L -O https://github.com/ipfs/go-ipfs/releases/download/v0.6.0/go-ipfs_v0.6.0_darwin-amd64.tar.gz
+
+tar xzvf go-ipfs_v0.6.0_darwin-amd64.tar.gz
+
+ipfs --version
+
+初始化 ipfs 仓库: stores all its settings and internal data in a directory called the repository.
+
+ipfs init
+
+服务端配置
+
+If you are running on a server in a data center, you should initialize IPFS with the server profile. Doing so will prevent IPFS from creating a lot of data center-internal traffic trying to discover local nodes:
+
+ipfs init --profile server
+
+peer identity: <node’s ID>
+
+ipfs id 会显示 node's ID
+
+Other nodes on the network use it to find and connect to you.
+
+运行 ipfs cat /ipfs/QmQPeNsJPyVWPFDVHb77w8G42Fvo15z4bG2X8D2GhfbSXc/readme
+
+ipfs cat /ipfs/<HASH>/readme
+
+让节点上线
+
+新窗口 ipfs daemon 
+
+原窗口 ipfs swarm peers (see the ipfs addresses of your peers when you run)
+
+获取网络文件
+
+ipfs cat /ipfs/QmW2WQi7j6c7UgJTarActp7tDNikE4B2qXtFCfLPdsgaTQ/cat.jpg > cat.jpg
+open cat.jpg
+
+传到网络
+
+hash=$(echo "I <3 IPFS Cool !!!" | ipfs add -q)
+hash=$(echo "I <3 IPFS Cool" | ipfs add -q)
+
+curl "https://ipfs.io/ipfs/$hash"
+
+> I <3 IPFS -<your username>
+
+The gateway served a file from your computer. The gateway queried the Distributed hash table (DHT), found your machine, requested the file, your computer sent it to the gateway, and the gateway sent it to your browser.
+
+Depending on the state of the network, curl may take a while. The public gateways may be overloaded or having a hard time reaching you.
+
+public gateways 可能超负荷运行
+
+
+## Drive Deep 
+
+https://docs.ipfs.io/concepts/
+
+https://docs.ipfs.io/concepts/what-is-ipfs/
+
+https://docs.ipfs.io/concepts/how-ipfs-works/#content-addressing
+
+https://docs.ipfs.io/concepts/ipfs-gateway/
+
+https://dweb-primer.ipfs.io/
+
+
+ipfs cost 
+  https://discuss.ipfs.io/t/how-much-ipfs-costs/1941
+  https://medium.com/pinata/whats-the-real-cost-of-ipfs-3623f274cfaa
+  https://www.tooploox.com/blog/using-ipfs-with-ethereum-for-data-storage
+
+ipfs + webtorrent + web-music-player

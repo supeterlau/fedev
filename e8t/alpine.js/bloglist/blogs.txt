@@ -1,0 +1,12 @@
+https://www.theerlangelist.com/ Erlang,Elixir
+
+https://sahillavingia.com/ VC,Startup,Gumroad
+
+https://blog.producthunt.com/ Product
+
+https://blog.servo.org/ Servo,Rust,Mozilla
+  https://servo.org/
+
+https://www.typeform.com/blog/
+
+echo ${test##*/}

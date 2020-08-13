@@ -1,0 +1,51 @@
+https://guide.elm-lang.org/install/elm.html
+
+obtain an executable file named elm
+
+https://github.com/elm/compiler/releases/download/0.19.1/installer-for-mac.pkg
+
+elm init (初始化当前目录)
+
+  start an Elm project
+
+  create an elm.json file and a src/ directory
+
+  creating a file called src/Main.elm
+
+elm reactor
+
+  build Elm projects
+
+  starts a server at http://localhost:8000
+
+elm make
+
+  compile Elm code to HTML or JavaScript
+
+  elm make src/Main.elm 生成 HTML 
+
+  elm make src/Main.elm --optimize --output=elm.js 生成 optimized JS embed in a custom HTML document
+
+  elm make src/Main.elm --optimize
+
+elm install
+
+  Elm packages all live at package.elm-lang.org
+
+  eg.
+
+  elm install elm/http
+  elm install elm/json
+
+  adds these dependencies into your elm.json file
+
+  然后可以 import Http and use functions like Http.get
+
+elm --help
+elm make --help
+elm repl --help
+
+Main.elm 顶部有 module Main exposing (..)
+
+https://github.com/mdgriffith/elm-ui
+

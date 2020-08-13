@@ -1,0 +1,80 @@
+https://reasonml.github.io/docs/en/what-and-why
+
+安装
+  Reason comes by default in BuckleScript, a compiler that turns Reason code into JavaScript code.
+
+  yarn global add bs-platform
+
+创建新项目
+
+  bsb -init my-new-project -theme basic-reason
+
+编译运行
+
+  yarn build # or npm run build, for npm
+  
+  node src/Demo.bs.js
+
+  compile Reason to JavaScript: BuckleScript
+
+  run the JavaScript: NodeJS
+
+  npm run start 可以启动 watcher recompiles automatically
+
+  默认生成文件和源文件在一个文件夹下。如果想变动位置，将 bsconfig.json 里的 in-source 设置为 false，输出位置会变为 lib/js
+
+添加为依赖
+  yarn add --dev bs-platform
+
+https://reasonml.github.io/docs/en/extra-goodies
+  Browser Extension
+  REPL https://sketch.sh/
+  re:bench online benchmark
+  Redex Reason packages registry
+  Bsb-native a tiny fork of bsb build system, compiles to native assembly code
+
+ReasonReact
+  https://reasonml.github.io/reason-react/docs/en/installation
+
+  - 新建
+  # you can use yarn too (yarn global add bs-platform)
+  npm install --global bs-platform
+
+  # creates project folder
+  bsb -init my-react-app -theme react-hooks
+
+  # cd into that folder, npm install, start
+  cd my-react-app && npm install && npm start
+
+  # in another tab
+  npm run server
+
+  - 添加到原项目中
+    Adding Reason to an existing React.js Project (Create React App, Next.js, etc.)
+
+Revery (fast, native code, cross-platform GUI applications.)
+  https://www.outrunlabs.com/revery/api/revery/
+  https://www.outrunlabs.com/revery/
+  https://github.com/revery-ui/revery
+
+https://esy.sh/docs/en/getting-started.html
+
+  npm install -g esy / yarn global add esy
+
+  git clone https://github.com/revery-ui/revery-quick-start
+
+cd revery-quick-start
+
+esy install
+
+esy build
+
+esy run
+
+npx esy install && npx esy build
+
+输出到 _build/install/default/bin/App
+
+运行
+
+npx esy run 

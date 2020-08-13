@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BLOGS</title>
+  <!-- polyfills for IE11 -->
+  <!-- <script src="https://polyfill.io/v3/polyfill.min.js?features=MutationObserver%2CArray.from%2CArray.prototype.forEach%2CMap%2CSet%2CArray.prototype.includes%2CString.prototype.includes%2CPromise%2CNodeList.prototype.forEach%2CObject.values%2CReflect%2CReflect.set"></script>
+  <script src="https://cdn.jsdelivr.net/npm/proxy-polyfill@0.3.0/proxy.min.js"></script> -->
+</head>
+
+<body>
+  <div x-data="{open: false}">
+    <button @click="open = true">Open Dropdown</button>
+    <ul x-show="open" @click.away="open = false">
+      Dropdown Items
+    </ul>
+    <ul x-show.transition="open" @click.away="open = false">
+      Dropdown Items (transition)
+    </ul>
+  </div>
+  <!-- tabs -->
+  <div x-data="{tab:'foo'}">
+    <button :class="{'active':tab==='foo'}" @click="tab='foo'">Foo</button>
+    <button :class="{'active':tab==='bar'}" @click="tab='bar'">Bar</button>
+
+    <div x-show="tab==='foo'">Tab Foo</div>
+    <div x-show="tab==='bar'">Tab Bar</div>
+  </div>
+
+  <!-- Todo application -->
+  <h3>Todo</h3>
+  <div x-data="{
+    items: [],
+    adding: false
+  }" x-init="$refs.ok.disabled=true">
+    <template x-for="item in items" :key="item">
+      <div>
+        <span x-text="item"></span>
+        <button @click="items = items.filter(i => i !== item)">DEL</button>
+      </div>
+    </template>
+    <button @click="adding = true">ADD</button>
+    <div x-show.transition="adding" @click.away="adding=false">
+      <label for="name">Name:</label>
+      <input id="name" x-model="name" @keyup="$refs.ok.disabled=name.length===0" />
+      <button @click="adding=false">CANCEL</button>
+      <button @click="adding=false;items.push(name);name='';$refs.ok.disabled=true" x-ref="ok">OK</button>
+    </div>
+  </div>
+  <script src="./app.js"></script>
+</body>
+
+</html>

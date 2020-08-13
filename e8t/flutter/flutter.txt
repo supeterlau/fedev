@@ -1,0 +1,49 @@
+## Desktop
+https://flutter.dev/desktop#set-up
+
+flutter channel dev
+flutter upgrade
+# flutter config --enable-<platform>-desktop
+flutter config --enable-macos-desktop
+flutter config --enable-linux-desktop
+
+flutter devices
+
+## BLOC
+
+https://bloclibrary.dev/#/
+
+A predictable state management library that helps implement the BLoC design pattern.
+
+https://www.didierboelens.com/2018/08/reactive-programming-streams-bloc/
+
+### Why Bloc
+
+便于分离 presentation 和 business logic 展示 逻辑 分离
+
+代码 fast, easy to test and reusable
+
+开发者需要知道
+  当前应用处于什么状态
+  
+
+### core concepts
+
+
+===
+
+https://gitee.com/peterlaurock/flutter.git
+
+https://flutter.cn/docs
+
+Desktop 
+  https://codelabs.developers.google.com/codelabs/flutter-github-graphql-client 
+
+Web 
+  https://flutter.dev/docs/get-started/web
+  https://flutter.cn/docs/get-started/web
+
+Browser
+  https://medium.com/flutter-community/creating-a-full-featured-browser-using-webviews-in-flutter-9c8f2923c574 
+
+
