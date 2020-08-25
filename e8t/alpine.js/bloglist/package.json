@@ -7,11 +7,14 @@
     "start": "gulp serve"
   },
   "dependencies": {
-    "alpinejs": "^2.5.0"
+    "alpinejs": "^2.5.0",
+    "tailwindcss": "^1.7.3"
   },
   "devDependencies": {
+    "autoprefixer": "^9.8.6",
     "browser-sync": "^2.26.12",
     "gulp": "^4.0.2",
-    "gulp-bro": "^2.0.0"
+    "gulp-bro": "^2.0.0",
+    "gulp-postcss": "^8.0.0"
   }
 }

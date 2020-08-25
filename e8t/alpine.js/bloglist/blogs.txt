@@ -9,4 +9,24 @@ https://blog.servo.org/ Servo,Rust,Mozilla
 
 https://www.typeform.com/blog/
 
+https://www.gitpod.io/blog/
+
+https://hackaday.com/ Hackaday | Fresh Hacks Every Day
+
+https://www.digitalocean.com/community/tutorials
+
+https://alligator.io/ FrontEnd
+
+https://www.telerik.com/blogs UI, FrontEnd
+
+https://xiaoyue26.github.io/ 笔记本 (Database, Clickhouse)
+
+https://dashbit.co/blog All posts - Dashbit Blog (Elixir)
+
+https://hacks.mozilla.org/ Home - Mozilla Hacks - the Web developer blog (Firefox, Web)
+
+https://francismurillo.github.io/ Fn/Log (Elixir, Rust)
+
+https://sites.google.com/a/athaydes.com/renato-athaydes/home Renato Athaydes (Concurrent)
+
 echo ${test##*/}
