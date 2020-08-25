@@ -1,0 +1,132 @@
+创建 model
+
+import { types } from "mobx-state-tree"
+
+const Todo = types.model({
+    name: "",
+    done: false
+})
+
+创建 model instances (tree nodes)
+
+const eat = Todo.create({name: "eat", done: false})
+
+注意参数类型需要和 model 中一致
+
+at path "/done" value `1` is not assignable to type: `boolean`
+
+创建 model 的完整语法是
+
+const Todo = types.model({
+    name: types.optional(types.string, ""),
+    done: types.optional(types.boolean, false)
+})
+
+types namespace 提供很多类型: 
+
+  like array, map, maybe, refinements and unions
+
+  https://mobx-state-tree.js.org/overview/types
+
+定义 root model 保存 Todo User 
+
+const RootStore = types.model({
+    users: types.map(User),
+    todos: types.optional(types.map(Todo), {})
+})
+
+const store = RootStore.create({
+    users: {} // users is not required really since arrays and maps are optional by default since MST3
+})
+
+如果你想在 .create 时不传参数，那么就需要提供 types.optional 第二个参数。
+
+如果要使得 field 必须提供，types.optional 换成 types.*
+
+修改数据
+
+  using actions
+
+  通过 .actions 在 model 上定义
+
+    传入函数，函数参数为 model instance 返回修改后的值
+
+    self 是 创建的 model instance
+
+Snapshots are awesome
+
+  mutable data 好修改，但难测试
+
+  immutable data 好测试，但难修改
+
+  如何拥有双方的好处？
+
+  generate serializable snapshots of our store
+
+  get a snapshot of the store by using the getSnapshot function
+
+  the nature of state is mutable, a snapshot will be emitted whenever the state is mutated。
+  
+  当 state 改变时，就会产生一个 snapshot 
+
+  监听新的 snapshot 
+
+    onSnapshot(store, snapshot => console.log(snapshot))
+
+从 snapshot 到 model 
+
+  用 snapshot 恢复 model, 你需要知道 type of the tree and its snapshot
+
+  方法1: 用 snapshot 作为参数，创建 model instance, 这会更新所有的 reference
+
+  方法2: 为了避免更新 reference, applying the snapshot to an existing model instance。instance 属性会更新，但 reference 不变，这一过程叫做 reconciliation 调和
+
+Time travel
+  snapshot 存入 array 
+
+Improving render performance
+  例如 map 中，将 map 的生成结构抽出为 组件
+
+Computed properties
+  
+  .view(self => ({
+    get pendingCount() {
+      return values(self.todos).filter(todo => !todo.done).length
+    },
+    get completedCount() {}
+  }))
+
+  计算属性，只有 done 值变化才会引起重新计算
+
+Model Views
+
+  .view(self => ({
+    getTodosWhereDoneIs(done) {
+      return values(self.todos).filter(todo => todo.done === done)
+    }
+  }))
+
+Reference 
+
+  在 model 之间引用
+
+  在 User 里添加识别属性 id: types.identifier,
+
+    types.identifier 无法被修改，create 时必须提供
+
+  在 Todo model 中 
+
+    user: types.maybe(types.reference(types.late(() => User)))
+
+    types.maybe 允许 user ref 为 null 
+
+    为 Todo 设置 user ref : 提供 identifier 或 model instance
+
+    如果 User 在 Todo 中有引用，则无法删除 User 
+
+https://dev.to/margaretkrutikova/how-to-mobx-state-tree-react-typescript-3d5j#communicate-between-stores How to: mobx-state-tree + react + typescript - DEV Community 👩‍💻👨‍💻
+
+https://medium.com/game-development-stuff/understanding-mobx-and-mobx-state-tree-7bd37f734789 Understanding MobX and MobX State Tree | by Verónica Valls | Game & Frontend Development Stuff | Medium
+
+https://academind.com/learn/react/redux-vs-context-api/ Redux vs React's Context API
+  React Context API 用于低频变化
