@@ -1,4 +1,115 @@
+https://flutter.cn/docs/get-started/codelab
+
+# Get Started
+
+flutter channel beta
+flutter upgrade
+
+如果希望支持 web 只需要执行一次
+
+flutter config --enable-web
+
+创建应用程序
+
+flutter create tour
+
+运行程序
+
+flutter devices
+
+flutter run 
+
+name-xxx • id-xxx • android-arm64 • Android 9 (API 28)
+
+flutter run -d 'name-xxx'
+
+Android gradle 问题
+
+  https://www.cnblogs.com/wupeng88/p/11455874.html flutter 卡在Running Gradle task 'assembleDebug'... - 诗意的活着 - 博客园
+
+Vim support
+  https://dev.to/tavanarad/vim-as-a-flutter-ide-4p16
+
+  dart-lang/dart-vim-plugin
+
+  git clone --depth=1 https://github.com/dart-lang/dart-vim-plugin ~/.vim_runtime/my_plugins/dart-vim-plugin
+
+修改 main.dart 后需要 Hot Restart 而不是 Hot Reload
+
+  https://stackoverflow.com/questions/58055330/flutter-unimplemented-handling-of-missing-static-target Flutter: Unimplemented handling of missing static target - Stack Overflow
+
+在 pubspec.yaml 文件的 flutter 部分选择加入 uses-material-design: true 可以使用更多 Material 的特性，比如其预定义好的 图标 集。
+
+安装外部 package 修改 pubspec.yaml 后 
+
+flutter pub get
+
+Stateless widgets 是不可变的，所有值都是 final
+
+Stateful widgets 有内部状态
+
+StatefulWidget 
+
+_RandomWordsState createState() => _RandomWordsState(); 创建状态
+
+class RandomWords extends StatefulWidget {
+  @override
+  _RandomWordsState createState() => _RandomWordsState();
+}
+
+class _RandomWordsState extends State<RandomWords> {}
+
+ListView
+
+  在 _RandomWordsState 中用 两个 final 作为初始状态
+
+Vim convert 4 spaces to 2 spaces 
+
+  https://gist.github.com/ericdouglas/72621cb47b368297feaa Change 4 spaces to 2 spaces indentation and change tab to spaces - Vim tip
+
+添加 心形 图标
+
+  trailing: Icon(Icons.favorite, color: Colors.red (null))
+
+收藏交互
+
+  onTap:() {
+    setState(() {
+      _saved.add(pair);
+    });
+  }
+
+导航去往新页面
+
+  添加一个显示收藏夹内容的新页面 (route)
+
+  RandomWordsState 中 appBar 新增 列表图标
+
+  Navigator 管理路由栈，
+  
+    push 方法将新页面入栈，显示新页面
+
+    pop 方法移除顶栈，返回上一个页面
+
+
+- native library 
+
+- route navigation
+
+- bottom tab 
+
+- webview 
+
+- http request 
+
+- store 
+
+  config 
+
+  database
+
 ## Desktop
+
 https://flutter.dev/desktop#set-up
 
 flutter channel dev
@@ -8,6 +119,9 @@ flutter config --enable-macos-desktop
 flutter config --enable-linux-desktop
 
 flutter devices
+
+
+
 
 ## BLOC
 
