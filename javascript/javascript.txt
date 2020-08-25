@@ -1,5 +1,57 @@
+for of / for in
 
-switch 
+✅ https://alligator.io/js/for-of-for-in-loops/
+
+Dependency Injection
+
+ES6 Modules
+https://alligator.io/js/modules-es6/ ES6 Modules and How to Use Import and Export in JavaScript ← Alligator.io
+
+drag drop
+https://www.digitalocean.com/community/tutorials/js-drag-and-drop-vanilla-js How To Create Drag and Drop Elements with Vanilla JavaScript and HTML | DigitalOcean
+
+debounce throttle
+  https://dev.to/nugetchar/debounce-and-throttle-47cd
+  https://programmingwithmosh.com/javascript/javascript-throttle-and-debounce-patterns/
+
+proxy
+
+reflect
+
+prototype chain
+
+new
+
+promise
+
+decorator
+
+generator
+
+iterater
+
+class
+
+symbol
+
+algorithm
+  https://www.digitalocean.com/community/tutorials/js-binary-heaps
+
+
+
+await/async
+https://alligator.io/js/async-functions/
+
+observable
+
+monad
+
+http://neurogami.com/content/neurogami-10_minutes_to_your_first_Ruby_app/
+incompatible+library+version+vim+ruby
+https://stackoverflow.com/questions/46967365/fatal-incompatible-library-version-users-xxx-vim-bundle-command-t-ruby-comm
+
+
+switch
 
 const action = 'say_hello';
 switch (action) {
@@ -16,6 +68,21 @@ switch (action) {
     break;
 }
 
+for ... in
+  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in
+
+for ... of
+  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of
+
+  for...of vs for...in
+    https://alligator.io/js/for-of-for-in-loops/
+
+await in loop
+  https://zellwk.com/blog/async-await-in-loops/
+  https://medium.com/dailyjs/the-pitfalls-of-async-await-in-array-loops-cf9cf713bfeb
+
+regex capture group
+  https://2ality.com/2017/05/regexp-named-capture-groups.html
 
 
 
@@ -23,9 +90,9 @@ switch (action) {
 
 
 
-ECMAScript 2015 
-ES2015 
-ES6 
+ECMAScript 2015
+ES2015
+ES6
 
 https://www.javascripttutorial.net/es-next/
 https://www.freecodecamp.org/news/write-less-do-more-with-javascript-es6-5fd4a8e50ee2/
@@ -38,7 +105,7 @@ https://es6.io/ Paid
 
 https://book.douban.com/subject/10546125/ JavaScript 高级程序设计
 
-https://es6.ruanyifeng.com/#docs/module ES6 
+https://es6.ruanyifeng.com/#docs/module ES6
 
 http://www.typescriptlang.org/docs/handbook/basic-types.html Handbook
 
