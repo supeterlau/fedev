@@ -91,6 +91,65 @@ Vim convert 4 spaces to 2 spaces
 
     pop 方法移除顶栈，返回上一个页面
 
+配置 ThemeData 类轻松更改应用程序的主题
+  MaterialApp(
+    theme: ThemeData(
+      primaryColor: Colors.white,
+    )
+  )
+
+- widgets 
+
+  pusher: https://pusher.com/tutorials/flutter-widgets First steps with Flutter: Exploring widgets
+
+  Container
+
+  Text 
+
+  Padding
+
+  Button
+
+  TextField
+
+  ListView
+
+  But in Flutter, if you want add some extra space around a widget, then you wrap it in a Padding widget.
+
+  align a widget somewhere else 使用 Align Widget 
+
+  the Center widget is just a special case of the Align widget.
+
+  Margin means the spacing outside of the border, while padding is the spacing inside of the border. 其实 Flutter 里没有 margin，margin 也是用 padding 实现的。
+
+  Expanded widget
+    flex 参数 flex: 7 = 占用 70% 空间
+
+分离代码
+  将子组件放入变量
+  将子组件放入 Widget 函数
+  将子组件放入 Widget 
+    class FirstRow extends StatelessWidget {
+      @override
+      Widget build(BuildContext context) {
+        return Container();
+      }
+    }
+
+
+assets
+
+  pubspec.yaml
+
+  flutter:
+    assets:
+      - images/
+
+- theme 
+
+- layout 
+
+- i18n
 
 - native library 
 

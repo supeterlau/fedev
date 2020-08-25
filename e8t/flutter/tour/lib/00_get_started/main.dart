@@ -7,6 +7,10 @@ class MainApp extends StatelessWidget {
   // final wordPair = WordPair.random();
   return MaterialApp(
     title: 'Name Generator',
+    // theme: ThemeData(
+    //     primaryColor: Colors.white
+    // ),
+    theme: ThemeData.dark(),
     home: RandomWords(),
   );
  }
@@ -88,7 +92,7 @@ class _RandomWordsState extends State<RandomWords> {
                            pair.asPascalCase,
                            style: _biggerFont,
                        )
-                   )
+                   );
                  }
              );
              final List<Widget> divided = ListTile.divideTiles(
@@ -104,6 +108,6 @@ class _RandomWordsState extends State<RandomWords> {
              );
            }
        )
-   )
+   );
  }
 }
