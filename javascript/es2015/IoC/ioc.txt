@@ -1,0 +1,73 @@
+https://medium.com/@viktor.kukurba/dependency-injection-and-inversion-of-control-in-javascript-303e07e7f43f Dependency Injection and Inversion of Control in JavaScript | by Viktor Kukurba | Medium
+
+programming 重要概念
+
+  Inversion of Control (IoC)
+
+将用 Dependency Injection design template 实现
+
+define the Dependency Inversion Principle and the implementation of the IoC container
+
+Inversion of Control 是基于 flow of control 的抽象编程概念。
+
+传统流程，你使用来自 library/framework 的方法。
+
+Inversion 流程，你的代码被 library/framework 调用
+
+Dependency 是一个对象，或任意编程单元
+
+Dependency Injection (DI) 是 基于 Dependency 组合的一种 IoC 实现
+
+Dependency Inversion Principle 是 SOLID 原则之一
+
+  - the upper levels modules do not depend on implementations of the lower levels ones. Modules should depend on abstractions;
+
+  - abstractions do not depend on the details, but the details depend on abstractions;
+
+https://www.devbridge.com/articles/dependency-injection-in-javascript/
+
+remove hard-coded dependencies and makes it possible to change them. 
+
+Dependencies can be injected to the object via the constructor or via defined method or a setter property.
+
+依赖通过构造函数，方法，或设置属性，inject 到 object 
+
+Advantages:
+
+  将 object 与 dependency 解偶
+  不需要改变代码行为，可以用于已有代码
+  client 不受 dependency 影响
+  不改变代码可以重新配置
+  允许并行开发
+  更容易测试，可以 mock dependency 行为
+
+Disadvantages:
+
+  必须知道使用什么 dependency 
+  类型初始化和依赖被隐藏，出现错误难以排查
+  要写更多代码
+  用 new 初始化时变慢，由于 meta data 被用来解决依赖
+
+Dirver
+
+  name
+  car 
+
+  drive()
+
+Car 
+
+  name 
+  engine
+
+  start()
+
+Engine
+
+  hp 
+
+  start() 
+
+https://blog.jeremylikness.com/blog/2014-06-28_dependency-injection-explained-javascript/
+
+https://dev.to/azure/dependency-injection-in-javascript-101-2b1e
