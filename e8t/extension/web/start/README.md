@@ -37,7 +37,7 @@ copy all unpinned tabs url and name
 
 - replace google cdn js
 
-
+- remove google hightlight
 
 ### Plan
 
