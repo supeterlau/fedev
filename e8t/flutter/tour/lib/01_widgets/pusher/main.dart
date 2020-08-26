@@ -329,7 +329,7 @@ class _DemoState extends State<DemoStateful> {
               child: Text('CLICK'),
               onPressed: () {
                 print("click ...");
-                // _doClick();
+                _doClick();
                 _showAlertDialog();
               }
           ),
@@ -363,6 +363,18 @@ class _DemoState extends State<DemoStateful> {
               onTap: () {
                 _changeTextColor();
               }
+          ),
+          Center(
+              child: RaisedButton(
+                  child: Text(
+                      'Show next screen',
+                      style: TextStyle(fontSize: 24),
+                  ),
+                  onPressed: () {
+                    // _navToSecondScreen(context);
+                    _navToSecondScreenAndWait(context);
+                  }
+              )
           )
         ]
     );
@@ -427,6 +439,66 @@ class _DemoState extends State<DemoStateful> {
       int opaqueColor = 0xFF000000 + randHexColor;
       textColor = Color(opaqueColor);
     });
+  }
+
+  void _navToSecondScreen(BuildContext context) {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => SecondScreen(
+                text: _textString
+            ),
+        )
+    );
+  }
+
+  void _navToSecondScreenAndWait(BuildContext context) async {
+    final data = await Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => SecondScreen(
+                text: _textString
+            ),
+        )
+    );
+    setState(() {
+      _textString = data;
+    });
+  }
+}
+
+class SecondScreen extends StatelessWidget {
+  final String text;
+
+  // 接收传入数据
+  SecondScreen({Key key, @required this.text}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(title: Text('Second Screen')),
+        body: Column(
+            children: [
+              Text('oh: $text', style: TextStyle(color: Colors.blue)),
+              RaisedButton(
+                  child: Text(
+                      'Go Back',
+                      style: TextStyle(fontSize: 24),
+                  ),
+                  onPressed: () {
+                    _goBack(context);
+                  }
+              )
+            ]
+        )
+    );
+  }
+
+  void _goBack(BuildContext context) {
+    Navigator.pop(
+        context,
+        text + " -> From SecondScreen"
+    );
   }
 }
     /*
