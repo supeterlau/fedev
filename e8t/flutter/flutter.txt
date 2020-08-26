@@ -177,6 +177,10 @@ Dialogs
 
   AlertDialog
 
+`context` means the BuildContext, which is available by default inside of a State object. 
+
+If you are working with an AlertDialog in a StatelessWidget, then you would need to pass a reference to the BuildContext.
+
 - theme 
 
 - layout 

@@ -328,7 +328,8 @@ class _DemoState extends State<DemoStateful> {
               child: Text('CLICK'),
               onPressed: () {
                 print("click ...");
-                _doClick();
+                // _doClick();
+                _showAlertDialog();
               }
           ),
           TextField(
@@ -349,7 +350,7 @@ class _DemoState extends State<DemoStateful> {
               },
               // 设置 内容在后，选择框在前
               // controlAffinity: ListTileControlAffinity.leading,
-          )
+          ),
         ]
     );
   }
@@ -373,6 +374,39 @@ class _DemoState extends State<DemoStateful> {
       _checkedValue = isChecked;
     });
   }
+
+  void _showAlertDialog() {
+    Widget okButton = FlatButton(
+        child: Text('ok'),
+        onPressed:() {
+          print("click ok btn");
+          Navigator.pop(context);
+        }
+    );
+
+    Widget cancelButton = FlatButton(
+        child: Text('cancel'),
+        onPressed:() {
+          print("click cancel btn");
+          // Navigator.pop(context);
+        }
+    );
+
+    AlertDialog alert = AlertDialog(
+        title: Text('Dialog title'),
+        content: Text('Find flutter AlertDialog.'),
+        actions: [
+          okButton,
+          cancelButton,
+        ],
+    );
+
+    showDialog(
+        context: context,
+        builder: (BuildContext context) => alert,
+    );
+  }
+
 }
     /*
     */
