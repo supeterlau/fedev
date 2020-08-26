@@ -315,6 +315,7 @@ class _DemoState extends State<DemoStateful> {
   String _textString = 'Show State';
   TextEditingController textFieldController = TextEditingController();
   bool _checkedValue = false;
+  Color textColor = Colors.black;
 
   @override
   Widget build(BuildContext context) {
@@ -351,6 +352,18 @@ class _DemoState extends State<DemoStateful> {
               // 设置 内容在后，选择框在前
               // controlAffinity: ListTileControlAffinity.leading,
           ),
+          GestureDetector(
+              child: Text(
+                  _textString,
+                  style: TextStyle(
+                      fontSize: 30,
+                      color: textColor
+                  ),
+              ),
+              onTap: () {
+                _changeTextColor();
+              }
+          )
         ]
     );
   }
@@ -407,6 +420,14 @@ class _DemoState extends State<DemoStateful> {
     );
   }
 
+  void _changeTextColor() {
+    setState(() {
+      int randHexColor = Random().nextInt(0xFFFFFF);
+      print('Color $randHexColor');
+      int opaqueColor = 0xFF000000 + randHexColor;
+      textColor = Color(opaqueColor);
+    });
+  }
 }
     /*
     */
