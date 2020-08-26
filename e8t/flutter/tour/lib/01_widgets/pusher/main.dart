@@ -314,6 +314,7 @@ class _DemoState extends State<DemoStateful> {
 
   String _textString = 'Show State';
   TextEditingController textFieldController = TextEditingController();
+  bool _checkedValue = false;
 
   @override
   Widget build(BuildContext context) {
@@ -339,6 +340,15 @@ class _DemoState extends State<DemoStateful> {
               // onChanged: (text) {
               //   _doUpdate(text);
               // }
+          ),
+          CheckboxListTile(
+              title: Text('A Checkbox'),
+              value: _checkedValue,
+              onChanged: (newValue) {
+                _doCheck(newValue);
+              },
+              // 设置 内容在后，选择框在前
+              // controlAffinity: ListTileControlAffinity.leading,
           )
         ]
     );
@@ -355,6 +365,12 @@ class _DemoState extends State<DemoStateful> {
   void _doUpdate(String text) {
     setState(() {
       _textString = text;
+    });
+  }
+
+  void _doCheck(bool isChecked) {
+    setState(() {
+      _checkedValue = isChecked;
     });
   }
 }

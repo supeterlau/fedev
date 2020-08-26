@@ -171,6 +171,12 @@ TextField 不监听 onChanged 配置 controller 参数
 
   https://stackoverflow.com/questions/53861302/passing-data-between-screens-in-flutter/53861303#53861303
 
+Checkbox CheckboxTile 
+
+Dialogs 
+
+  AlertDialog
+
 - theme 
 
 - layout 
