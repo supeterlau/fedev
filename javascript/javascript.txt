@@ -24,6 +24,8 @@ new
 
 promise
 
+  https://exploringjs.com/deep-js/ch_implementing-promises.html Exploring Promises by implementing them • Deep JavaScript
+
 decorator
 
 generator
