@@ -102,6 +102,8 @@ Vim convert 4 spaces to 2 spaces
 
   pusher: https://pusher.com/tutorials/flutter-widgets First steps with Flutter: Exploring widgets
 
+part1: 
+
   Container
 
   Text 
@@ -114,6 +116,8 @@ Vim convert 4 spaces to 2 spaces
 
   ListView
 
+part2: 
+
   But in Flutter, if you want add some extra space around a widget, then you wrap it in a Padding widget.
 
   align a widget somewhere else 使用 Align Widget 
@@ -124,6 +128,11 @@ Vim convert 4 spaces to 2 spaces
 
   Expanded widget
     flex 参数 flex: 7 = 占用 70% 空间
+
+  https://medium.com/jlouage/flutter-row-column-cheat-sheet-78c38d242041 Flutter — Row/Column Cheat Sheet. Row/Column | by Julien Louage | JLouage | Medium
+
+  FractionallySizedBox https://stackoverflow.com/questions/43122113/sizing-elements-to-percentage-of-screen-width-height/53663591#53663591 flutter - Sizing elements to percentage of screen width/height - Stack Overflow
+
 
 分离代码
   将子组件放入变量
@@ -136,7 +145,6 @@ Vim convert 4 spaces to 2 spaces
       }
     }
 
-
 assets
 
   pubspec.yaml
@@ -144,6 +152,24 @@ assets
   flutter:
     assets:
       - images/
+
+part3: 
+
+Simple widgets can be combined together to make complex layouts. 
+
+用户交互 touch tap swipe
+
+StatelessWidget 没有任何状态
+
+要使用 StatefulWidget 就要创建两个类 一个是 class SomeWidget StatefulWidget 一个是 State<SomeWidget>
+
+the _ underscore at the beginning of the name _MyWidgetState makes it private 
+
+  让类或变量成为私有
+
+TextField 不监听 onChanged 配置 controller 参数
+
+  https://stackoverflow.com/questions/53861302/passing-data-between-screens-in-flutter/53861303#53861303
 
 - theme 
 
@@ -155,17 +181,24 @@ assets
 
 - route navigation
 
+
+
 - bottom tab 
 
 - webview 
 
 - http request 
 
+- logger
+
 - store 
 
   config 
 
   database
+
+声明式 UI 
+  https://flutter.cn/docs/get-started/flutter-for/declarative 声明式 UI 介绍 - Flutter 中文文档 - Flutter 社区中文资源
 
 ## Desktop
 

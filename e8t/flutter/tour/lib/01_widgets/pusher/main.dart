@@ -17,7 +17,8 @@ class MainApp extends StatelessWidget {
         appBar: AppBar(
           title: Text("Exploring Widgets")
         ),
-        body: widgetDemo()
+        // body: widgetDemo()
+        body: DemoStateful()
       ),
     );
   }
@@ -228,7 +229,7 @@ class MainApp extends StatelessWidget {
     );
 
        2. add padding, alignment, color
-    */
+
     return Container(
         margin: EdgeInsets.all(16.0),
         padding: EdgeInsets.all(16.0),
@@ -283,8 +284,79 @@ class MainApp extends StatelessWidget {
             ]
         )
     );
+    */
 
-    /*
+    /* Part3: User Input
+        return Column(
+            children: [
+              Text('User Input'),
+              RaisedButton(
+                child: const Text('Click this Button'),
+                color: Colors.blue,
+                elevation: 4.0,
+                splashColor: Colors.yellow,
+                onPressed: () {
+                  print('--- Click ---');
+                }
+              )
+            ]
+        );
     */
   }
 }
+
+class DemoStateful extends StatefulWidget {
+  @override
+  _DemoState createState() => _DemoState();
+}
+
+class _DemoState extends State<DemoStateful> {
+
+  String _textString = 'Show State';
+  TextEditingController textFieldController = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+        children: [
+          Text(
+              _textString,
+              style: TextStyle(fontSize: 30),
+          ),
+          RaisedButton(
+              child: Text('CLICK'),
+              onPressed: () {
+                print("click ...");
+                _doClick();
+              }
+          ),
+          TextField(
+              controller: textFieldController,
+              style: TextStyle(
+                fontSize: 24,
+                color: Colors.black,
+              ),
+              // onChanged: (text) {
+              //   _doUpdate(text);
+              // }
+          )
+        ]
+    );
+  }
+
+  void _doClick() {
+    setState(() {
+      // _textString = 'Show Flutter';
+      // Get input from text field controller
+      _textString = textFieldController.text;
+    });
+  }
+
+  void _doUpdate(String text) {
+    setState(() {
+      _textString = text;
+    });
+  }
+}
+    /*
+    */
