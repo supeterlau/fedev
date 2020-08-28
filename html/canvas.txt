@@ -1,0 +1,63 @@
+1.
+
+let canvas = document.getElementById('demo')
+
+if (canvas.getContext) {
+      let ctx = canvas.getContext('2d')
+    } else {
+      console.error('not support canvas')
+    }
+
+2. Draw shape
+
+how to draw rectangles, triangles, lines, arcs and curves, providing familiarity with some of the basic shapes
+
+canvas grid or coordinate space
+
+Normally 1 unit in the grid corresponds to 1 pixel on the canvas. The origin of this grid is positioned in the top left corner at coordinate (0,0). All elements are placed relative to this origin
+
+Unlike SVG, <canvas> only supports two primitive shapes: rectangles and paths (lists of points connected by lines)
+
+- rectangles
+
+fillRect(x, y, width, height)
+Draws a filled rectangle.
+
+strokeRect(x, y, width, height)
+Draws a rectangular outline.
+
+clearRect(x, y, width, height)
+Clears the specified rectangular area, making it fully transparent.
+
+- paths
+
+A path is a list of points, connected by segments of lines that can be of different shapes, curved or not, of different width and of different color.
+
+steps
+
+  create path 
+    beginPath()
+    
+    Internally, paths are stored as a list of sub-paths (lines, arcs, etc) which together form a shape. Every time this method is called, the list is reset and we can start drawing new shapes.
+
+  use draw command ()
+    https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D#Paths
+
+    actually specify the paths to be draw
+  
+  after path created, fill or stroke path
+    closePath()
+      画直线闭合，如果已经闭合或者只有一个点，就 do nothing
+    stroke()
+    fill()
+      调用 fill() 会自动闭合，调用 stroke() 不会
+
+    optional step
+
+  draw commands:
+
+  moveTo(x, y) 
+
+    初始化 canvas 或 beginPath() 后，放置起始点
+
+    删除 moveTo 显示连接起来的线
