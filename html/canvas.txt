@@ -21,13 +21,13 @@ Unlike SVG, <canvas> only supports two primitive shapes: rectangles and paths (l
 - rectangles
 
 fillRect(x, y, width, height)
-Draws a filled rectangle.
+  Draws a filled rectangle.
 
 strokeRect(x, y, width, height)
-Draws a rectangular outline.
+  Draws a rectangular outline.
 
 clearRect(x, y, width, height)
-Clears the specified rectangular area, making it fully transparent.
+  Clears the specified rectangular area, making it fully transparent.
 
 - paths
 
@@ -61,3 +61,31 @@ steps
     初始化 canvas 或 beginPath() 后，放置起始点
 
     删除 moveTo 显示连接起来的线
+
+  lineTo(x, y) coordinates of the line's end point
+
+  arc(x, y, radius, startAngle, endAngle, antiClockwise)
+
+  arcTo(x1, y1, x2, y2, radius)
+    连接起点到终点，用直线闭合
+
+  Bezier and quadratic curves
+
+    quadraticCurveTo(cplx, cply, x, y)
+      control point (cplx, cply)
+
+    bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y)
+      两个控制点
+  
+  Path2D objects (新版本浏览器支持，增强性能，可以 重放绘画动作)
+
+    支持 canvas context 全部方法 
+
+    path2d.rect()
+
+    new Path2D()
+
+    new Path2D(path) 另一个 Path2D 对象
+
+    new Path2D(svgString) 
+
