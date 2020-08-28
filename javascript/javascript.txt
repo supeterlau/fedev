@@ -36,6 +36,9 @@ class
 
 symbol
 
+Typed Array
+  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays JavaScript typed arrays - JavaScript | MDN
+
 algorithm
   https://www.digitalocean.com/community/tutorials/js-binary-heaps
 
