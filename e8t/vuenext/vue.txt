@@ -1,0 +1,25 @@
+Vue Next
+  https://github.com/vuejs/vue-next vuejs/vue-next: Repo for Vue 3.0 (currently in RC)
+  https://v3.vuejs.org/guide/installation.html#
+  https://v3.vuejs.org/guide/installation.html#vite
+
+https://github.com/vitejs/vite vitejs/vite: Native-ESM powered web dev build tool. It's fast.
+
+  https://github.com/vitejs/vite#how-and-why
+
+yarn global add @vue/cli@next
+
+$ yarn create vite-app <project-name>
+$ cd <project-name>
+$ yarn
+$ yarn dev
+
+# Tutorials
+
+https://codesource.io/build-a-crud-application-using-vue-composition-api/
+
+安装 Vue Composition API: install the Vue Composition API
+
+  yarn add @vue/composition-api
+
+在 main.js 中引入
