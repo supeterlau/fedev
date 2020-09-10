@@ -1,0 +1,28 @@
+# CSS 
+
+## Build a responsive website layout with flexbox
+
+https://coder-coder.com/build-flexbox-website-layout/
+
+Optimizing the CSS for mobile
+
+  加边距
+  add a uniform padding around the sides (and the top and bottom, if you desire).
+
+Creating a two-column layout for tablet
+
+  让 Content and Sidebar 变为两栏
+
+  Content and Sidebar 包裹在 flex-container 中
+
+Content width for desktop
+
+  set a max-width for the main content. This will ensure that the website is readable even on ultrawide monitors.
+
+  设置宽度最大限制
+
+  .wrapper
+
+https://github.com/thecodercoder/Simple-Responsive-Layout thecodercoder/Simple-Responsive-Layout
+
+https://gist.github.com/kylewebdev/f36acbfd2e9257d88253 Rem-Calc Function from Foundation
