@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+"@ajusa/lit@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.npm.taobao.org/@ajusa/lit/download/@ajusa/lit-1.1.0.tgz#74ceaf7c4fe661375759631840bbd2e744d1dd73"
+  integrity sha1-dM6vfE/mYTdXWWMYQLvS50TR3XM=
+
 "@babel/code-frame@^7.5.5":
   version "7.10.4"
   resolved "https://registry.npm.taobao.org/@babel/code-frame/download/@babel/code-frame-7.10.4.tgz#168da1a36e90da68ae8d49c0f1b48c7c6249213a"

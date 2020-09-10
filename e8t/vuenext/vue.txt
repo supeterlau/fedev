@@ -16,6 +16,8 @@ $ yarn dev
 
 # Tutorials
 
+## Build a Crud application using Vue Composition API
+
 https://codesource.io/build-a-crud-application-using-vue-composition-api/
 
 安装 Vue Composition API: install the Vue Composition API
@@ -23,3 +25,34 @@ https://codesource.io/build-a-crud-application-using-vue-composition-api/
   yarn add @vue/composition-api
 
 在 main.js 中引入
+
+// 不需要了 
+import VueCompositionApi from '@vue/composition-api' 
+Vue.use(VueCompositionApi)
+
+将 Vue Composition API 注册到全局
+
+在业务组件
+
+// 不需要了 
+// import { reactive } from "@vue/composition-api";
+
+使用一些事件监听
+
+@submit.prevent="addUser"
+
+v-model="state.input"
+
+v-for="(user, index) in state.users" :key="index" 
+
+@click="removeUser"
+
+Vue3 用 data 和 methods 定义状态和增加函数
+
+用 setup 函数，在生命周期 beforeCreate 和 create 之间执行
+
+https://v3.vuejs.org/guide/composition-api-introduction.html#why-composition-api Introduction | Vue.js
+
+yarn remove @vue/composition-api
+
+## Building a Portfolio Website with Vue and Bootstrap

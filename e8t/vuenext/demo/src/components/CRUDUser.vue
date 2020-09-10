@@ -1,12 +1,13 @@
 <template>
+  <TodoButton>Add Button</TodoButton>
   <section>
     <div class="form-container">
       <h2>Add User</h2>
-      <form>
+      <form @submit.prevent="addUser">
         <div>
           <label>Name</label>
           <br />
-          <input type="text" />
+          <input v-model="state.input" type="text" />
         </div>
         <div>
           <button type="submit" class="submit">Add User</button>
@@ -14,11 +15,11 @@
       </form>
     </div>
     <div class="list-container">
-      <ul>
+      <ul v-for="(user, index) in state.users" :key="index">
         <li>
-          Wisdom Picker
+          {{ user }}
           <span style="float:right;padding-right:10px;">
-            <button>X</button>
+            <button @click="removeUser(index)">X</button>
           </span>
         </li>
       </ul>
@@ -27,7 +28,39 @@
 </template>
 
 <script>
-export default {};
+import { reactive } from "vue"
+
+import TodoButton from './TodoButton.vue'
+
+function userList() {
+  let state = reactive({
+    input: "",
+    users: ['Wisdom']
+  })
+
+  let addUser = () => {
+    state.users.push(state.input);
+    state.input = '';
+  };
+
+  let removeUser = i => {
+    console.log('???')
+    state.users.splice(i, 1);
+  }
+
+  return { state, addUser, removeUser }
+}
+
+export default {
+  components: {
+    TodoButton
+  },
+  setup() {
+    const {state, addUser, removeUser} = userList();
+    return {state, addUser, removeUser}
+  }
+
+};
 </script>
 
 <style scoped>
