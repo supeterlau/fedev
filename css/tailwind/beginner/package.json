@@ -1,0 +1,17 @@
+{
+  "name": "begin",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "autoprefixer": "^9.8.6",
+    "postcss-cli": "^7.1.2",
+    "tailwindcss": "^1.8.5"
+  },
+  "scripts": {
+    "build": "postcss css/styles.css -o build/styles.css"
+  },
+  "devDependencies": {
+    "sass": "^1.26.10"
+  }
+}
