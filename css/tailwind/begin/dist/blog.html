@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mini Blog</title>
+  <style>@charset "UTF-8";
+
+/* global */
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%;
+}
+
+body {
+  margin: 0;
+  /* Optimizing the CSS for mobile */
+  padding: 20px;
+  font-size: rem-calc(16);
+  color: #ffffff;
+}
+
+main, header, section, aside, footer {
+  margin: 0;
+  /* padding: 20px; */
+  padding: rem-calc(20);
+  border: 1px solid #000000;
+  color: #ffffff;
+}
+
+main {
+  background-color: #000000;
+}
+
+.header {
+  background-color: #03a9f4;
+}
+
+.hero {
+  background-color: #d22b1f;
+}
+
+.content {
+  background-color: #129a22;
+}
+
+.sidebar {
+  background-color: #673ab7;
+  border: 1px solid #000000;
+}
+
+.footer {
+  background-color: #616161;
+  border: 1px solid #000000;
+}
+
+/* 设备宽度超过 640px 开启 flex 布局 */
+
+@media screen and (min-width: 640px) {
+  .flex-container {
+    display: flex;
+  }
+
+  .content {
+    flex: 1;
+  }
+
+  /* Sidebar, to set its width to 300px */
+
+  .sidebar {
+    flex: 0 1 300px;
+  }
+}
+
+.wrapper {
+  margin: auto;
+  max-width: 75rem;
+}</style>
+</head>
+<body>
+  <main>
+    MAIN
+    <!-- placeholder content -->
+    <header class="header">HEADER: How to Niche Down & Increase your Income</header>
+    <section class="hero">HERO: I’m sure you’ve heard the saying “the riches are in the niches” before, but have you applied this thinking to your own blog? It could be the single thing that makes you wildly successful, or keeps you where you are today.</section>
+    <div class="flex-container wrapper">
+      <section class="content">
+        CONTENT: But, overtime, the blogging world has become a lot more saturated, which makes it much harder to stand out. Plus, these days, high quality imagery isn’t something that makes you stand out, it’s simply required and expected from readers. Plus with iPhones and editing apps, it’s too easy to get great photos, there’s no excuse for bad ones.
+        So, how do you set yourself apart in the sea of bloggers?! Make your content as narrow and focused as possible. My initial reaction to this concept was “oh no, won’t I drive away a ton of people!?” and the answer is, maybe, but what you’ll gain is far better. You’ll lose some of the lurkers, the people who popped in a couple of times a month and don’t engage or buy, but you’ll get new followers who are highly engaged and interested in your content.
+      </section>
+      <aside class="sidebar">
+        SIDEBAR: I'm Blair Staky—I help women turn their blogs into thriving businesses by sharing my secrets to growing a 6-figure blog. I'm so glad you're here!
+      </aside>
+    </div>
+    <footer class="footer">FOOTER: How to Make Money Blogging + Financial Freedom</footer>
+  </main>
+</body>
+</html>

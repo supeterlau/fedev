@@ -1,0 +1,96 @@
+# https://codingthesmartway.com/tailwind-css-for-absolute-beginners/
+
+yarn add tailwindcss postcss-cli autoprefixer
+
+npx tailwindcss init
+
+npx tailwind init
+
+添加到项目 CSS : add Tailwind to the project’s CSS
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
+
+touch postcss.config.js
+
+  PostCSS process perform CSS processing with the tailwindcss and the autoprefixer plugins.
+
+module.exports = {
+  plugins: [
+    require('tailwindcss'),
+    require('autoprefixer'),
+  ]
+}
+
+build 命令
+  "build": "postcss css/styles.css -o build/styles.css"
+
+npm install -g live-server
+
+live-server build (build 路径) --port=7000
+
+# Style 
+
+- Button 
+
+bg-blue-500    背景色 blue-500, 500=0.5 透明度
+hover:bg-blue-700    hover 时的颜色
+text-white    文字颜色
+font-bold    文字字体 bold 
+py-2    padding 0.5rem, top & bottom
+px-4    padding 1.0rem, left & right 
+rounded    rounded corners
+
+- Notification Bar 
+
+text-center    文字居中
+p-2    padding 0.5rem 
+items-center    flex items 居中
+text-blue-100    文字颜色
+leading-none    元素 line height 为 1
+lg:rounded-full  在 large screens 时，设置 border radius 9999px
+flex    设置 flex 布局
+lg:inline-flex   在 large screens 时，使用 inline flex 布局
+uppercase   显示为大写
+text-xs    字体大小 0.75rem 
+mr-3    margin right 0.75rem 
+font-semibold    字体 weight 600
+text-left    文字左对齐
+flex-auto    允许 flex item grow 和 shrink
+
+- Card 
+
+
+- extract components 提取 css 组件
+
+导出重复性部分，保证样式同步
+
+使用 @apply 指令
+
+需要放在 @tailwind components; 下
+
+- 配置文件设置 css 组件
+
+const plugin = require('tailwindcss/plugin');
+
+plugins: [
+  plugin(function({ addComponents }){
+    const buttons = {
+
+    }
+  })
+]
+
+https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss
+
+Warning 关闭:
+
+// tailwind.config.js
+module.exports = {
+  future: {
+    removeDeprecatedGapUtilities: true,
+  },
+  // ...
+}
+
+
