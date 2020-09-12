@@ -15,8 +15,11 @@ debounce throttle
   https://programmingwithmosh.com/javascript/javascript-throttle-and-debounce-patterns/
 
 proxy
+  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Meta_programming Meta programming - JavaScript | MDN
+  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy Proxy - JavaScript | MDN
 
 reflect
+  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect Reflect - JavaScript | MDN
 
 prototype chain
 
@@ -24,13 +27,116 @@ new
 
 promise
 
+- https://www.promisejs.org/implementing/
+
+1. 状态机
+
+Promise 可以看作一个 state machine。先声明几个状态 pending, fulfilled, rejected
+
+Promise 对象中，
+
+state 保存状态，
+
+value 保存 FULFILLED 后的值或 REJECTED 后的错误
+
+handlers 保存通过 .then 或 .done 调用的 success 或 failure handlers
+
+2. 状态转换
+
+fulfilling
+  pending -> fulfilled (fulfill 函数)
+
+rejecting
+  pending -> rejected (reject 函数)
+
+高级状态转换 resolve
+
+  resolve 参数为 promise 或 plain value
+
+    如果是 promise 就可以 getThen 获得 then 函数，等待函数完成
+
+      一个 promise 通过 resolve 函数变为 fulfilled
+
+帮助函数
+
+getThen
+
+  检查值是否为 Promise，如果是，返回它的 then 函数
+
+doResolve
+
+  给 onFulfilled onRejected 增加限制，确保最多执行一次
+
+提供 resolve promise 的方法
+
+  再次使用 doResolve 处理传入 Promise 的函数
+
+Observing (.done)
+  要获得 promise 结果，最终要通过调用 .then。首先实现 .done
+
+  即 promise.done(onFulfilled, onRejected)
+
+  done 的两个参数只有一个被调用
+  只调用一次
+  直到下一个 tick (即 .done 方法返回) 才会调用参数
+  .done 调用前或后 resolve promise 都不影响
+
   https://exploringjs.com/deep-js/ch_implementing-promises.html Exploring Promises by implementing them • Deep JavaScript
+  https://levelup.gitconnected.com/learn-javascript-promises-by-building-a-fully-working-promise-from-scratch-c9eabe73fa3 Learn JavaScript Promises by Building a Fully-Working Promise from Scratch | by Trey Huffine | Level Up Coding
+  https://medium.com/free-code-camp/how-to-implement-promises-in-javascript-1ce2680a7f51 Implementing Promises In JavaScript | by Maciej Cieślar | freeCodeCamp.org | Medium
+  https://hackernoon.com/implementing-javascript-promise-in-70-lines-of-code-b3592565af0f Implementing JavaScript Promise in 70 lines of code! | Hacker Noon
+  https://itnext.io/broken-promises-a-barely-working-implementation-of-js-promises-ed7f99071f54 Broken Promises: Building JavaScript Promises from Scratch | by Eliathah Boda | ITNEXT
+
+## function, object, class
+https://stackoverflow.com/questions/17525450/object-vs-class-vs-function javascript - Object vs Class vs Function - Stack Overflow
+https://medium.com/javascript-scene/javascript-factory-functions-vs-constructor-functions-vs-classes-2f22ceddf33e JavaScript Factory Functions vs Constructor Functions vs Classes | by Eric Elliott | JavaScript Scene | Medium
+https://www.programiz.com/javascript/constructor-function JavaScript Constructor Function (with Examples)
+
+function Person() {
+  this.name = 'John',
+  this.age = 23
+}
+let person = new Person() new 关键字，返回 Object
+
+## next tick
+https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/ The Node.js Event Loop, Timers, and process.nextTick() | Node.js
+
+## bind method
+
+https://fitzgeraldnick.com/2014/01/13/hiding-implementation-details-with-e6-weakmaps.html Hiding Implementation Details with ECMAScript 6 WeakMaps
+
+bind() 方法返回一个函数拷贝，但函数中的 this 指向 bind 第一个参数，函数拷贝的参数为 bind 余下的参数
+
+call() and apply()
+  改变 this，执行函数
+
+bind()
+  只改变 this，不执行
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Function/bind Function.prototype.bind() - JavaScript | MDN
+
+
 
 decorator
 
-generator
+generator & iterater
+  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Iterators_and_generators Iterators and generators - JavaScript | MDN
+  https://www.promisejs.org/generators/ Promises
 
-iterater
+WeakMap
+  key/value 对的集合，keys 是 objects，value 可以是任意值
+  key 中对对象的引用是 weakly 的，意味着当没有其他引用指向 Key 时，
+是 GC 垃圾收集的对象
+  用途之一是保存对象私有数据，或隐藏实现细节
+  https://fitzgeraldnick.com/2014/01/13/hiding-implementation-details-with-e6-weakmaps.html Hiding Implementation Details with ECMAScript 6 WeakMaps
+  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap WeakMap - JavaScript | MDN
+
+Set Array 互相转换
+
+  Array.from(someSet)
+  [...someSet]
+
+  someSet = new Set(Array)
 
 class
 
