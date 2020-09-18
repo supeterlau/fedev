@@ -51,7 +51,7 @@ _page.displayName = "Page[pages/index/index]";
 
 /***/ }),
 
-/***/ 1:
+/***/ 5:
 /*!****************************************!*\
   !*** multi ./src/pages/index/index.js ***!
   \****************************************/
@@ -63,4 +63,4 @@ module.exports = __webpack_require__(/*! /Users/lxy/Workspace/peterlau/fedev/rem
 
 /***/ })
 
-},[[1,"runtime","remax-vendors"]]]);
+},[[5,"runtime","remax-vendors"]]]);

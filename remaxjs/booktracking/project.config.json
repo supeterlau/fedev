@@ -23,5 +23,6 @@
   "appid": "wxdeb275f187348c95",
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
-  "condition": {}
+  "condition": {},
+  "cloudfunctionRoot": "cloudfunction/"
 }

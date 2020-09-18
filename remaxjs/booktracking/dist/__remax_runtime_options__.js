@@ -810,5 +810,7 @@ module.exports = {
   "pages/settings/settings": [],
   "pages/index/index": []
 },
-          appEvents: []
+          appEvents: [
+  "onLauch"
+]
         }

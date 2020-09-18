@@ -1,3 +1,74 @@
+Download wechat-dev-tools
+
+Remaxjs 
+
+https://remaxjs.org/guide/quick-start
+
+yarn global add create-remax-app
+$ npx create-remax-app my-app
+$ cd my-app && npm install
+
+$ npm run dev # 非跨平台
+or
+$ npm run dev <platform> # 跨平台，如：要在阿里小程序环境运行，则 npm run dev ali
+
+## 配置微信小程序云开发
+
+public/cloudfunction
+project.config.json 中配置
+  "cloudfunctionRoot": "cloudfunction/"
+
+给函数组件增加云 SDK 初始化
+
+在 onLauch 执行
+
+wx.cloud.init({
+  env: 'test-123',
+  traceUser: true,
+})
+
+import { useAppEvent } from 'remax/macro';
+  useAppEvent('onShareAppMessage', () => {
+    console.log('这个 hook 等同于 onShareAppMessage');
+  });
+  useAppEvent('onLauch', () => {
+    wx.cloud.init({
+  env: 'test-123',
+  traceUser: true,
+})
+  })
+
+
+
+
+
+
+
+monitor remote folder/file change 
+  ssh -i ~/.ssh/xubuntu_rsa lxy@192.168.1.4 'fswatch -0 /home/lxy/example/remaxjs/group-thread/dist'
+
+alias run_rsync='rsync -azP -e "ssh -i ~/.ssh/xubuntu_rsa" --exclude node_modules --exclude .git --exclude remote_dist . lxy@192.168.1.4:/home/lxy/example/remaxjs/group-thread'
+
+fswatch -0 . -e node_modules -e yarn.lock -e .git -e remote_dist | while read -d "" event;
+do
+  echo ${event}
+  run_rsync
+done
+
+
+
+alias run_rsync='rsync -azP -e "ssh -i ~/.ssh/xubuntu_rsa" --exclude node_modules --exclude .git --exclude remote_dist lxy@192.168.1.4:/home/lxy/example/remaxjs/group-thread/dist/. ./remote_dist'
+
+run_rsync;ssh -i ~/.ssh/xubuntu_rsa lxy@192.168.1.4 'fswatch -0 /home/lxy/example/remaxjs/group-thread/dist' | while read -d "" event;
+do
+  echo ${event}
+  run_rsync
+done
+
+https://remaxjs.org/guide/advanced/sharing-state
+https://github.com/remaxjs/examples/blob/master/ali/src/pages/index/index.js
+
+
 Workplace/example/remaxjs
   contactchain 群成员信息
   群
@@ -14,6 +85,7 @@ Workplace/example/remaxjs
     收藏
     回到首页
 
+( 仿抖音 )
 
 创建项目
 $ npx degit remaxjs/template-wechat my-app

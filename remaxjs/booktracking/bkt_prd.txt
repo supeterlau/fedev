@@ -23,10 +23,55 @@ update book ? user edit info
 
 addBtn
 
-switchBtn filterBtn
+switchBtn 
+  toRead
+  Reading 
+  Read
+
+  点击 toRead, 切换到其他页面
+
+filterBtn
 
 listView
   itemView
+    [
+      Image Main
+
+      Main:
+        tag 
+        title:
+        author:
+        progress
+    ]
     -> bookDetail Page
 
 
+### Data 
+
+{
+  entities: [],
+  user: {
+    info,
+    followee, 我关注的
+    follower, 关注我的
+    favorite: {
+      comment: [],
+      booklist: [],
+    }
+  },
+  books: {
+    'toRead': [],
+    'reading': [],
+    'read': []
+  },
+  bookList: {
+    own: [
+      {
+        description: '',
+        list: [book],
+
+      }
+    ],
+    save: []
+  }
+}

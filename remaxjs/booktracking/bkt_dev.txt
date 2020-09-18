@@ -1,6 +1,16 @@
+ListView
+  https://github.com/wechat-miniprogram/recycle-view
+
+https://www.jianshu.com/p/be69a0d0e1bd 普通微信小程序转云开发步骤 - 简书
+
+https://github.com/JedWatson/classnames JedWatson/classnames: A simple javascript utility for conditionally joining classNames together
+https://stackoverflow.com/questions/38382153/multiple-classnames-with-css-modules-and-react reactjs - Multiple classNames with CSS Modules and React - Stack Overflow
+
+
+
 # LOCAL
 
-push_to_remote
+## push_to_remote
 
 alias run_rsync='rsync -azP -e "ssh -i ~/.ssh/xubuntu_rsa" --exclude node_modules --exclude dist . lxy@192.168.1.5:/home/lxy/remote/booktracking/.'
 
@@ -10,11 +20,76 @@ do
   run_rsync
 done
 
-pull_from_remote 
+https://gist.github.com/cmbankester/48a44fa55b2db85827ef
 
-alias run_rsync='rsync -azP -e "ssh -i ~/.ssh/xubuntu_rsa" lxy@192.168.1.5:/home/lxy/remote/booktracking/dist/. .'
+fswatch -0 -x -r $files | {
+  while read -d "" event; do
+    case $event in
+      *Created|*Updated|*Removed|*Renamed|*OwnerModified|*AttributeModified|*MovedFrom|*MovedTo )
+        # https://github.com/emcrisostomo/fswatch/blob/master/src/fswatch.cpp
+        # If it's one of these events, run cmd, else ignore it
+        $cmd
+        ;;
+    esac
+  done
+}
 
-ssh -i ~/.ssh/xubuntu_rsa lxy@192.168.1.5 'fswatch -0 fswatch -0 /home/lxy/remote/booktracking/dist' | while read -d "" event;
+fswatch -0 -x -r $files | {
+  while read -d "" event; do
+    case $event in
+      *Created|*Updated|*Removed|*Renamed|*OwnerModified|*AttributeModified|*MovedFrom|*MovedTo )
+        # https://github.com/emcrisostomo/fswatch/blob/master/src/fswatch.cpp
+        # If it's one of these events, run cmd, else ignore it
+        $cmd
+        ;;
+    esac
+  done
+}
+
+ssh -i ~/.ssh/xubuntu_rsa lxy@192.168.1.5 fswatch -t --format-time=%s -0 -x -r /home/lxy/remote/booktracking/dist | {
+  current_tag=''
+  while read -d "" event; do
+    tag=$(echo $event| awk '{print $1}')
+    if [[ $(( tag - current_tag )) -le 3 ]]
+    then
+      continue
+    fi 
+    echo 'current_tag: '$current_tag'\n'
+    echo 'tag: '$tag'\n'
+    echo 'duration: '$(( tag - current_tag ))'\n'
+    current_tag=$tag
+    case $event in
+      *Created|*Updated|*Removed|*Renamed|*OwnerModified|*AttributeModified|*MovedFrom|*MovedTo )
+        # https://github.com/emcrisostomo/fswatch/blob/master/src/fswatch.cpp
+        # If it's one of these events, run cmd, else ignore it
+        echo $event
+        ;;
+    esac
+  done
+}
+
+
+while read -d "" event; do
+    echo $event
+  done
+
+ssh -i ~/.ssh/xubuntu_rsa lxy@192.168.1.5 fswatch -t -0 -x -r /home/lxy/remote/booktracking/dist | {
+  while read event; do
+    echo $event
+  done
+}
+
+## pull_from_remote 
+
+alias run_rsync='rsync -azP --size-only -e "ssh -i ~/.ssh/xubuntu_rsa" lxy@192.168.1.5:/home/lxy/remote/booktracking/dist/. .'
+
+ssh -i ~/.ssh/xubuntu_rsa lxy@192.168.1.5 'fswatch -0 -t /home/lxy/remote/booktracking/dist'
+
+ssh -i ~/.ssh/xubuntu_rsa lxy@192.168.1.5 'fswatch -0 -o -t /home/lxy/remote/booktracking/dist' | while read -d "" event;
+do
+  echo ${event}
+done
+ssh -i ~/.ssh/xubuntu_rsa lxy@192.168.1.5 'fswatch -0 /home/lxy/remote/booktracking/dist' | while read -d "" event;
 do
   echo ${event}
   run_rsync

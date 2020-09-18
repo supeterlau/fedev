@@ -8061,24 +8061,134 @@ __webpack_require__.r(__webpack_exports__);
 /*!********************!*\
   !*** ./src/app.js ***!
   \********************/
-/*! exports provided: default */
+/*! exports provided: AppContext, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppContext", function() { return AppContext; });
 /* harmony import */ var _remax_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @remax/runtime */ "./node_modules/@remax/runtime/esm/index.js");
-/* harmony import */ var _app_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./app.css */ "./src/app.css");
-/* harmony import */ var _app_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_app_css__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _app_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./app.css */ "./src/app.css");
+/* harmony import */ var _app_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_app_css__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _initialState__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./initialState */ "./src/initialState.js");
+
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var _App = function _App(props) {
-  return props.children;
+
+
+var AppContext = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__["createContext"]({});
+
+var _App = function _App(_ref) {
+  var children = _ref.children;
+
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_1__["useState"](_initialState__WEBPACK_IMPORTED_MODULE_3__),
+      _React$useState2 = _slicedToArray(_React$useState, 2),
+      store = _React$useState2[0],
+      setStore = _React$useState2[1];
+
+  Object(_remax_runtime__WEBPACK_IMPORTED_MODULE_0__["useAppEvent"])("onLauch", function () {
+    wx.cloud.init({
+      env: "booktracking",
+      traceUser: true
+    });
+  });
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__["createElement"](AppContext.Provider, {
+    value: {
+      store: store,
+      setStore: setStore
+    }
+  }, children);
 };
 
 var _app = _App;
 _app.displayName = "App";
 /* harmony default export */ __webpack_exports__["default"] = (App(Object(_remax_runtime__WEBPACK_IMPORTED_MODULE_0__["createAppConfig"])(_app)));
+
+/***/ }),
+
+/***/ "./src/initialState.js":
+/*!*****************************!*\
+  !*** ./src/initialState.js ***!
+  \*****************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/*
+const user = {
+  info,
+  followee, // 我关注的
+  follower, // 关注我的
+  favorite: {
+    comment: [],
+    booklist: [],
+  }
+}
+
+const book = {}
+
+const booklist =  {
+  description: '',
+  list: [book],
+}
+*/
+var newBook = function newBook(prefix, idx) {
+  return {
+    id: "".concat(idx, "-").concat(prefix),
+    title: "book-".concat(idx, "-").concat(prefix),
+    author: "author-".concat(idx, "-").concat(prefix),
+    isbn: "111222333-".concat(prefix.length, "-").concat(idx),
+    pageNumber: 300,
+    publishedAt: "2019-10-10-".concat(idx),
+    progress: 0 // 0-100
+
+  };
+};
+
+var books = function books(prefix, count) {
+  Array(count).fill(0).map(function (_, idx) {
+    return newBook(prefix, idx);
+  });
+};
+
+var newBookList = function newBookList(prefix, idx) {
+  return {
+    id: "".concat(idx, "-").concat(prefix),
+    description: "best list of ".concat(idx, " ").concat(prefix),
+    books: books(prefix, 10)
+  };
+};
+
+var initialState = {
+  entities: [],
+  user: {},
+  books: {
+    toRead: books[("to_read", 10)],
+    reading: books[("reading", 10)],
+    read: books[("read", 10)]
+  },
+  bookList: {
+    own: newBookList("own", 5),
+    favorite: newBookList("favorite", 10)
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (initialState);
 
 /***/ }),
 

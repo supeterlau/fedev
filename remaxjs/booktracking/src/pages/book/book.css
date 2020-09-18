@@ -1,6 +1,7 @@
 .app {
   text-align: center;
   padding: 0 24px;
+  height: 100%;
 }
 
 .header {
@@ -9,6 +10,7 @@
   background-color: #282c34;
   font-size: 40px;
   color: white;
+  border: 1px blue solid;
 }
 
 .add {
@@ -23,4 +25,26 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.nav {
+  margin: 0;
+  display: flex;
+}
+
+.switch {
+  border: 1px blue solid;
+}
+
+.switchBtn {
+  display: none;
+  width: 100px;
+  height: 56px;
+  font-size: 24px;
+  border-radius: 25%;
+  padding: 0;
+}
+
+.active {
+  display: block;
 }
