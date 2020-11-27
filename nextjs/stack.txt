@@ -1,0 +1,41 @@
+Next.js
+  https://vercel.com/guides/deploying-next-and-cosmic-with-vercel
+  
+typescript
+
+mobx 
+
+  https://www.themikelewis.com/post/nextjs-with-mobx
+
+  https://dev.to/margaretkrutikova/how-to-mobx-state-tree-react-typescript-3d5j
+
+  https://github.com/MargaretKrutikova/mst-react-ts-guide/tree/master/src
+
+  mobx-state-tree
+
+  mobx-react-lite: only support hooks
+
+tailwindcss
+
+  https://dev.to/notrab/get-up-and-running-with-tailwind-css-and-next-js-3a73
+
+  https://tailwindcss.com/docs/upcoming-changes
+
+emotion
+  
+  https://emotion.sh/docs/introduction
+
+  https://github.com/ben-rogerson/twin.macro/blob/master/docs/emotion/next.md
+
+rest
+  
+  swagger
+
+graphql
+
+yarn add mobx mobx-react-lite mobx-state-tree twin.macro @emotion/core @emotion/styled @emotion/babel-preset-css-prop
+
+
+yarn add -D @babel/plugin-proposal-class-properties @babel/plugin-proposal-decorators tailwindcss postcss-preset-env
+
+https://github.com/MargaretKrutikova/mst-react-ts-guide/tree/master/src
