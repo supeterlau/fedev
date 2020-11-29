@@ -1,0 +1,172 @@
+https://mobx.js.org/getting-started.html
+
+Mobx 
+
+simple scalable battle-tested State Management solution
+
+核心
+
+State 
+
+MobX makes state management simple again by addressing the root issue: it makes it impossible to produce an inconsistent state
+
+让应用无法产生不一致状态 inconsistent state 的策略: 
+
+  Make sure that everything that can be derived from the application state, will be derived. Automatically.
+
+MobX 将应用看作 电子表格 spreadsheet
+
+1. application state 形成应用模型的数据
+
+Graphs of objects, arrays, primittives, references 形成应用模型
+
+这些数据是应用的 data cell 
+
+2. derivations / computed values 
+
+任何可以通过 state 计算出来的值。可以是 单个值 或 UI 界面
+
+类似表格的 公式和图表
+
+3. reactions 
+
+类似 derivations. 主要区别是不产生值，而是执行一些任务。
+
+通常与 IO 有关。
+确保 DOM 更新或请求网络。
+
+4. actions 
+
+修改状态 替代 setState
+
+MobX 确保 actions 引起的状态变化都会被 derivations 和 reactions 处理
+
+
+React renders the application state by providing mechanisms to translate it into a tree of renderable components. 
+
+MobX provides the mechanism to store and update the application state that React then uses.
+
+### mobx-state-tree
+
+https://mobx-state-tree.js.org/intro/philosophy
+
+
+### MobX 
+
+https://medium.com/@visikov/getting-started-with-react-typescript-mobx-and-webpack-4-8c680517c030
+
+yarn add react react-dom typescript mobx mobx-react tslib
+yarn add --dev webpack webpack-cli webpack-dev-server copy-webpack-plugin clean-webpack-plugin html-webpack-plugin typescript ts-loader ts-node @types/node @types/react @types/react-dom @types/webpack @types/webpack-env
+
+package.json
+webpack.config.ts
+static/index.html
+src/index.tsx
+
+src/todo.store.ts
+
+create our store
+keep all of our todos in an array
+to be a singleton
+
+Mobx
+
+decorate properties in our store to be observable, which just means that they’ll react to and propagate changes
+
+@ symbol
+  it’s a function that takes in a target, in this case it’s this.todoList, and returns a function
+
+  remain an observable
+
+special type: ObservableArray
+
+If you change the value of one of the items in an ObservableArray, those changes will also be reflected and cause reactions
+
+Reaction
+
+computed
+  Use reaction or autorun when you want to achieve an effect, like an alert, modal, xhr request, etc
+
+Action 
+  This takes in a function and returns a new function with the same signature, but wrapped with mobx magix.
+
+integrate mobx into React
+  3 major parts of this package: Provider, inject and observer
+
+Provider
+
+Provider is a component that will pass mobx stores using React's context mechanism to child components
+这样就不用将 store 传递给每个需要访问它的组件
+
+mobx 不需要写很多 this.setState
+
+处理复杂的 local state 最好用 action decorator
+
+inject
+  pick up stores 
+  higher-order component
+  takes a list of strings and makes those stores available to the wrapped component
+
+observer 
+  augments a component and converts it into a reactive component
+  track render 函数使用的 任意 observable value，在值变化时自动重新 render 组件
+
+
+
+
+
+
+
+
+https://levelup.gitconnected.com/state-management-with-mobx-db464399481d
+
+npm install mobx mobx-react
+npm install mobx
+npm start
+
+版本过期
+npm uninstall -g create-react-app
+or
+yarn global remove create-react-app
+
+npx create-react-app my-app
+
+https://medium.com/@shoaibbhimani1392/getting-started-with-mobx-82306df92d90
+
+https://google.github.io/styleguide/htmlcssguide.html
+
+CSS 
+
+#meta-green 
+
+.App-header
+
+.App-meta-green 
+
+React Component 
+
+<CoolHeader>
+
+https://discuss.codecademy.com/t/self-closing-vs-non-self-closing-tags/243530
+
+
+
+
+Create tsconfig.json file in the root directory of your project and include the following options.
+
+{
+    "compilerOptions": {
+        "experimentalDecorators": true,
+        "allowJs": true
+    }
+}
+
+https://ihatetomatoes.net/how-to-remove-experimentaldecorators-warning-in-vscode/
+
+https://medium.com/@patrickjbradley/support-for-the-experimental-syntax-decorators-legacy-isn-t-currently-enabled-f69206bade39
+Support for the experimental syntax 'decorators-legacy' isn't currently enable
+
+yarn add @babel/plugin-proposal-decorators
+
+
+https://github.com/shivendraodean/react-mobx-demo
