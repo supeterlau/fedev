@@ -1,0 +1,80 @@
+<style>
+body::-webkit-scrollbar {
+  width: 1em;
+}
+
+body::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+}
+
+.list-container {
+    margin-left: 200px;
+    margin-top: 50px;
+    border: solid black 1px;
+    width: 300px;
+    height: 240px;
+    overflow-y: scroll;
+    box-sizing: border-box;
+}
+
+.list-container::-webkit-scrollbar {
+  width: 1em;
+}
+
+.list-container::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.list-container::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+}
+
+.list-ul {
+    padding: 0;
+}
+
+.list {
+    border: solid blue 1px;
+    list-style: none;
+    margin:5px 0;
+    height: 50px;
+}
+</style>
+
+<div id="scrolled" class='list-container'>
+    a simple list
+  <ul class='list-ul'>
+      <li class='list'>1</li>
+      <li class='list'>2</li>
+      <li class='list'>3</li>
+      <li class='list'>4</li>
+      <li class='list'>5</li>
+      <li class='list'>6</li>
+      <li class='list'>6</li>
+      <li class='list'>6</li>
+      <li class='list'>6</li>
+      <li class='list'>6</li>
+      <li class='list'>6</li>
+      <li class='list'>6</li>
+  </ul>
+</div>
+
+<script>
+    let elem = document.getElementById('scrolled')
+    elem.addEventListener('click', elem => {
+        // console.log(elem)
+    })
+    elem.addEventListener('scroll', e => {
+        // e: event
+        console.log(e)
+        console.log(`offsetHeight: ${elem.offsetHeight}`)
+        console.log(`scrollTop: ${elem.scrollTop}`)
+        console.log(`scrollHeight: ${elem.scrollHeight}`)
+    })
+</script>
