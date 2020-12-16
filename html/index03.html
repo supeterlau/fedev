@@ -1,0 +1,75 @@
+<div id='feedback0' class='feedback warn'>
+    <span id='closeBtn' class='close-btn'>&times;</span>
+    <p>Longlonglong content</p>
+</div>
+<button id='showBtn'>SHOW</button>
+<style>
+.feedback {
+    display: none;
+    margin: 0 auto;
+    margin-top: 5%;
+    padding: 20px;
+    width: 60%;
+    /* background-color: #f44336; /* red */
+    background-color: #2196F3;
+    color: white;
+    margin-bottom: 15px;
+    opacity: 1;
+    transition: opacity 0.6s;
+    border-radius: 5px;
+}
+
+.feedback.info {
+    background-color: #2196F3;
+}
+
+.feedback.error {
+    background-color: #f44336;
+}
+
+.feedback.success {
+    background-color: #4CAF50;
+}
+
+.feedback.warn {
+    background-color: #ff9800;
+}
+
+.feedback p {
+    margin: 0;
+}
+
+.close-btn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.close-btn:hover {
+    color: black;
+}
+
+</style>
+<script>
+  let closeBtn = document.getElementById('closeBtn')    
+  closeBtn.onclick = function () {
+    this.parentElement.style.display='none'
+  }
+  let showBtn = document.getElementById('showBtn')
+  showBtn.onclick = function () {
+      let feedback = document.getElementById('feedback0')
+      feedback.style.display = 'block'
+      setTimeout(function() {
+          feedback.style.opacity = "0"
+      }, 600)
+      setTimeout(function() {
+          feedback.style.display = 'none'
+          feedback.style.opacity = "1"
+      }, 1000)
+  }
+</script>
