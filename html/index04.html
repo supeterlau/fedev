@@ -1,0 +1,60 @@
+<!--
+    Clearfix
+    https://www.w3schools.com/howto/howto_css_clearfix.asp
+
+    Tooltips
+-->
+<div class="tooltip">Hover over me
+    <span class="tooltiptext">Tooltip text</span>
+</div>
+<p>Loader</p>
+<div class="loader"></div>
+<p>Clearfix</p>
+<div>
+    <img class='img1' src='static/pineapple.jpg' alt='Pineapple' width='170' height='170' />
+    This module allows you to serve auto-generated swagger-ui generated API docs from express, based on a swagger.json file. The result is living documentation for your API hosted from your API server via a route.
+</div>
+<p>Some thing happen</p>
+<p>Some thing happen</p>
+<p>Some thing happen</p>
+<div class='clearfix'>
+    <img class='img2' src='static/pineapple.jpg' alt='Pineapple' width='170' height='170' />
+    This module allows you to serve auto-generated swagger-ui generated API docs from express, based on a swagger.json file. The result is living documentation for your API hosted from your API server via a route.
+</div>
+
+<style>
+div {
+    border: 3px solid #4caf50;
+    padding: 5px;
+}
+
+.img1 {
+    float: right;
+}
+
+.img2 {
+    float: right;
+}
+
+.clearfix {
+    overflow: auto;
+}
+
+.tooltip {
+
+}
+
+.loader {
+    border: 16px solid #f3f3f3;
+    border-top: 16px solid #3498db;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+</style>
