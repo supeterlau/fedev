@@ -1,0 +1,198 @@
+<!-- https://webdesign.tutsplus.com/tutorials/how-to-build-a-responsive-navigation-bar-with-flexbox--cms-33535 -->
+<link href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">
+<script src="https://cdn.bootcss.com/jquery/3.5.0/jquery.min.js"></script>
+
+<nav>
+  <ul class="menu">
+    <li class="logo"><a href="#">Invisible App</a></li>
+    <li class="item"><a href="#">Home</a></li>
+    <li class="item"><a href="#">About</a></li>
+    <li class="item"><a href="#">Services</a></li>
+    <li class="item"><a href="#">Features</a></li>
+    <li class="item"><a href="#">Blog</a></li>
+    <li class="item"><a href="#">Contact</a>
+    </li>
+    <li class="item button"><a href="#">Log In</a></li>
+    <li class="item button secondary"><a href="#">Sign Up</a></li>
+    <li class="toggle"><a href="#"><i class="fas fa-bars"></i></a></li>
+  </ul>
+</nav>
+
+<style>
+/* Basic Styling */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: sans-serif;
+}
+
+nav {
+  background: #222;
+  padding: 5px 20px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.logo a:hover {
+  text-decoration: none;
+}
+
+.menu li {
+  font-size: 16px;
+  padding: 15px 5px;
+  white-space: nowrap;
+}
+
+.logo a,
+.toggle a {
+  font-size: 20px;
+}
+
+.button.secondary {
+  border-bottom: 1px #444 solid;
+}
+
+/* Mobile */
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.toggle {
+  order: 1;
+}
+
+.item.button {
+  order: 2;
+}
+
+.item {
+  order: 3;
+  width: 100%;
+  text-align: center;
+  display: none;
+}
+
+.item.active {
+  display: block;
+}
+
+/* order property. Our HTML outline follows a logical order. This is how we want screen reader users and search engine bots to go through the menu.  */
+
+/* Table */
+@media all and (min-width: 600px) {
+  .menu {
+    justify-content: center;
+  }
+
+  .logo {
+    flex: 1;
+  }
+
+  .toggle {
+    flex: 1;
+    text-align: right;
+  }
+
+  .item.button {
+    order: 1;
+    width: auto;
+    display: block;
+  }
+
+  .toggle {
+    order: 2;
+  }
+
+  .button.secondary {
+    border: 0;
+  }
+
+  .button a {
+    padding: 7.5px 15px;
+    background: teal;
+    border: 1px #006d6d solid;
+  }
+
+  .button.secondary a {
+    background: transparent;
+  }
+
+  .button a:hover {
+    text-decoration: none;
+  }
+
+  .button:not(.secondary) a:hover {
+    background: #006d6d;
+    border-color: #005959;
+  }
+
+  .button.secondary a:hover {
+    color: #ddd;
+  }
+}
+
+/* Desktop */
+
+@media all and (min-width: 900px) {
+  .item {
+    display: block;
+    width: auto;
+  }
+
+  .toggle {
+    display: none;
+  }
+
+  .logo {
+    order: 0;
+  }
+
+  .item {
+    order: 1;
+  }
+
+  .button {
+    order: 2;
+  }
+
+  .menu li {
+    padding: 15px 10px;
+  }
+
+  .menu li.button {
+    padding-right: 0;
+  }
+}
+</style>
+
+<script>
+  $(function () {
+    $(".toggle").on("click", function () {
+      if ($(".item").hasClass("active")) {
+        $(".item").removeClass("active");
+        $(this).find("a").html("<i class='fas fa-bars'></i>");
+      } else {
+        $(".item").addClass("active");
+        $(this).find("a").html("<i class='fas fa-times'></i>");
+      }
+    });
+  });
+</script>
