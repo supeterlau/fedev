@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #image-container {
+      height: 300px;
+    }
+  </style>
+</head>
+<body>
+  <div id='image-container'>
+    <p>Load image</p>
+    <img id='image' style="display:none" src="https://unsplash.it/1200/310?random" />
+  </div>
+  <script>
+    let container = document.getElementById('image-container')
+    let image = document.getElementById('image')
+    image.addEventListener('load', function(e) {
+      console.log('load', e.target.src)
+      container.style.backgroundImage = `url(${e.target.src})`
+    })
+    image.addEventListener('error', function(e) {
+      console.log('error', e)
+    })
+  </script>
+</body>
+</html>
