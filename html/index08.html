@@ -1,0 +1,98 @@
+<style>
+  /* styles.css */
+  .aspect-ratio--16x9 {
+    width: 50%;
+    height: 0;
+    padding-bottom: 56.25%;
+    position: relative;
+  }
+
+  .aspect-ratio__inner-wrapper {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+
+  .youtube-video {
+    width: 100%;
+    height: 100%;
+    background-color: orange;
+  }
+
+  .item {
+    background-color: olivedrab;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    text-align: center;
+    font-size: 25px;
+    color: white;
+  }
+
+  .flex-item {
+    min-width: 150px;
+    max-width: 200px;
+    margin: 10px;
+    flex-grow: 2;
+  }
+
+  .aspect-ration--100x100 {
+    position: relative;
+    width: 100%;
+    padding-top: 100%;
+    /* 16:9 Aspect Ratio */
+  }
+
+  #flex-container {
+    display: flex;
+    flex-flow: row wrap;
+  }
+</style>
+<!-- page.html -->
+<div class="aspect-ratio--16x9">
+  <div class="aspect-ratio__inner-wrapper">
+    <!-- <iframe class="youtube-video" src="https://youtube.com/..."></iframe> -->
+    <div class="youtube-video"></div>
+  </div>
+</div>
+<div id="flex-container">
+  <div class="flex-item">
+    <div class="aspect-ration--100x100">
+      <div class="item"></div>
+    </div>
+  </div>
+
+  <div class="flex-item">
+    <div class="aspect-ration--100x100">
+      <div class="item"></div>
+    </div>
+  </div>
+
+  <div class="flex-item">
+    <div class="aspect-ration--100x100">
+      <div class="item"></div>
+    </div>
+  </div>
+
+  <div class="flex-item">
+    <div class="aspect-ration--100x100">
+      <div class="item"></div>
+    </div>
+  </div>
+
+  <div class="flex-item">
+    <div class="aspect-ration--100x100">
+      <div class="item"></div>
+    </div>
+  </div>
+
+  <div class="flex-item">
+    <div class="aspect-ration--100x100">
+      <div class="item"></div>
+    </div>
+  </div>
+</div>
