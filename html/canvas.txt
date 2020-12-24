@@ -89,3 +89,10 @@ steps
 
     new Path2D(svgString) 
 
+Next: https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Applying_styles_and_colors
+
+
+
+http://www.java2s.com/Tutorials/HTML_CSS/HTML5_Canvas/0630__HTML5_Canvas_Event.htm HTML5 Canvas Tutorial - HTML5 Canvas Events
+
+https://stackoverflow.com/questions/7054272/how-to-draw-smooth-curve-through-n-points-using-javascript-html5-canvas how to draw smooth curve through N points using javascript HTML5 canvas? - Stack Overflow
