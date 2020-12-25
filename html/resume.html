@@ -1,0 +1,46 @@
+<div id="resume">
+
+</div>
+
+<style>
+  #resume {
+    width: 100%;
+  }
+</style>
+
+<script src='https://cdn.bootcss.com/showdown/1.9.0/showdown.min.js'></script>
+<script>
+  let resumeText = `
+# Peter Lau
+
+- China
+- Location: Beijing
+- Email: superpeterlau@outlook.com 
+- GitHub: 
+
+## Education
+
+- 
+
+## Experience
+
+## Skills
+
+## About Me
+
+## Miscellaneous
+  `
+
+  const convert = (text) => {
+    let converter = new showdown.Converter()
+    converter.setFlavor('github')
+    return converter.makeHtml(text)
+  }
+
+  let resume = document.getElementById('resume')
+
+  window.addEventListener('load', () => {
+    console.log('load')
+    resume.innerHTML = convert(resumeText)
+  })
+</script>
