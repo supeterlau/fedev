@@ -1,0 +1,102 @@
+https://www.tutorialspoint.com/webrtc/webrtc_architecture.htm
+
+a few main javascript objects −
+
+RTCPeerConnection
+MediaStream
+RTCDataChannel
+
+RTCPeerConnection 
+
+This object is the main entry point to the WebRTC API. It helps us connect to peers, initialize connections and attach media streams. It also manages a UDP connection with another user.
+
+main task: setup and create a peer connection
+
+We can easily hook keys points of the connection because this object fires a set of events when they appear. These events give you access to the configuration of our connection
+
+MediaStream API
+
+give a developer access to the getUserMedia API, also known as the MediaStream API
+
+  gives a developer access to a stream object that represent video and audio streams
+
+  manages the selection of input user devices in case a user has multiple cameras or microphones
+
+  provides a security level asking user all the time he wants to fetch s stream
+
+(WebRTC works only on the server side. If you simply open this page with the browser it won't work. You need to host these files on the Apache or Node servers, or which one you prefer.)
+
+RTCDataChannel object
+
+As well as sending media streams between peers, you may also send additional data using DataChannel API. This API is as simple as MediaStream API.
+
+create a channel coming from an existing RTCPeerConnection object
+
+
+Environment https://www.tutorialspoint.com/webrtc/webrtc_environment.htm
+
+When building our signaling server we will use a WebSockets library for Node.js. To install in run npm install ws in the terminal.
+
+For testing our signaling server, we will use the wscat utility. To install it run npm install -g wscat in your terminal window.
+
+WebRTC Protocols https://www.tutorialspoint.com/webrtc/webrtc_protocols.htm
+
+  WebRTC applications use UDP (User Datagram Protocol) as the transport protocol
+
+Session Description Protocol SDP https://www.tutorialspoint.com/webrtc/webrtc_session_description_protocol.htm
+
+  a protocol that is intended to describe media communication sessions.
+
+Finding a Route https://www.tutorialspoint.com/webrtc/webrtc_finding_route.htm
+
+Stream Control Transmission Protocol SCTP https://www.tutorialspoint.com/webrtc/webrtc_sctp.htm
+
+  send blob data on top of our currently setup peer connection when using the RTCDataChannel object
+
+several of the technologies that enable peer connections, such as UDP, TCP, STUN, TURN, ICE, and SCTP
+
+
+MediaStream APIs https://www.tutorialspoint.com/webrtc/webrtc_media_stream_apis.htm
+
+getUserMedia() method is the primary way to access local input devices
+
+Each MediaStream object includes several MediaStreamTrack objects. They represent video and audio from different input devices.
+
+Each MediaStreamTrack object may include several channels (right and left audio channels). These are the smallest parts defined by the MediaStream API.
+
+There are two ways to output MediaStream objects. First, we can render output into a video or audio element. Secondly, we can send output to the RTCPeerConnection object, which then send it to a remote peer. 输出到 video/audio 或 remote peer 
+
+RTCPeerConnection APIs https://www.tutorialspoint.com/webrtc/webrtc_rtcpeerconnection_apis.htm
+
+the core of the peer-to-peer connection between each of the browsers
+
+var pc = RTCPeerConnection(config);
+
+the config argument contains at least on key, iceServers
+
+It is an array of URL objects containing information about STUN and TURN servers, used during the finding of the ICE candidates
+
+Depending upon whether you are the caller or the callee the RTCPeerConnection object is used in a slightly different way on each side of the connection.
+
+NEXT:
+
+share music 
+
+  https://www.tutorialspoint.com/webrtc/webrtc_sending_messages.htm
+  https://www.tutorialspoint.com/webrtc/webrtc_signaling.htm
+  https://www.tutorialspoint.com/webrtc/webrtc_video_demo.htm
+
+
+
+Refs:
+https://gist.github.com/BlackGlory/930dfe03fdbbe81ee69f23f2c98077ac 国内可用公开 STUN 
+https://cloud.tencent.com/developer/article/1015578 关于webrtc peer to server 为什么还需要使用stun服务
+  stun服务的部署难度不大，且只是用于简单的收发包，逻辑不重
+https://flaviocopes.com/node-websockets/
+https://dev.to/calin92540842/how-can-i-read-a-local-json-file-in-html-javascript-49md
+https://github.com/websockets/ws#sending-and-receiving-text-data
+QA：
+
+Failed to execute 'createObjectURL' on 'URL'
+
+  https://stackoverflow.com/questions/27120757/failed-to-execute-createobjecturl-on-url
