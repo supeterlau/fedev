@@ -1,0 +1,21 @@
+react
+  mobx
+  redux
+  ts 
+
+svelte
+
+phoenix liveview
+
+mintlang
+
+elmlang
+  https://www.selbekk.io/blog/2019/12/creating-a-todo-app-in-elm/
+  https://mmhaskell.com/blog/2018/11/19/elm-ii-todo-list-redux
+  https://tech.chefclub.tv/getting-started-with-elm-0.19
+  
+reasonml 
+
+next.js
+
+elixirscript
