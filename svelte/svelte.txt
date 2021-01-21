@@ -1,10 +1,111 @@
+WIP: 497
+
 npx degit sveltejs/template demo
 
 npm install
 npm run dev
 
-yarn 
+yarn
 yarn run dev
+
+## use snowpack
+
+https://codechips.me/snowpack-svelte-typescript-tailwindcss/
+
+> I don't think Snowpack has HMR (Hot Module Reload) support yet for Svelte as Svelte doesn't have support for it itself yet, so Snowpack reloads the whole app when you change something.
+
+npx create-snowpack-app snow/demo --template @snowpack/app-template-svelte
+
+- support ts
+
+$ npm add -D @snowpack/plugin-babel @babel/preset-typescript typescript
+
+yarn add -D @snowpack/plugin-babel @babel/preset-typescript typescript
+
+add babel.config.json / .babelrc
+
+{
+  "presets": [
+    "@babel/preset-typescript"
+  ]
+}
+
+配置 snowpack transpile and lint Typescript
+
+snowpack.config.json
+
+{
+  "extends": "@snowpack/app-scripts-svelte",
+  "scripts": {
+    "run:tsc": "tsc --noEmit",
+    "run:tsc::watch": "$1 --watch"
+  },
+  "devOptions": {},
+  "installOptions": {}
+}
+
+Snowpack uses Babel for transpiling TS to JS, because Babel is much faster than TS compiler
+
+Babel only strips out the types and does not do any type checking
+
+lint Typescript 前要创建 tsconfig.json
+
+When you add another dependency Snowpack will automatically convert it to an ES module and install it in web_modules folder. How convenient!
+
+测试 yarn add -D rxjs
+
+删除 web_modules 会导致应用崩掉
+
+重新生成 web_modules
+
+  yarn prepare / npx snowpack / npx snowpack install
+
+  scan the source code for all import statements to find every NPM package used by your application and package it as a ESM in the web modules folder
+
+
+https://svelte.dev/blog/svelte-and-typescript
+
+<script lang='ts'></script>
+
+https://codechips.me/how-to-use-typescript-with-svelte/
+
+似乎不能同时使用 ts  js
+
+添加 tailwind.css
+
+yarn add -D tailwindcss autoprefixer cssnano postcss-cli
+
+  cssnano: cssnano takes your nicely formatted CSS and runs it through many focused optimisations, to ensure that the final result is as small as possible for a production environment.
+
+  purgecss Latest version of Tailwind has PurgeCSS built-in
+
+创建 tailwind 配置文件
+
+npx tailwindcss init
+
+创建 postcss.config.js
+
+创建 base Tailwind style 并导入 App
+
+snowpack 中配置 postcss
+
+"build:css": "postcss"
+
+add Parcel as a bundler (we will use es-build)
+
+error TS18003: No inputs were found in config file
+  至少要有一个 ts 文件
+
+
+Rollup
+
+https://dev.to/muhajirdev/using-tailwindcss-with-sveltejs-2098
+
+npx degit sveltejs/template tour
+
+yarn
+
+yarn add -D tailwindcss postcss-import @fullhuman/postcss-purgecss postcss rollup-plugin-postcss autoprefixer
 
 1. Introduction
 
@@ -58,7 +159,7 @@ Svelte 核心是一个强大的保持 DOM 和应用状态同步的系统。
 
 a powerful system of reactivity for keeping the DOM in sync with your application state
 
-如 事件响应 response to an event 
+如 事件响应 response to an event
 
 on:click={handleClick}
 
@@ -70,7 +171,7 @@ some parts of a component's state need to be computed from other parts
 
 let count = 0;
 
-$: doubled = count * 2; 
+$: doubled = count * 2;
 
 Svelte 会将 $: 解释为 当依赖数据变动时重新计算这个值
 
@@ -88,7 +189,7 @@ $: if (count >= 10) {
 
 }
 
-2.4 更新 arrays 和 objects 
+2.4 更新 arrays 和 objects
 
 Svelte 的 reactivity 是由 赋值 assignment 触发的。
 
@@ -100,17 +201,17 @@ push splice pop shift unshift 都不会触发
 
 对 arrays objects 属性赋值，和直接对它们自身赋值效果相同
 
-简单的规则: 更新一个变量，这个变量必须出现在 赋值符号 = left hand 
+简单的规则: 更新一个变量，这个变量必须出现在 赋值符号 = left hand
 
 3. Props (properties) 组件属性
 
-3.1 声明 props 
+3.1 声明 props
 
-在 script 中声明 
+在 script 中声明
 
 export let answer
 
-3.2 默认 props 
+3.2 默认 props
 
 export let answer = 'your mystery';
 
@@ -126,16 +227,16 @@ export let answer = 'your mystery';
 
 4. Logic 逻辑操作
 
-4.1 if block 
+4.1 if block
 
-HTML 无法表达 条件和循环，因此需要特殊的 block 语法 Svelte 
+HTML 无法表达 条件和循环，因此需要特殊的 block 语法 Svelte
 
-conditionally render 
+conditionally render
 
 {#if user.loggedIn}
 {/if}
 
-4.2 Else block 
+4.2 Else block
 
 {#if condition}
   <Component/>
@@ -144,10 +245,10 @@ conditionally render
 {/if}
 
 # 表示 block 开始
-: 表示 block continuation 
+: 表示 block continuation
 / 表示 block 结束
 
-4.3 Else-if blocks 
+4.3 Else-if blocks
 
 ...
 
@@ -155,11 +256,11 @@ conditionally render
 
 ...
 
-4.4 Each block 
+4.4 Each block
 
 遍历 array 或 array-like object (有 length 属性)
 
-对于 generic iterables 
+对于 generic iterables
 
 {#each [...iterable]}
 {/each}
@@ -173,15 +274,15 @@ conditionally render
 
 each cats as {id, name}, catIndex
 
-4.5 Keyed each blocks 
+4.5 Keyed each blocks
 
 The (thing.id) tells Svelte how to figure out what changed.
 
-each block 的 key 可以是任意 object，内部实现是 Map 
+each block 的 key 可以是任意 object，内部实现是 Map
 
 通常用 string 或 number，避免 referential equality
 
-4.6 await block 
+4.6 await block
 
 直接在 markup 中 await promise 的值
 
@@ -193,7 +294,7 @@ each block 的 key 可以是任意 object，内部实现是 Map
 
 只处理 most recent promise 不需要考虑 race conditions
 
-假如 promise 不会 reject 可以 omit catch block 
+假如 promise 不会 reject 可以 omit catch block
 
 {#await aPromise then aResult}
   <p>{aResult}</p>
@@ -215,7 +316,7 @@ on:mousemove="{e => m = {x: e.clientX, y: e.clientY}}"
 
 可以任意选择 event handler 形式
 
-5.3 事件修饰符 Event modifiers 
+5.3 事件修饰符 Event modifiers
 
 on:click|once={...}
 
@@ -227,13 +328,175 @@ preventDefault
 
 stopPropagation
 
-passive 提高滚动性能 touch/wheel events 
+passive 提高滚动性能 touch/wheel events
 
 capture 在 capture 阶段，触发 handler 而不是在 bubbling 阶段
 
-once 第一次触发后移除 handler 
+once 第一次触发后移除 handler
 
-self 只有当 event.target 是元素自身才触发 handler 
+self 只有当 event.target 是元素自身才触发 handler
+
+5.4 组件事件
+
+组件也可以分发事件 dispatch events.
+
+createEventDispatcher 必须在组件初始化时调用，不能在稍后调用（setTimeout 中）
+
+目的是为了 links dispatch 到组件实例
+
+5.5 事件转发 Event forwarding
+
+与 DOM 事件不同，组件事件无法冒泡 bubble。如果你监听嵌套组件的事件，那么中间的组件必须进行事件转发。
+
+中间层可以简写为
+
+<Inner on:message /> 转发全部 message event
+
+5.6 DOM 事件转发 DOM event forwarding
+
+点击内层元素，事件会转发到外层
+
+6. Bindings
+
+6.1 Text inputs 输入文本
+
+Svelte 的数据流是自上而下 top down
+
+父组件设置子组件的 props，组件可以设置元素属性，而不是反过来。
+
+但有时需要打破规则，例如 input 元素
+
+不使用 on:input 而是 bind:value
+
+<input bind:value={name}>
+
+改变 name 更新 input value；改变 input value 也更新 name
+
+双向绑定
+
+6.2 输入数值 Numeric inputs
+
+DOM 中，任何元素都是字符串。因此在处理
+
+input type="number" type="range" 时需要记得修正输入的类型
+
+而 bind:value={someValue} 帮你处理这一转换
+
+6.3 Checkbox
+
+<input type=checkbox bind:checked={isOk}>
+
+6.4 Group inputs 多值输入
+
+Radio 单选，Checkbox 多选
+
+<input type=radio bind:group={scoops} value={1}>
+
+<input type=checkbox bind:group={scoops} value={scoop}>
+
+6.5 Textarea
+
+类似 input
+
+<textarea bind:value={value}></textarea>
+
+简写为
+
+<textarea bind:value></textarea>
+
+6.6 Select bindings
+
+bind:value 可以用于 <select> 元素
+
+<select bind:value={seleced} on:change="{() => answer = ''}">
+
+option 值可以是 objects 或 strings
+
+如果不设置 selected 值，默认是第一个选项
+
+初始化后 selected 才可用。
+
+6.7 Select multiple
+
+多选
+
+产生 array 而非 single value
+
+<select multiple bind:value={flavours}
+
+6.8 Contenteditable bindings
+
+有 contenteditable="true" 属性的元素支持
+
+textContent 和 innerHTML 绑定
+
+<div
+  contenteditable="true"
+  bind:innerHTML={html}
+></div>
+
+6.9 在 each block 内部绑定属性
+
+class 指令
+
+<div class:done={todo.done}></div>
+
+6.10 Media elements 媒体元素
+
+<audio> <video>
+
+有多个可以绑定的属性
+
+six readonly bindings
+
+  duration
+  buffered array of {start, end}
+  seekable
+  played
+  seeking
+  ended
+
+five two-way bindings
+
+  currentTime (in seconds)
+  playbackRate how fase
+  paused
+  volume value 0-1
+  muted boolean
+
+video 额外有 videoWidth videoHeight (readonly)
+
+bind:duration 等价于 bind:duration={duration}
+
+6.11 Dimensions
+
+每个 block-level 块级元素有 clientWidth clientHeight offsetWidth offsetHeight 绑定
+
+<div bind:clientWidth={w} bind:clientHeight={h}></div>
+
+这些是 readonly 的属性
+
+无法计算 display:inline 和 类似 canvas 的元素
+
+6.12 This
+
+只读的 this 绑定可以用于任意元素/组件，允许获得渲染元素的reference
+
+<canvas
+  bind:this={canvas}
+  width={32}
+  height={32}
+  ></canvas>
+
+元素未渲染时，为 undefined。要放在 onMount lifecycle function 中
+
+6.13 Component bindings 绑定自定义组件
+
+<Keypad bind:value={pin} on:submit={handleSubmit} />
+
+尽量少用 component bindings. 使用多了之后，很难 track flow of data around your application.
+
+https://svelte.dev/tutorial/onmount
 
 
 
@@ -242,21 +505,20 @@ self 只有当 event.target 是元素自身才触发 handler
 
 
 
+# Build
 
-# Build 
-
-npm run build / yarn run build 
+npm run build / yarn run build
 
 输出到 public 下的 bundle.js
 
-npm run start / yarn run start 
+npm run start / yarn run start
 
-# Deploy 
+# Deploy
 
-# Using CSS-in-JS with Svelte 
+# Using CSS-in-JS with Svelte
 Do not need to, but can do
 
-# Vim Svelte 
+# Vim Svelte
 
 {/if} indent
 
