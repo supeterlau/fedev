@@ -1,0 +1,36 @@
+https://www.favicon-generator.org/
+
+
+Create an icon
+https://www.canva.com/design/DACidHrPiV8/So4zoGJY-hzXtO9O_fkkZA/edit?category=tACZCvjI6mE
+
+https://developers.google.com/web/ilt/pwa
+
+https://web.dev/periodic-background-sync/
+
+https://workboxjs.org/
+
+https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API
+https://developers.google.com/web/ilt/pwa/working-with-indexeddb
+https://codelabs.developers.google.com/codelabs/workbox-indexeddb/index.html?index=..%2F..index#0
+
+https://designisdead.com/blog/offline-first-with-progressive-web-apps-part-3-3-background-sync
+
+https://cushiondb.github.io/
+
+https://vaadin.com/pwa/learn/background-sync
+
+https://www.monterail.com/blog/pwa-offline-dynamic-data
+
+https://web.dev/install-criteria/
+https://web.dev/progressive-web-apps/
+
+https://medium.com/dev-channel/learn-how-to-build-a-pwa-in-under-5-minutes-c860ad406ed
+
+https://codingthesmartway.com/getting-started-with-progressive-web-apps-pwa/
+
+https://levelup.gitconnected.com/build-a-pwa-using-only-vanilla-javascript-bdf1eee6f37a
+
+serve pwa app on Coding.net
+
+SSL support?
