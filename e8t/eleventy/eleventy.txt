@@ -53,6 +53,13 @@ module.exports = {
     }
 };
 
+部署到 surge 
+
+echo your-own-domain.com > _site/CNAME
+
+npx @11ty/eleventy && surge _site
+
+
 https://www.11ty.dev/docs/templates/
 https://www.11ty.dev/docs/tutorials/
 
@@ -67,3 +74,14 @@ configured via an .eleventy.js config file in the root directory
 配置 
   default output folder is _site
   default input folder is the root directory
+
+- eleventy-base-blog
+
+npx degit 11ty/eleventy-base-blog blog
+
+Edit the _data/metadata.json with your blog’s information.
+(Optional) Edit .eleventy.js with your configuration preferences.
+Delete this message from _includes/layouts/base.njk.
+
+
+https://www.11ty.dev/docs/advanced-order/ Order of Operations | Eleventy, a simpler static site generator.
