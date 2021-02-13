@@ -1,11 +1,16 @@
 Eleventy is a simpler static site generator.
 
+- 全局安装
 npm install -g @11ty/eleventy # yarn global add @11ty/eleventy
 echo '# Page header' > README.md
 eleventy
 
+- degit 方式
+npx degit 11ty/eleventy-base-blog blog && cd blog
+yarn 
+npx @11ty/eleventy --serve
 
-
+- 本地安装
 mkdir eleventy-sample
 cd eleventy-sample
 
@@ -21,7 +26,9 @@ echo '<!doctype html><html><head><title>Demo</title></head><body><p>Hi Demo</p><
 
 echo '# Header' > README.md
 
-npx @11ty/eleventy --serve 启动 hot-reloading local web server 
+npx @11ty/eleventy --serve 
+
+启动 hot-reloading local web server 
 
 (Editing README.md won't refresh your browser automatically, because Browsersync requires a <body> tag in your template for live-reload to work properly)
 
@@ -38,6 +45,13 @@ npx @11ty/eleventy --serve 启动 hot-reloading local web server
 
   npx @11ty/eleventy --input=SINGLE.md --output=_site
 
+配置文件 .eleventy.js
+
+module.exports = {
+    dir: {
+        input: "views"
+    }
+};
 
 https://www.11ty.dev/docs/templates/
 https://www.11ty.dev/docs/tutorials/
