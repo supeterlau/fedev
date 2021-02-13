@@ -10,6 +10,11 @@
       "StackName": "amplify-rndemo-dev-110443",
       "StackId": "arn:aws:cloudformation:ap-southeast-1:973180347456:stack/amplify-rndemo-dev-110443/3c7361a0-6da8-11eb-8313-06f1487f6a64",
       "AmplifyAppId": "dc8gb9k9hshd"
+    },
+    "categories": {
+      "auth": {
+        "rndemo0cda2970": {}
+      }
     }
   }
 }
