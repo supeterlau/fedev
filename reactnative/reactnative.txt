@@ -1,0 +1,200 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+https://expo.io/
+https://reactnative.dev/docs/
+  https://github.com/areslabs/alita miniprogram web
+
+  https://reactnative.dev/docs/native-modules-android
+  https://apiko.com/blog/expo-vs-vanilla-react-native/
+  https://stackoverflow.com/questions/61061489/which-is-better-to-use-react-native-cli-or-expo-cli
+
+weather calendar
+
+pinhub
+
+DG app
+
+## Local dev (Remote build)
+
+rsync -avz --progress source dist 
+
+npm install -g expo-cli
+
+yarn global add expo-cli
+
+expo init <template> (arrow up and down to choose)
+
+expo init js-demo
+
+alias run_rsync='rsync -azP -e "ssh -i ~/.ssh/xubuntu_rsa" --exclude node_modules --exclude yarn.lock --exclude .git . lxy@192.168.1.4:/home/lxy/example/reactnative/remote'
+
+
+alias run_rsync='rsync -azP -e "ssh -i ~/.ssh/xubuntu_rsa" --exclude node_modules --exclude .git . lxy@192.168.1.4:/home/lxy/example/reactnative/remote'
+
+run_rsync;fswatch -0 . -e node_modules -e yarn.lock -e .git | while read -d "" event;
+do
+  echo ${event}
+  run_rsync
+done
+
+expo init ts-demo
+
+https://github.com/expo/expo/tree/master/templates
+
+
+## RN + Aws Amplify
+
+https://heartbeat.fritz.ai/user-authentication-with-amplify-in-a-react-native-and-expo-app-d00cdaf1ac28
+
+expo init app (mv app app0)
+
+yarn start 
+
+(choose blank)
+
+如果使用 react-native-cli 需要额外执行 react native link 集成 Amplify SDK 
+
+- 创建 AWS IAM user
+
+https://aws.amazon.com/
+
+https://docs.amplify.aws/cli
+
+安装 amplify 
+
+npm install -g @aws-amplify/cli
+
+配置 amplify 
+
+amplify configure
+
+amplify configure --usage-data-off 不提交匿名信息
+
+会引导创建 IAM 用户 user/bear-serverless
+
+https://docs.amplify.aws/cli/start/install#option-2-follow-the-instructions
+
+https://docs.amplify.aws/cli/start/workflows
+
+在项目中初始化 
+
+  amplify init
+
+  a few configuration questions
+
+添加 feature 
+
+  amplify add <category>
+
+https://docs.amplify.aws/cli/start/workflows#list-of-commands
+
+- 初始化并集成 amplify 
+
+切换到 React Native project directory, the root of your app directory
+
+amplify init
+  项目名: rndemo
+  环境: dev 
+  编辑器: Vim 
+  应用类型: javascript (ReactNative)
+  (all default)
+  认证方式: AWS profile
+
+  Initializing project in the cloud...
+
+amplify status
+"amplify add <category>" will allow you to add features like user login or a backend API
+amplify push
+amplify console
+amplify publish
+
+本地生成新文件夹 amplify
+
+更新 .gitignore 文件
+
+集成
+
+yarn add aws-amplify aws-amplify-react-native
+
+aws-amplify: make requests to the auth and API services provided by AWS
+
+aws-amplify-react-native: framework-specific  ready-to-use UI components
+
+- authentication 流程使用 Amazon Cognito
+  Amazon Cognito handles user registration, login, and account recovery
+
+!!! 扫码后开始编译
+
+yarn add @react-native-community/netinfo
+
+添加 auth 服务 generate an authentication flow
+
+amplify add auth 
+
+  选择 auth 配置和登录方式
+
+publish all the local changes to AWS in order to create a user pool
+
+  amplify push
+
+amplify update auth 更新配置
+
+- withAuthenticator aws-amplify-react-native 提供
+
+自动检测认证状态并更新 UI 
+
+## Auth flow 
+
+https://aboutreact.com/react-native-login-and-signup/ Example of Splash, Login and Sign Up in React Native - About React
+
+
+## style 
+
+What units are width and height in?
+https://docs.expo.io/tutorial/image/
+https://medium.com/@pnowelldesign/pixel-density-demystified-a4db63ba2922
+
+## mobx 
+
+https://www.digitalocean.com/community/tutorials/react-mobx-react-native-simplified
+
+mobx-react-lite
+https://levelup.gitconnected.com/react-hooks-mobx-todolist-c138eb4f3d04
+
+https://mobx-react.js.org/
+
+## typescript
+
+https://reactnative.dev/docs/typescript
+
+https://khalilstemmler.com/blogs/typescript/node-starter-project/
+
+https://react-typescript-cheatsheet.netlify.app/docs/basic/setup
+
+## form
+
+https://dev.to/elaziziyoussouf/forms-in-react-native-the-right-way-4d46
+https://react-hook-form.com/
+
+## navigation
+
+https://dev.to/elaziziyoussouf/spotify-login-animation-with-react-navigation-v5-4od7
+
+## generators
+
+https://github.com/infinitered/ignite
