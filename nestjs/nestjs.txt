@@ -86,6 +86,8 @@ Frequently, each controller has more than one route, and different routes can pe
 
 默认返回数据 status code 为 200，对 POST 请求返回 201
 
+Nest 只返回 200 和 201 两种状态码
+
 也可以使用 library-specific 来使用框架原生响应对象
 
   findAll(@Res() response)
@@ -126,12 +128,137 @@ Frequently, each controller has more than one route, and different routes can pe
 
 一般不需要手动获取，可以直接使用对应的 decorator 
 
+- Resources
+
+Nest 提供支持各类 HTTP 动作的装饰器
+
+@Get() 
+@Post()
+@Put()
+@Delete()
+@Patch()
+@Options()
+@Head()
+
+@All()
+
+- 路由通配符 wildcards 
+
+@Get('ab*cd')
+
+支持正则 ? + * ()
+
+符号 - 和 . 按照字符串解析 string-based
+
+- 状态码
+@HttpCode(204) (from '@nestjs/common')
+create(){}
+
+可以修改状态码，但通常不是固定的。因此可以用 library-specific 响应对象或抛出异常
+
+- Headers 
+
+from '@nestjs/common'
+
+@Post()
+@Header('Cache-Control', 'none')
+
+- 重定向
+
+@Redirect() 或特定方法如 res.redirect()
+
+@Redirect(url, [statusCode])
+  url 目标地址
+  statusCode 默认 302 
+
+如果要基于响应值重定向，要在控制器函数中返回 
+
+{
+  'url': string,
+  'statusCode': number
+}
+
+会覆盖 @Redirect 中参数
+
+- 路由参数
+
+import from @nestjs/common 
+
+@Get(':id') // 对应路由中参数为 id /cats/1 id=1
+findOne(@Param() params): string {
+  console.log(params, params.id)
+  return `return cat id: ${params.id}`
+}
+
+- 子域名支持 (只有 express 支持)
+
+Controller 类的装饰器
+
+@Controller({ host: ':account.example.com' }) :account 表示变量部分
+
+导入 @HostParams('account') account: string可以直接获得 accout 值
+
+- Scopes
+
+NodeJS 不符合 the request/response Multi-Threaded Stateless Model
+
+而是 have a connection pool to the database, singleton services with global state, etc
+
+using singleton instances is fully safe for our applications
+
+https://docs.nestjs.com/fundamentals/injection-scopes
+
+- 异步函数
+
+@Get()
+async findAll(): Promise<any[]> {
+  return []
+}
+
+或者返回 Rxjs observable
+
+@Get()
+findAll(): Observable<any[]> {
+  return of([]);
+}
+
+- 请求体
+
+@Body 可以获取到 post 参数
+
+如果使用 TS 首先要确定有 DTO (Data Transfer Object)
+
+DTO schema 基于 TS 接口 interface 或简单的 class 推荐用 class 可以被  preserved as real entities in the compiled JavaScript
+
+创建 CreateCatDto 类 create-cat.dto.ts
+
+在 CatsController 里使用 CreateCatDto
+
+@Body() createCatDto: CreateCatDto
+
+https://docs.nestjs.com/recipes/crud-generator
+
+- 错误处理
+
+https://docs.nestjs.com/exception-filters
 
 - 启用控制器
 
 app.module.ts
 
 import { CatsController } from './cats/cats.controller';
+
+- Library-specific 部分
+
+import { Response } from 'express';
+
+既使用库 res 又保留 nest 功能 passthrough: true
+
+@Get()
+findAll(@Res({ passthrough: true }) res: Response) {
+  res.status(HttpStatus.OK);
+  return [];
+}
 
 
 custom decorators
@@ -154,6 +281,10 @@ nodemon
   nodemon --help config
 
   https://github.com/remy/nodemon/blob/master/doc/sample-nodemon.md
+
+- API Auth
+
+- OpenAPI
 
 
 https://docs.nestjs.com/recipes/crud-generator CRUD generator | NestJS - A progressive Node.js framework
