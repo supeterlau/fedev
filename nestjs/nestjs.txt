@@ -1,0 +1,213 @@
+Nest.js 
+
+
+api test: httpie 
+
+  http localhost:4000
+  http :4000
+  
+[https://docs.nestjs.com/first-steps]
+
+1. First steps
+
+A progressive Node.js framework for building efficient, reliable and scalable server-side applications.
+
+Installation
+
+scaffold the project with the Nest CLI
+
+> npm i -g @nestjs/cli 
+或
+> yarn global add @nestjs/cli
+
+> nest new demo 
+或
+> npx nest new demo
+
+src
+  app.controller.ts       单个路由 基本控制器
+  app.controller.spec.ts  控制器的单元测试
+  app.module.ts           应用 root module 
+  app.service.ts          基本 service 函数
+  main.ts                 整个应用入口，async 函数启动应用，使用核心函数 NestFactory 创建 Nest application 实例
+
+NestFactory 有一些静态方法允许创建应用实例。 create() 方法返回一个应用对象，实现 INestApplication 接口。
+
+Nest 希望成为平台无关框架。Nest 能和任意 Node HTTP 框架合作，只需要创建一个 adapter。默认支持 express 和 fastify。
+
+接口分别时 NestExpressApplication NestFastifyApplication
+
+const app = await NestFactory.create<NestExpressApplication>(AppModule)
+
+如果想使用 fastify 
+
+// src/main.ts
+import {
+  FastifyAdapter,
+  NestFastifyApplication,
+} from '@nestjs/platform-fastify';
+
+async function bootstrap() {
+  const app = await NestFactory.create<NestFastifyApplication>(
+    AppModule,
+    new FastifyAdapter(),
+  );
+  await app.listen(3000);
+}
+
+PORT=3030 npm run start 
+
+PORT=3030 yarn start:dev
+
+测试请求: 
+  
+  http :3030
+
+2. Controllers
+
+https://docs.nestjs.com/controllers
+
+handling incoming requests 处理进入的请求
+
+returning responses to the client 返回响应数据
+
+routing mechanism 控制哪个 controller 处理哪个请求
+
+Frequently, each controller has more than one route, and different routes can perform different actions.
+
+  一个 controller 中有多个 route 
+
+- 路由 Routing
+
+@Controller() 装饰器用于创建基本路由
+  参数为可选的路由前缀路径 optional route path prefix
+
+创建控制器文件 cats.controller.ts
+
+默认返回数据 status code 为 200，对 POST 请求返回 201
+
+也可以使用 library-specific 来使用框架原生响应对象
+
+  findAll(@Res() response)
+
+  返回值 response.status(200).send()
+
+- 请求对象 Request Object
+
+包含请求细节
+
+只需要在处理函数中增加 findAll(@Req() request: Request) @Req()
+
+默认使用 express 的 request，需要额外安装 @types/express
+
+@Req() 表示 HTTP request
+  request query string, 
+  parameters, 
+  HTTP headers, 
+  and body 
+
+  @Request() @Req() (alias) -> req
+
+  @Response() @Res() -> res 
+
+  @Next() -> next
+
+  @Session() -> req.session 
+
+  @Param(key?: string) -> req.params ( req.params[key] )
+
+  @Body(key?: string)
+
+  @Query(key?: string)
+
+  @Ip() -> req.ip 
+
+  @HostParam() -> req.hosts 
+
+一般不需要手动获取，可以直接使用对应的 decorator 
+
+
+- 启用控制器
+
+app.module.ts
+
+import { CatsController } from './cats/cats.controller';
+
+
+custom decorators
+
+Nest CLI provides a generator (schematic)
+
+
+开发相关:
+
+- 热更新
+
+PORT=3030 yarn start:dev
+
+https://docs.nestjs.com/recipes/hot-reload Hot reload | NestJS - A progressive Node.js framework
+
+nodemon
+
+  By default nodemon monitors the current working directory
+
+  nodemon --help config
+
+  https://github.com/remy/nodemon/blob/master/doc/sample-nodemon.md
+
+
+https://docs.nestjs.com/recipes/crud-generator CRUD generator | NestJS - A progressive Node.js framework
+
+
+[https://www.codemag.com/Article/1907081/Nest.js-Step-by-Step]
+
+give back-end developers a modular code structure and TypeScript experience to help build and maintain their large-scale enterprise Node.js apps without any serious issues
+
+Heavily inspired by Angular
+
+it makes use of Express.js but also provides compatibility with other libraries, like Fastify
+
+1. generate basic nest.js app 
+
+Modularization
+
+group controllers + service providers
+
+Controller 
+  处理请求，操作数据库，返回结构化结果
+  装饰器 
+    @Controller(prefix?: string)
+    @Get()
+
+But first (if you use TypeScript), we need to determine the DTO (Data Transfer Object) schema. A DTO is an object that defines how the data will be sent over the network. 可用 interface 或 class 实现，推荐用 class. 因为 interface 在转译中会被抹去。 createCatDto: CreateCatDto
+
+Provider
+  封装相关逻辑和函数的 JavaScript 类
+  controller 将任务交给 provider 连接数据库
+
+
+Topic:
+
+- ORM 
+
+- Test 
+
+- Swagger
+
+- GraphQL 
+
+Libs:
+  https://github.com/nestjs/throttler nestjs/throttler: A rate limiting module for NestJS to work with Fastify, Express, GQL, Websockets, and RPC 🧭 (api 限速)
+  https://github.com/nestjs/terminus nestjs/terminus: Terminus module for Nest framework (node.js) (健康检查 healthcheck)
+  https://github.com/angular/dgeni angular/dgeni: Flexible JavaScript documentation generator used by AngularJS, Protractor and other JS projects (文档生成)
+  https://github.com/nestjs/cqrs nestjs/cqrs: A lightweight CQRS module for Nest framework (node.js)
+  https://martinfowler.com/bliki/CQRS.html# CQRS
+
+  https://github.com/nartc/nest-mean nartc/nest-mean: NestJS Tutorial Repository
+
+Refs:
+  https://github.com/nestjs/docs.nestjs.com nestjs/docs.nestjs.com: The official documentation https://docs.nestjs.com 📕
+
+  https://morioh.com/p/71f993016161 Build a web app using Nestjs, Fastify, MongoDB and Angular 8
+
+https://handlebarsjs.com/
