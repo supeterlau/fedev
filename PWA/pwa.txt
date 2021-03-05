@@ -1,8 +1,67 @@
-https://www.favicon-generator.org/
+# Tour
 
+## scratch
+
+https://www.freecodecamp.org/news/build-a-pwa-from-scratch-with-html-css-and-javascript
+
+https://github.com/ibrahima92/pwa-with-vanilla-js.git
+
+ln -s $FEDEV/PWA/tour/assets .
+
+常规 style.css app.js
+
+- Web App Manifest
+
+简单的 JSON 文件，告诉浏览器 PWA 信息。
+
+  name: 展示在 splash screen 上的名字
+  short_name: 展示在手机图标的名字
+  start_url: 应用打开时显示的页面
+  display: standalone 隐藏和浏览器相关的元素
+  background_color: splash screen 背景颜色
+  theme_color: status bar 颜色
+
+通过 <link ref="manifest" href="" /> 添加到 index.html
+
+- Service Worker
+
+PWAs run only on https because the service worker can access the request and handle it.
+
+service worker 运行在另外线程中，无法修改 index.html DOM
+
+但可以
+  intercept 并 handle network requests
+  manage cache 来实现离线支持
+  发送通知
+
+service worker 需要被注册到 PWA 中
+
+Dev Tools 里查看 service worker 是否注册成功
+
+# Refs
+
+https://developer.mozilla.org/en-US/docs/Web/Manifest
+
+https://web.dev/add-manifest/
+
+生成各种规格图标
+  https://www.favicon-generator.org/
+
+生成 manifest
+  https://app-manifest.firebaseapp.com/ App Manifest Generator
+
+Browser Support
+  https://caniuse.com/?search=service%20worker
 
 Create an icon
 https://www.canva.com/design/DACidHrPiV8/So4zoGJY-hzXtO9O_fkkZA/edit?category=tACZCvjI6mE
+
+
+https://dev.to/ekansss/let-s-start-with-pwa-bmd Let's start with PWA
+
+https://superpwa.com/doc/test-pwa-google-chrome/ How to Test PWA on Google Chrome Browser - SuperPWA
+
+https://web.dev/progressive-web-apps/ web.dev
 
 https://developers.google.com/web/ilt/pwa
 
@@ -26,6 +85,8 @@ https://web.dev/install-criteria/
 https://web.dev/progressive-web-apps/
 
 https://medium.com/dev-channel/learn-how-to-build-a-pwa-in-under-5-minutes-c860ad406ed
+  Hosted on Firebase
+  Push Notification
 
 https://codingthesmartway.com/getting-started-with-progressive-web-apps-pwa/
 
