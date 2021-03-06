@@ -187,6 +187,9 @@ Resources:
           Name: email
           Required: true
           Mutable: true
+        -
+          Name: phone_number
+          Required: false
         
       
       
