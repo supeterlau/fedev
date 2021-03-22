@@ -1,0 +1,62 @@
+https://github.com/elixirscript/elixirscript
+
+ElixirScript acts as a mix compiler
+
+原理
+taking the Elixir AST and converting it into JavaScript AST and then to JavaScript code
+
+https://github.com/elixirscript/elixir-estree
+The ESTree Nodes and JavaScript AST to JavaScript Code Generator in Elixir
+
+配置文件中的
+
+elixir_script 告诉 ElixirScript 那个文件是入口
+
+elixir_script: [
+    # Entry module. Can also be a list of modules
+    input: MyEntryModule,  # entry module(s)
+    # Output path. Either a path to a js file or a directory
+    output: "priv/elixir_script/build"
+]
+
+start 中 lib/main.ex 会被编译为 JS 
+
+root: Optional root for imports of FFI JavaScript modules. Defaults to .. If using output directly in a browser, you may want to make it something like /js or some uri.
+
+> mix compile 
+
+输出为 ES Module format (If your browser does not yet support ES modules directly, use a tool such as webpack or brunch to convert it into something that can be used in the browser)
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules JavaScript modules - JavaScript | MDN
+
+https://hacks.mozilla.org/2018/03/es-modules-a-cartoon-deep-dive/ ES modules: A cartoon deep-dive - Mozilla Hacks - the Web developer blog
+
+https://dev.to/iggredible/what-the-heck-are-cjs-amd-umd-and-esm-ikm What are CJS, AMD, UMD, and ESM in Javascript? - DEV Community 👩‍💻👨‍💻
+
+https://jakearchibald.com/2017/es-modules-in-browsers/ ECMAScript modules in browsers - JakeArchibald.com
+
+输出到 output 目录下
+
+cd ./js
+
+> npx http-server
+
+
+ElixirScript-starter-kit
+    intergrate backend
+    better structure & custom options
+
+ElixirScript React
+    https://github.com/elixirscript/elixirscript_react
+
+ElixirScript Svelte-like:
+    https://github.com/malinajs/malinajs Frontend compiler, inspired by Svelte
+
+
+
+Note：
+
+设置 hex uri 
+
+mix hex.repo list
+mix hex.repo set hexpm --url https://hexpm.upyun.com
