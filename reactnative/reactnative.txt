@@ -13,7 +13,13 @@ https://docs.expo.io/tutorial/text/
 
 - Add an image 
 
-What units are width and height in? A useful simplification is to treat the units for numbers in styles as pixels. If your screen resolution is 640x480, then an image that is 320x240 will be half of the width and height. On the web, React Native's width: 305 is directly translated to 305px
+What units are width and height in? 
+
+  A useful simplification is to treat the units for numbers in styles as pixels. 
+
+  If your screen resolution is 640x480, then an image that is 320x240 will be half of the width and height. 
+
+  On the web, React Native's width: 305 is directly translated to 305px
 
 - Create a button
 
