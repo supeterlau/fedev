@@ -1,8 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import logo from "../assets/logo.png";
+import * as ImagePicker from "expo-image-picker";
 
 export default function AppComp() {
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  let openImagePickerAsync = async () => {
+    let permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
+
+    if (permissionResult.granted === false) {
+      alert("Require permission to access camera");
+      return;
+    }
+    let pickerResult = await ImagePicker.launchImageLibraryAsync();
+    console.log(pickerResult);
+
+    if (pickerResult.cancelled === true) {
+      return;
+    }
+    setSelectedImage({ localUri: pickerResult.uri });
+  };
+
+  if (selectedImage !== null) {
+    return (
+      <View style={styles.container}>
+        <Image
+          source={{ uri: selectedImage.localUri }}
+          style={styles.thumbnail}
+        />
+      </View>
+    );
+  }
   return (
     <View style={styles.container}>
       <Image source={logo} style={styles.logo} />
@@ -16,7 +45,8 @@ export default function AppComp() {
       <Text style={styles.text}>Share a photo with a friend</Text>
       <Text style={styles.instructions}>Press button below</Text>
       <TouchableOpacity
-        onPress={() => alert("Cool")}
+        // onPress={() => alert("Cool")}
+        onPress={openImagePickerAsync}
         // style={{ backgroundColor: "blue" }}
         style={styles.button}
       >
@@ -56,5 +86,10 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 20,
     color: "#fff",
+  },
+  thumbnail: {
+    width: 300,
+    height: 300,
+    resizeMode: "contain",
   },
 });

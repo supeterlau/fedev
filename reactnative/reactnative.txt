@@ -25,8 +25,23 @@ What units are width and height in?
 
 TouchableOpacity
 
+- pick image 
+
+use an Expo library called expo-image-picker
+
+安装插件
+
+expo install expo-image-picker
+
+通过 useState 使用选中图片
 
 
+Libraries:
+  https://docs.expo.io/versions/latest/
+
+升级 expo SDK 
+
+  https://dev.to/expo/expo-sdk-40-is-now-available-1in0
 
 show Debug View
   https://reactnative.dev/docs/debugging
