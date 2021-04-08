@@ -1,5 +1,19 @@
 
+yarn global add expo-cli
 
+expo init <template> (arrow up and down to choose)
+
+expo start
+
+显示 debug 页面:
+
+- expo tour 
+
+https://docs.expo.io/tutorial/text/
+
+show Debug View
+  https://reactnative.dev/docs/debugging
+  Shake Gesture
 
 
 
