@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import logo from "../assets/logo.png";
 import * as ImagePicker from "expo-image-picker";
+import * as Sharing from "expo-sharing";
 
 export default function AppComp() {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -22,6 +23,15 @@ export default function AppComp() {
     setSelectedImage({ localUri: pickerResult.uri });
   };
 
+  let openShareDialogAsync = async () => {
+    // 注意不支持通过 chrome 分享
+    if (!(await Sharing.isAvailableAsync())) {
+      alert(`Uh oh, sharing isn't available on your platform`);
+      return;
+    }
+    await Sharing.shareAsync(selectedImage.localUri);
+  };
+
   if (selectedImage !== null) {
     return (
       <View style={styles.container}>
@@ -29,6 +39,9 @@ export default function AppComp() {
           source={{ uri: selectedImage.localUri }}
           style={styles.thumbnail}
         />
+        <TouchableOpacity onPress={openShareDialogAsync} style={styles.button}>
+          <Text style={styles.buttonText}>Share photo</Text>
+        </TouchableOpacity>
       </View>
     );
   }

@@ -35,6 +35,12 @@ expo install expo-image-picker
 
 通过 useState 使用选中图片
 
+- share image 
+
+expo install expo-sharing
+
+- 处理平台差异
+
 
 Libraries:
   https://docs.expo.io/versions/latest/
