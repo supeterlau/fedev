@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RESUME</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    
+    <script>
+      let data = {
+        info: {
+          name: {
+            name_zh: "皮特",
+            name_en: "Peter",
+            name_online: "",
+          },
+          contact: {
+            phone: "+86 13010011001",
+            email: "peter@gmail.com",
+            github: "https://github.com/peter",
+          },
+          image: "./images/placeholder.png",
+        },
+        education: [
+          {
+            duration: ["", ""], // current
+            degree: "",
+            school: "",
+            major: "",
+          },
+        ],
+        work: [
+          {
+            duration: ["", ""], // current
+            position: "",
+            company: "",
+            projects: [
+              {
+                name: "",
+                role: "",
+                detail: "",
+              },
+            ],
+            summary: "",
+          },
+        ],
+        stacks: ["", ""],
+      };
+
+      let mainContent = `
+      <header class="bg-gray-400 flex justify-between">
+        <div class="m-8 leading-none text-center flex flex-col justify-between">
+          <div class="font-bold m-1 text-5xl">${data.info.name.name_zh}</div>
+          <div class="font-light m-1 text-2xl">${data.info.name.name_en}</div>
+        </div>
+        <div class="my-10 leading-none text-left flex flex-col justify-between text-xl">
+          <p class=""><span class="font-bold">电话</span>: ${data.info.contact.phone}</p>
+          <p class=""><span class="font-bold">邮箱</span>: ${data.info.contact.email}</p>
+          <p class=""><span class="font-bold">GitHub</span>: <a href="${data.info.contact.github}">${data.info.contact.github}</a></p>
+        </div>
+        <div class="m-8 leading-none text-center">
+          <img class="w-24" src="${data.info.image}" />  
+        </div>
+      </header>
+      
+      <article class='m-8'>
+        <section class="bg-teal-400">
+          <header class="flex items-center">
+            <svg class="inline-block" height="20" width="20">
+              <polygon points="0,4 20,4 10,17" style="fill:#a0aec0;stroke:#a0aec0;stroke-width:1" />
+            </svg>
+            <div class="text-2xl mx-4">教育经历</div>
+            <div class="flex-auto bg-gray-400 h-1"></div>
+          </header>
+        </section>
+        <section class="bg-blue-400">
+          <header class="flex items-center">
+            <svg class="inline-block" height="20" width="20">
+              <polygon points="0,4 20,4 10,17" style="fill:#a0aec0;stroke:#a0aec0;stroke-width:1" />
+            </svg>
+            <div class="text-2xl mx-4">工作经历</div>
+            <div class="flex-auto bg-gray-400 h-1"></div>
+          </header>
+        </section>
+        <section class="bg-indigo-400">
+          <header class="flex items-center">
+            <svg class="inline-block" height="20" width="20">
+              <polygon points="0,4 20,4 10,17" style="fill:#a0aec0;stroke:#a0aec0;stroke-width:1" />
+            </svg>
+            <div class="text-2xl mx-4">常用技术</div>
+            <div class="flex-auto bg-gray-400 h-1"></div>
+          </header>
+        </section>
+      </article>
+      `
+
+    window.onload = () => {
+      let main = document.createElement('main')
+      main.classList = "p-4"
+      main.innerHTML = mainContent
+      document.body.appendChild(main)
+    }
+    </script>
+  </body>
+</html>
