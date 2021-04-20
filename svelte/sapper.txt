@@ -1,0 +1,268 @@
+https://sapper.svelte.dev/docs
+
+Sapper is a framework for building web applications of all sizes, with a beautiful development experience and flexible filesystem-based routing.
+
+Power By Svelte. https://svelte.dev/
+
+## INTRODUCTION
+
+Sapper 用于构建极高性能(extremely high-performance) Web App 
+
+- 每个页面都是 svelte 组件
+- 添加文件到 src/routes 文件夹。这些文件会被 server-rendered 这样用户首次访问时，你的应用能尽可能快地提供服务，随后切换为 client-side 应用。
+
+同时会有所有现代化开发的最佳实践 - code-splitting, offline support, server-rendered views with client-side hydration.
+
+Sapper 表示战争中做后勤保障，架桥铺路的士兵；也表示 Sapper 帮助开发者处理 underpowered devices, poor network connections, complexity inherent inf front-end engineering。Sapper 是 Svelte app maker 的缩写。
+
+Next.js is a React framework from Zeit, and is the inspiration for Sapper.
+
+- Based on Svelte, faster and smaller
+
+- Next 使用 route masking，Sapper encode parameters in filenames.
+
+- As well as pages, you can create server routes in your src/routes directory. 
+
+- Links 就是 <a> 标签，不是 <Link> 组件
+
+
+
+
+
+npx degit "sveltejs/sapper-template#rollup" first-app
+
+cd first-app
+npm i // yarn
+npm run dev  // yarn run dev 
+
+
+Get warning:
+To preserve the export signature of the entry module "src/client.js", an empty facade chunk was created. This often happens when creating a bundle for a web app where chunks are placed in script tags and exports are ignored. In this case it is recommended to set "preserveEntrySignatures: false" to avoid this and reduce the number of chunks. Otherwise if this is intentional, set "preserveEntrySignatures: 'strict'" explicitly to silence this warning.
+
+https://rollupjs.org/guide/en/#configuration-files
+  preserveEntrySignatures: false
+
+## Sapper APP Structure
+
+package.json 
+src 
+  routes 
+    _error.svelte 
+    index.svelte 
+  client.js 
+  server.js 
+  service-worker.js 
+  template.html 
+static
+rollup.config.js 
+
+首次运行 Sapper 会创建 __sapper__ 文件夹来存放生成的文件。
+
+cypress: end-to-end testing
+
+- package.json 
+
+npm run dev = 以开发模式运行，监控文件变化
+npm run build = 以生产模式构建文件
+npm run export = 导出静态版本
+npm start = build 后以生产模式启动应用
+npm test = 运行测试
+
+- src 
+  三个 entry points 
+  src/client.js 
+    必须导入并调用 @sapper/app 的 start 函数
+  src/server.js 
+    一个常规的 express/polka 应用
+      https://github.com/lukeed/polka
+      托管 static 文件夹
+      最后调用 app.user(sapper.middleware()) sapper 来自 @sapper/server 
+      必须监听 process.env.PORT 
+  src/service-worker.js 
+    作为 proxy servers 让你可以控制网络请求
+      例如请求 /goats.jpg，可以用已经缓存的图片响应
+    帮助开发 offline-app 
+    可以从 @sapper/service-worker 导入
+      files 
+        static 中的文件
+      shell 
+
+      routes
+        an array of { pattern: RegExp } objects you can use to determine whether a Sapper-controlled page is being requested
+      timestamp 
+        the time the service worker was generated (useful for generating unique cache names)
+  * src/template.html 
+    %sapper.base%
+      a <base> element 配置 base URLs. 导出静态文件也需要配置
+    %sapper.styles%
+      CSS 
+    %sapper.head%
+      page-specific <head> contents 
+    %sapper.html%
+      body of the page 
+    %sapper.script%
+      script tags for client-side app 
+
+- src/routes (see routing)
+
+- static 
+
+放置 fonts images 等
+
+sapper 不托管这些文件，而是利用 sirv 或 serve-static 
+
+sapper 会读取 static folde 内容，因此容易生成 cache manifest fo offline support 
+
+- rollup.config.js / webpack.config.js 
+
+可以自己添加 loaders 或 plugins
+
+## Routing 
+
+两种 route 
+  pages 
+  server routes 
+
+- Pages 
+
+svelte:head 有什么用?
+  insert elements inside the <head> of your document
+  In server-side rendering (SSR) mode, contents of <svelte:head> are returned separately from the rest of your HTML.
+
+.svelte 文件，svelte 组件。用户首次访问得到服务端渲染版本，之后得到客户端渲染版本
+
+文件可以是 src/routes/about.svelte 或 src/routes/about/index.svelte 
+
+动态参数 src/routes/blog/[slug].svelte 
+
+/blog/[slug]/[year]/[month]/[day]
+->
+/blog/[...slug].svelte
+
+<script context="module">
+	export async function preload({ params }) {
+		let [slug, year, month, day] = params.slug;
+
+		return { slug, year, month, day };
+	}
+</script>
+
+- Server routes 
+
+以 .js 结尾的文件。导出响应 HTTP 方法的函数。他们都接收 request 和 response 对象，及 next 为参数。方便创建 JSON API 
+
+- 文件名规则
+
+/about 对应
+  src/routes/about.svelte 或
+  src/routes/about/index.svelte 
+
+/blog/:slug 对应
+  src/routes/blog/[slug].svelte
+  params.slug 在 perload 中获得
+
+下划线开头的文件不创建路由
+  src/routes/_helpers/datetime.js
+
+- Error page 
+
+特殊文件 src/routes/_error.svelte 
+
+error 对象和 HTTP status code 可用
+
+- 路由中的正则
+
+src/routes/items/[id([0-9]+)].svelte 
+
+技术限制，不能用 / \ ? : ( ) 文件名限制 ?
+
+## Client API 
+
+- start({ taget })
+
+返回 Promise 
+
+initialpage 渲染后 resolve 
+
+- goto(href, options?)
+
+options { replaceState: "" } 决定使用 history.pushState 还是 history.replaceState 
+
+返回 Promise 在 navigation 完成后 resolve 
+  可以做一些清理任务
+
+- prefetch(href)
+
+1. 载入 page 2. 调用 prelaod 方法
+
+效果与点击或悬浮在 <a rel=prefetch> 效果一样
+
+返回 Promise 在 prefetch 完成后 resolve 
+
+- prefetchRoutes(routes?)
+
+参数为数组。应该在 sapper.start 后调用，为了 speed up subsequent navigation 
+
+不带参数会 perfetch 所有路由。不会调用 preload 
+
+## preloading 
+
+位于 context="module" 在 script 执行前执行。类似 Next.js 的 getInitialProps 
+
+<script context="module">
+	export async function preload(page, session) {
+		const { slug } = page.params;
+
+		const res = await this.fetch(`blog/${slug}.json`);
+		const article = await res.json();
+
+		return { article };
+	}
+</script>
+
+<script>
+	export let article;
+</script>
+
+<h1>{article.title}</h1>
+
+### Arguments
+
+page { host, path, params, query } object
+
+session 通过传入 server 的 sapper.middleware 产生
+
+sapper.middleware({
+  session: (req, res) => ({
+    user: req.user
+  })
+})
+
+session 如何与后端连接起来 ?
+
+
+https://sapper.svelte.dev/docs#Return_value
+
+
+ExperimentalWarning: Conditional exports is an experimental feature. This feature could change at any time
+
+PRPL pattern
+  https://web.dev/apply-instant-loading-with-prpl/
+
+https://tahazsh.com/fullstack-app-with-svelte-and-node-part-1
+https://github.com/TahaSh/svelte-news-app/blob/master/src/node_modules/api/api.js
+
+
+https://svelte.dev/blog/sapper-towards-the-ideal-web-app-framework
+
+
+Dash withtou download docset
+
+垃圾分类 PWA 
+
+index.svelte 
+
+input 
+
+onChange 
+
