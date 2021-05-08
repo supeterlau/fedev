@@ -131,7 +131,7 @@ const getBookmark = () => {
   })
 }
 
-const storeTabs = async () => {
+export const storeTabs = async () => {
   let tabs = await getTabs()
   // console.log(tabs)
   return tabs
@@ -140,11 +140,12 @@ const storeTabs = async () => {
   // Send Message
 }
 
-const storeTab = async () => {
+export const storeTab = async () => {
   let tabs = await getTabs(true)
   return tabs
 }
 
 // module.exports = {
+//   storeTab,
 //   storeTabs
 // }
