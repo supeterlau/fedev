@@ -1,0 +1,56 @@
+# https://redux-saga.js.org/docs/introduction/BeginnerTutorial/
+
+- 创建 saga 
+
+使用 generator 函数 
+
+function* name () {}
+
+- 执行 saga 
+
+sagaMiddleware.run(helloSaga)
+
+- 发起异步请求
+
+onIncrementAsync
+
+takeEvery "redux-saga/effects" 监听 dispatch
+
+put 通过 middleware 发起 dispatch
+
+使用 rootSaga 打包全部 saga 
+
+yield all([
+  helloSaga(),
+  watchIncrementAsync()
+])
+
+- 测试 saga 
+
+sagas.spec.js
+
+yarn add tape 
+
+修改 saga 不直接调用 delay 而是用 call(delay, 1000)
+
+这样可以在测试中进行 assert.deepEqual
+
+assert.deepEqual(
+  gen.next().value,
+  call(delay, 1000),
+  'incrementAsync Saga must call delay(1000)'
+)
+
+saga: https://docs.microsoft.com/en-us/previous-versions/msp-n-p/jj591569(v=pandp.10)
+
+yarn add -D tap-spec
+
+https://dev.to/avalander/introduction-to-unit-testing-with-tape-the-basics-1an5
+
+https://github.com/dwyl/learn-tape
+
+https://github.com/scottcorgan/tap-spec
+https://github.com/Sceat/tap-spec-emoji
+https://github.com/substack/testling
+
+https://duktape.org/ Duktape is an embeddable Javascript engine, with a focus on portability and compact footprint.
