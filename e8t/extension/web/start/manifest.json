@@ -1,55 +1,53 @@
-  {
-    "name": "StartTab",
-    "version": "1.0",
-    "description": "Here is our new start tab!",
-    "permissions": [
-      "cookies",
-      "tabs",
-      "activeTab",
-      "declarativeContent",
-      "storage",
-      "history",
-      "bookmarks"
-    ],
-    "host_permissions": [
-      "<all_urls>"
-    ],
-    "background": {
-      "service_worker": "background.js"
-    },
-    "action": {
-      "default_title": "StartTab",
-      "default_popup": "popup.html"
-    },
-    "options_page": "options.html",
-    "commands": {
-      "store-tab": {
-        "suggested_key": {
-          "default": "Alt+C",
-          "mac": "MacCtrl+C"
-        },
-        "description": "Store tab"
+{
+  "name": "StartTab",
+  "version": "1.0",
+  "description": "Here is our new start tab!",
+  "permissions": [
+    "cookies",
+    "tabs",
+    "activeTab",
+    "declarativeContent",
+    "storage",
+    "history",
+    "bookmarks"
+  ],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "StartTab",
+    "default_popup": "popup.html"
+  },
+  "options_page": "options.html",
+  "commands": {
+    "store-tab": {
+      "suggested_key": {
+        "default": "Alt+X",
+        "mac": "MacCtrl+X"
       },
-      "store-tabs": {
-        "suggested_key": {
-          "default": "Alt+K",
-          "mac": "MacCtrl+K"
-        },
-        "description": "Store tabs"
-      }
+      "description": "Store tab"
     },
-    "chrome_url_overrides" : {
-      "newtab": "start.html"
-    },
-    "content_scripts": [
-      {
-        "matches": ["<all_urls>"],
-        "css": ["styles/main.css"],
-        "js": ["content/main.js"]
-      }
-    ],
-    "content_security_policy": {
-      "extension_pages": "script-src 'self'; object-src 'self'"
-    },
-    "manifest_version": 3
-  }
+    "store-tabs": {
+      "suggested_key": {
+        "default": "Alt+K",
+        "mac": "MacCtrl+K"
+      },
+      "description": "Store tabs"
+    }
+  },
+  "chrome_url_overrides": {
+    "newtab": "start.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "css": ["styles/main.css"],
+      "js": ["content/main.js"]
+    }
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  },
+  "manifest_version": 3
+}
