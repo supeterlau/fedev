@@ -1,0 +1,17 @@
+# The Y Combinator explained with JavaScript
+
+http://kestas.kuliukas.com/YCombinatorExplained/
+
+不依赖 any variable or function declarations 实现递归
+
+取消 fact 定义: 写一个返回 fact 的函数 makeFact
+
+https://stackoverflow.com/questions/93526/what-is-a-y-combinator
+
+# Deriving the Y Combinator in JavaScript
+
+https://raganwald.com/2018/09/10/why-y.html
+
+theoretical computer science
+
+http://raganwald.com/2018/08/30/to-grok-a-mockingbird.html
