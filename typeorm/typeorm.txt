@@ -1,0 +1,39 @@
+https://typeorm.io/#/using-cli
+
+- 创建 TypeORM 
+
+npm i typeorm -g
+
+Possible values are "mysql", "postgres", "cockroachdb", "mariadb", "sqlite", "better-sqlite3", "cordova", "nativescript", "oracle", "mssql", "mongodb", "sqljs", "react-native". This option is required.
+
+typeorm init --name map --database postgres
+
+CREATE DATABASE typeormdev
+    WITH 
+    OWNER = webdev
+    ENCODING = 'UTF8'
+    LC_COLLATE = 'en_US.utf8'
+    LC_CTYPE = 'en_US.utf8'
+    CONNECTION LIMIT = -1;
+
+列出数据库表
+
+\dt or \dt+ command
+
+列出数据库表 schema
+
+\d table_name or \d+ table_name to describe a table
+
+TABLESPACE = pg_default 留空即为默认值
+https://dba.stackexchange.com/questions/204807/why-do-i-get-a-postgresql-permission-error-when-specifying-a-tablespace-in-the
+
+显示 SQL 
+
+https://github.com/typeorm/typeorm/issues/1331
+
+const users = await connection.createQueryBuilder()
+    .select("user")
+    .from(User, "user")
+    .where("user.id = :id", { id: 1 })
+    .printSql()
+    .getMany();
