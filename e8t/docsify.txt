@@ -1,0 +1,13 @@
+docsify.txt
+
+:Author: Peter Lau
+:Email: superpeterlau@outlook.com
+:Date: 2021-03-06 05:14
+
+npm i docsify-cli -g
+
+yarn global add docsify-cli
+
+docsify init ./docs
+
+npx docsify serve ./docs --port 3060
