@@ -16,6 +16,10 @@ CREATE DATABASE typeormdev
     LC_CTYPE = 'en_US.utf8'
     CONNECTION LIMIT = -1;
 
+typeorm entity:create -n User
+
+
+
 列出数据库表
 
 \dt or \dt+ command
