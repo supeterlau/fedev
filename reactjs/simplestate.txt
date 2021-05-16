@@ -1,0 +1,32 @@
+
+https://simpler-state.js.org/basics.html
+
+https://simpler-state.js.org/recipes.html
+
+
+# Basic 
+
+npm install simpler-state
+
+创建 entities
+
+An entity is a single-concern data object
+
+绑定到任意数量组件上，作为 local state 
+
+entity 值改变，关联组件 rerender
+
+要求有初始值
+
+  entityObj = entity(initialValue)
+
+actions
+
+  entityObj.set(newValue)
+
+  entityObj.set(value => newValue) 基于当前值的变化
+
+使用 entities
+
+  value = entityObj.use()
+  value = useEntity(entityObj)
