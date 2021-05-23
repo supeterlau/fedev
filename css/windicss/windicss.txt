@@ -1,0 +1,103 @@
+Vite
+  https://vitejs.dev/
+
+React
+  https://windicss.org/integrations/vite.html
+
+- Vite 配置
+
+https://vitejs.dev/config/#config-file
+
+base: "/app/"
+build.outDir
+build.emptyOutDir
+
+Vite 需要 index.html
+
+底层 rollup
+
+支持多页面
+
+├── package.json
+├── vite.config.js
+├── index.html
+├── main.js
+└── nested
+    ├── index.html
+    └── nested.js
+  
+开发模式正常访问
+编译模式需要配置 rollup
+
+# Windicss
+
+基于 tailwindcss 2.0
+
+https://github.com/iamcco/coc-tailwindcss
+https://github.com/ryanhhhh/headwind
+
+https://github.com/neoclide/coc-css
+https://github.com/neoclide/coc-stylelint
+https://github.com/bmatcuk/coc-stylelintplus
+
+{
+  "css.validate": false,
+  "less.validate": false,
+  "scss.validate": false,
+  "wxss.validate": false
+}
+
+https://github.com/iamcco/coc-tailwindcss/issues/36
+
+https://miyauchi.dev/posts/vite-vue3-tailwindcss#environment-building
+
+yarn add -D tailwindcss sass
+yarn tailwindcss init
+  tailwind.config.j
+
+postcss.config.js
+
+module.exports = {
+  plugins: [require('tailwindcss'), require('autoprefixer')],
+}
+
+.scss
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@apply rule 是简化样式神器
+
+yarn add @tailwindcss/forms
+
+tailwind.config.j
+
+plugins: [
+  require('@tailwindcss/forms'),
+  // ...
+],
+
+https://github.com/tailwindlabs/heroicons
+
+yarn add @heroicons/react
+
+https://stackoverflow.com/questions/49582984/how-do-i-disable-js-file-is-a-commonjs-module-it-may-be-converted-to-an-es6
+  Suggestion Code Actions"
+
+入门
+  https://tailwindcss.com/docs/grid-column
+
+Tour 
+  https://beginnertailwind.com/
+  https://maizzle.com/docs/tailwindcss/
+
+Template
+  https://www.tailwind-kit.com/components/sidebar#
+  https://tailwindcomponents.com/
+  https://www.tailwindtoolbox.com/starter-templates
+  https://tailwindcomponents.com/
+
+
+Starter
+  https://dev.to/texmeijin/starter-using-vite-react-typescript-tailwind-css-20m1
+

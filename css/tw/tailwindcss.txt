@@ -1,0 +1,87 @@
+A utility-first CSS framework packed with classes
+
+https://tailwindcss.com/
+
+# Start 开始
+
+with snowpack
+  https://www.snowpack.dev/guides/tailwind-css/
+
+yarn init -fy
+yarn add tailwindcss 
+yarn add -D @snowpack/plugin-postcss postcss postcss-cli autoprefixer
+
+mkdir public src
+
+配置 postcss tailwind
+touch postcss.config.js & npx tailwindcss init
+
+postcss.config.js
+
+module.exports = {
+  plugins: {
+    tailwindcss: {},
+    autoprefixer: {}
+  },
+};
+
+tailwind.config.js
+
+module.exports = {
+  mode: 'jit',
+  purge: ['./public/**/*.html', './src/**/*.{js,jsx,ts,tsx,vue}'],
+  // specify other options here
+
+};
+
+Snowpack PostCSS plugin
+
+touch snowpack.config.js (npx snowpack init )
+
+module.exports = {
+  mount: {
+    src: '/_dist',
+    public: '/',
+  },
+  plugins: [
+    '@snowpack/plugin-postcss',
+  ],
+};
+
+touch ./public/global.css
+
+global.css
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+snowpack build
+snowpack add [package]
+snowpack rm [package]
+
+## bulma
+
+yarn init -fy
+yarn add bulma sass 
+yarn add -D @snowpack/plugin-postcss postcss postcss-cli autoprefixer
+
+## Components
+
+- Nav 
+
+- Layout
+
+## Ref
+
+https://headlessui.dev/
+
+https://heroicons.com/
+
+
+yarn -f -y 
+yarn add tailwindcss
+
+creating a new file css/styles.css
+
+inserting the @tailwind directive 导入 tailwind 的 base, components, and utilities 样式
