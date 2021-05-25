@@ -41,6 +41,42 @@ expo install expo-sharing
 
 - 处理平台差异
 
+iOS Android Web (browsers)
+
+web 分享解决方案: 上传图片到匿名服务器，分享 remote uri 
+
+- 图标和开屏图片
+
+防止开屏加载太快可以用 expo-splash-screen 设置
+
+expo install expo-splash-screen
+
+import * as SplashScreen from 'expo-splash-screen';
+
+SplashScreen.preventAutoHideAsync();
+setTimeout(SplashScreen.hideAsync, 5000);
+
+- Next 
+
+https://docs.expo.io/tutorial/follow-up/
+
+# expo basic tour more
+
+Login Navigation
+  https://aboutreact.com/react-native-login-and-signup/#Node-Server-Setup
+  https://github.com/SnehalAgrawal/about-react-dummy-apis
+Auth HOC
+Firebase usage
+add redux/mobx
+UI
+  https://magnus-ui.com/
+
+
+
+
+
+
+
 
 Libraries:
   https://docs.expo.io/versions/latest/
@@ -84,7 +120,10 @@ DG app
 ## Local dev (Remote build)
 
 rsync -avz --progress source dist 
-
+NOTES=~/HQ/tmp/daily
+NOTES="~/HQ/tmp/weekly ${NOTES}"
+NOTES="~/HQ/tmp/Note/ ${NOTES}"
+NOTES="~/HQ/tmp/Documents/kanban ${NOTES}"
 npm install -g expo-cli
 
 yarn global add expo-cli
