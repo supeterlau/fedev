@@ -92,6 +92,13 @@ steps
 Next: https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Applying_styles_and_colors
 
 
+# Paint
+
+https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle
+
+The Window.getComputedStyle() method returns an object containing the values of all CSS properties of an element, after applying active stylesheets and resolving any basic computation those values may contain
+
+
 
 http://www.java2s.com/Tutorials/HTML_CSS/HTML5_Canvas/0630__HTML5_Canvas_Event.htm HTML5 Canvas Tutorial - HTML5 Canvas Events
 
