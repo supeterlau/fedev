@@ -101,3 +101,14 @@ Template
 Starter
   https://dev.to/texmeijin/starter-using-vite-react-typescript-tailwind-css-20m1
 
+https://web2tailwind.com/component/form
+
+https://www.vue-tailwind.com/docs/textarea/
+
+https://tailwindtemplates.io/forms/#340
+
+https://moderncss.dev/custom-css-styles-for-form-inputs-and-textareas/
+
+https://tailwindtemplates.io/buttons/
+
+https://devdojo.com/tnylea/custom-animations-in-tailwindcss

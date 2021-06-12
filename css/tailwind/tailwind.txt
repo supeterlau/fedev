@@ -93,4 +93,62 @@ module.exports = {
   // ...
 }
 
+# Snowpack
 
+https://www.snowpack.dev/guides/tailwind-css/
+
+yarn add tailwindcss @snowpack/plugin-postcss postcss postcss-cli 
+yarn add -D autoprefixer
+yarn add -D @snowpack/plugin-postcss
+
+touch postcss.config.js
+
+// tailwind.config.js
+module.exports = {
+  mode: 'jit',
+  purge: ['./public/**/*.html', './src/**/*.{js,jsx,ts,tsx,vue}'],
+  // specify other options here
+};
+
+# Components
+
+- nav
+
+- form (signin signup)
+
+- card
+
+https://www.ordinarycoders.com/blog/article/17-tailwindcss-cards
+
+- table 
+
+https://tailwindcss.com/docs/table-layout
+
+# Tours
+
+https://www.codeinwp.com/blog/tailwind-css-templates/
+
+https://www.digitalocean.com/community/tutorials/build-a-beautiful-landing-page-with-tailwind-css
+
+https://themesberg.com/blog/tailwind-css/tutorial
+
+https://tsh.io/blog/tailwind-css-tutorial/
+
+https://dribbble.com/shots/6201638-people-directory-desktop
+
+https://dev.to/t/tailwindcss
+https://dev.to/fly/my-experience-skimming-the-cutting-edge-dream-front-end-stack-46ka
+
+https://css-tricks.com/tailwind-versus-bem/
+https://css-tricks.com/style-form-tailwind-css/
+https://css-tricks.com/custom-tailwind-css/
+https://css-tricks.com/two-steps-forward-one-step-back/
+https://css-tricks.com/on-auto-generated-atomic-css/
+# Project
+
+- link directory
+
+Navigation
+Slide
+Tags
+Filter + Sorter

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>D & D</title>
+    <style>
+      html,
+      body,
+      .container {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+      }
+      .atom {
+        position: fixed;
+        width: 100px;
+        height: 100px;
+        background-color: aquamarine;
+      }
+
+      #draggable {
+        width: 200px;
+        height: 20px;
+        text-align: center;
+        background: white;
+      }
+
+      .dropzone {
+        margin: auto;
+        width: 200px;
+        height: 20px;
+        background: blueviolet;
+        margin-bottom: 10px;
+        padding: 10px;
+      }
+
+      #generator {
+        margin: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div id="generator"><button onclick="genBorder()">GENERATE</button></div>
+      <div class="atom" id="atom01" draggable="true"></div>
+      <!-- <p
+        draggable="true"
+        ondragstart="event.dataTransfer.setData('text/plain', 'This text may be dragged')"
+      >
+        This text <strong>may</strong> be dragged.
+      </p> -->
+      <!-- <div class="mdn">
+        <div class="dropzone">
+          <div
+            id="draggable"
+            draggable="true"
+            ondragstart="event.dataTransfer.setData('text/plain',null)"
+          >
+            This div is draggable
+          </div>
+        </div>
+        <div class="dropzone"></div>
+        <div class="dropzone"></div>
+        <div class="dropzone"></div>
+      </div> -->
+    </div>
+    <script>
+      const getPos = (el) => {
+        let rect = el.getBoundingClientRect();
+        return {
+          top: rect.top + document.body.scrollTop,
+          left: rect.left + document.body.scrollLeft,
+        };
+      };
+      let genRandomColor = () => parseInt(Math.random() * 255);
+
+      let container = document.getElementById("generator").parentElement;
+
+
+      const genBorder = () => {
+        let el = document.createElement("div");
+        let randomColor = `rgb(${genRandomColor()},${genRandomColor()},${genRandomColor()})`;
+        el.setAttribute(
+          "style",
+          `background-color: ${randomColor};
+          top: ${
+            Math.random() * 300
+          }px;
+          width: 100%;
+          height: 100px;
+          border-top: 1px dashed black;
+          margin: 10px 0;
+          border-bottom: 1px solid black;`
+        );
+        container.appendChild(el);
+
+      };
+
+      const genEl = () => {
+        let randomColor = `rgb(${genRandomColor()},${genRandomColor()},${genRandomColor()})`;
+        let el = document.createElement("div");
+        el.classList.add("atom");
+
+        el.setAttribute(
+          "style",
+          `background-color: ${randomColor};top: ${
+            Math.random() * 300
+          }px; left: ${Math.random() * 300}px`
+        );
+        el.setAttribute("draggable", true);
+
+        console.log(el);
+        container.appendChild(el);
+      };
+
+      var mousePos;
+      var lastMousePos;
+
+      // document.onmousemove = handleMouseMove;
+      // setInterval(getMousePosition, 100);
+      function handleMouseMove(event) {
+        var dot, eventDoc, doc, body, pageX, pageY;
+
+        event = event || window.event;
+        mousePos = {
+          x: event.pageX,
+          y: event.pageY,
+        };
+        return mousePos;
+      }
+      function getMousePosition() {
+        let pos = mousePos;
+        if (!pos) {
+          // We haven't seen any movement yet
+        }
+        if (lastMousePos != pos) {
+          lastMousePos = pos;
+          // Use pos.x and pos.y
+          console.log(pos);
+        }
+      }
+      var dragged;
+      var startPos;
+      var endPos;
+      const getNewLoc = (end, start) => ({
+        left: end.x - start.x,
+        top: end.y - start.y,
+      });
+      document.addEventListener("drag", function (event) {}, false);
+      document.addEventListener(
+        "dragstart",
+        function (event) {
+          // store a ref. on the dragged elem
+          dragged = event.target;
+          // make it half transparent
+          event.target.style.opacity = 0.5;
+          startPos = handleMouseMove(event);
+        },
+        false
+      );
+      document.addEventListener(
+        "dragend",
+        function (event) {
+          // reset the transparency
+          event.target.style.opacity = "";
+        },
+        false
+      );
+      document.addEventListener(
+        "dragover",
+        function (event) {
+          event.preventDefault();
+          // console.log(getPos(dragged));
+          // console.log(handleMouseMove(event))
+        },
+        false
+      );
+      document.addEventListener("drop", function (event) {
+        event.preventDefault();
+        endPos = handleMouseMove(event);
+        let newLoc = getNewLoc(endPos, startPos);
+        console.log(newLoc);
+        let oldTop = parseInt(
+          window.getComputedStyle(dragged).top.replace("px", "")
+        );
+        let oldLeft = parseInt(
+          window.getComputedStyle(dragged).left.replace("px", "")
+        );
+        console.log(oldTop, oldLeft);
+        console.log(oldTop + newLoc.top, oldLeft + newLoc.left);
+        dragged.style.top = `${oldTop + newLoc.top}px`;
+        dragged.style.left = `${oldLeft + newLoc.left}px`;
+      });
+    </script>
+    <script>
+      // var dragged;
+
+      // /* events fired on the draggable target */
+      // document.addEventListener("drag", function (event) {}, false);
+
+      // document.addEventListener(
+      //   "dragstart",
+      //   function (event) {
+      //     // store a ref. on the dragged elem
+      //     dragged = event.target;
+      //     // make it half transparent
+      //     event.target.style.opacity = 0.5;
+      //   },
+      //   false
+      // );
+
+      // document.addEventListener(
+      //   "dragend",
+      //   function (event) {
+      //     // reset the transparency
+      //     event.target.style.opacity = "";
+      //   },
+      //   false
+      // );
+
+      // /* events fired on the drop targets */
+      // document.addEventListener(
+      //   "dragover",
+      //   function (event) {
+      //     // prevent default to allow drop
+      //     event.preventDefault();
+      //   },
+      //   false
+      // );
+
+      // document.addEventListener(
+      //   "dragenter",
+      //   function (event) {
+      //     // highlight potential drop target when the draggable element enters it
+      //     if (event.target.className == "dropzone") {
+      //       event.target.style.background = "purple";
+      //     }
+      //   },
+      //   false
+      // );
+
+      // document.addEventListener(
+      //   "dragleave",
+      //   function (event) {
+      //     // reset background of potential drop target when the draggable element leaves it
+      //     if (event.target.className == "dropzone") {
+      //       event.target.style.background = "";
+      //     }
+      //   },
+      //   false
+      // );
+
+      // document.addEventListener(
+      //   "drop",
+      //   function (event) {
+      //     // prevent default action (open as link for some elements)
+      //     event.preventDefault();
+      //     // move dragged elem to the selected drop target
+      //     if (event.target.className == "dropzone") {
+      //       event.target.style.background = "";
+      //       dragged.parentNode.removeChild(dragged);
+      //       event.target.appendChild(dragged);
+      //     }
+      //   },
+      //   false
+      // );
+    </script>
+  </body>
+</html>
