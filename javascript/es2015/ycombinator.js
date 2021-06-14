@@ -89,7 +89,7 @@ const makeRealFactClean = (makeFact) => {
 };
 
 // makeRealFactClean => y
-// makeFact => le 
+// makeFact => le
 // n => x
 // makeRealFact => y
 // getNextTryFactRef => f
@@ -106,5 +106,5 @@ const y = (le) => {
 
 // let result = makeRealFact(makeFact)(10);
 
-let result = y(makeFact)(10);
+let result = y(makeFact)(5);
 console.log(result);

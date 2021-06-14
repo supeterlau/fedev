@@ -3,6 +3,22 @@
 add.apply(null, [3,4])
 add.call(null, 3,4)
 
+# meta-programming in JavaScript
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Meta_programming
+https://javascript.info/proxy
+
+Proxy Reflect
+
+- proxy
+
+"a" in {a: 100}
+true
+
+- Revocable Proxy 可撤销的 proxy 
+
+
+
 # The Y Combinator explained with JavaScript
 
 http://kestas.kuliukas.com/YCombinatorExplained/
