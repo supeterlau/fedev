@@ -1,0 +1,73 @@
+https://www.sigmacomputing.com/blog/writing-a-parser-combinator-from-scratch-in-typescript/
+
+parse("Foo(Bar(1,2,3))");
+
+// {
+//   "target": "Foo",
+//   "args": [
+//     {
+//       "target": "Bar",
+//       "args": [
+//         1,
+//         2,
+//         3
+//       ]
+//     }
+//   ]
+// }
+
+EBNF
+
+PROGRAM = EXPR
+EXPR = CALL | NUMBER
+CALL = IDENT '('[ARGLIST]')'
+ARGLIST = ARG(','ARG)
+NUMBER = 
+IDENT = /[A-ZA-Z][A-ZA-Z0-9]+/
+
+parser 会使用 recursive descent 即从 highest level 结构 expression 开始，基于定义的规则解析
+
+这个树状结构的叶子节点 number ident ( 和 ) 即为 terminal symbols
+
+  遇到 terminal symbols 才可以 consume 字符
+
+  其他 token 都是 non-termimals : 由其他 symbols 组成
+
+parser 前一般有 lexer 将 input string 转为 flat list of tokens 
+
+由于直接 consume string 可以跳过这一步
+
+每一步解析中，输入 Context 包含代码的字符串以及当前位置 position
+
+解析成功 返回包含 value 的 Success 以及包含下一个 position 的新 Context
+
+解析失败，返回 Failure 对象，包含出错 position 和 原因
+
+对于 little language 需要更多的 combinators 来组合 parser 进行解析
+
+例如
+
+any 输入 parser 数组，直到有一个解析成功返回 Success 否则返回 Failure
+
+many 重复一个 parser N 次，成功返回 Success 失败返回 []
+
+用到的 combinator
+
+regex
+
+any
+
+optional
+
+many
+
+map
+
+根据 EBNF 写 combinators
+
+type
+  Expr
+
+interface Call
+
+
