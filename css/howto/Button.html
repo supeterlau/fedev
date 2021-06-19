@@ -1,0 +1,85 @@
+<title>How To</title>
+
+<link
+  href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+  rel="stylesheet"
+/>
+<style>
+  .btn1 {
+    padding: 15px 25px;
+    font-size: 24px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    /* background-color: #04aa6d; */
+    background-color: #f6c6ea;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #f9f9f9;
+  }
+  .btn1:hover {
+    /*background-color: #3e8e41; */
+    background-color: #cdf0ea;
+  }
+
+  .btn1:active {
+    /* background-color: #3e8e41; */
+    background-color: #c490e4;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
+
+  .btn2 {
+    border-radius: 4px;
+    background-color: #f4511e;
+    border: none;
+    color: #ffffff;
+    text-align: center;
+    font-size: 28px;
+    padding: 20px;
+    width: 200px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+  }
+
+  .btn2 span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+  /* https://www.w3schools.com/cssref/css_entities.asp */
+  .btn2 span:after {
+    /*content: "\00bb"; */
+    content: "\003A\0029";
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+  .btn2:hover span {
+    padding-right: 25px;
+  }
+  .btn2:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
+</style>
+
+<h3>Button</h3>
+<div>
+  <button class="btn1">Button 1: "pressed" effect on click</button>
+  <!-- an arrow on hover -->
+  <button class="btn2"><span>Button 2</span></button>
+</div>
+
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.0.5/cdn.min.js"
+  integrity="sha512-JzpmsnQFnevs64hXB/wyoAruXPo0nkBNuvZwKok/rsfBFUBLZUEssdz2wmq/gP5lohBeM4BNMHvcNkVxx23o/Q=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+></script>
+
+<script></script>
