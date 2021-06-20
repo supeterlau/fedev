@@ -1,0 +1,39 @@
+<title>How To</title>
+
+<link
+  href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+  rel="stylesheet"
+/>
+
+<style></style>
+
+<div>
+  <div>
+    <p id="typingEffect">Say:</p>
+    <button id="typingBtn">Type</button>
+  </div>
+</div>
+
+<script src="https://cdn.bootcdn.net/ajax/libs/alpinejs/3.0.1/cdn.min.js"></script>
+
+<!-- <script -->
+<!--   src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.0.5/cdn.min.js" -->
+<!--   integrity="sha512-JzpmsnQFnevs64hXB/wyoAruXPo0nkBNuvZwKok/rsfBFUBLZUEssdz2wmq/gP5lohBeM4BNMHvcNkVxx23o/Q==" -->
+<!--   crossorigin="anonymous" -->
+<!--   referrerpolicy="no-referrer" -->
+<!-- ></script> -->
+
+<script>
+  let i = 0;
+  let txt =
+    "Processor operations mostly involve processing data. This data can be stored in memory and accessed from thereon. However, reading data from and storing data into memory slows down the processor, as it involves complicated processes of sending the data request across the control bus and into the memory storage unit and getting the data through the same channel.";
+  let speed = 50;
+  function typeWriter() {
+    if (i < txt.length) {
+      document.getElementById("typingEffect").innerHTML += txt.charAt(i);
+      i++;
+      setTimeout(typeWriter, speed);
+    }
+  }
+  document.getElementById("typingBtn").addEventListener("click", typeWriter);
+</script>

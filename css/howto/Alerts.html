@@ -1,0 +1,89 @@
+<title>How To</title>
+
+<link
+  href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+  rel="stylesheet"
+/>
+
+<style>
+  .alert1 {
+    padding: 20px;
+    background-color: #f44336;
+    color: white;
+    margin-bottom: 15px;
+    opacity: 1;
+    transition: opacity 0.6s;
+  }
+  .closeBtn1 {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  .closeBtn1:hover {
+    color: black;
+  }
+</style>
+
+<div id="main">
+  <div class="alert1">
+    <span class="closeBtn1" onclick="closeAlert1(this)">&times;</span>
+    Alert1 Box
+  </div>
+  <button id="alertBtn1" onclick="alert(this)">New Alert</button>
+  <div class="alert1">
+    <span class="closeBtn1">&times;</span>
+    Alert2 Box
+  </div>
+</div>
+
+<script src="https://cdn.bootcdn.net/ajax/libs/alpinejs/3.0.1/cdn.min.js"></script>
+<!-- <script -->
+<!--   src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.0.5/cdn.min.js" -->
+<!--   integrity="sha512-JzpmsnQFnevs64hXB/wyoAruXPo0nkBNuvZwKok/rsfBFUBLZUEssdz2wmq/gP5lohBeM4BNMHvcNkVxx23o/Q==" -->
+<!--   crossorigin="anonymous" -->
+<!--   referrerpolicy="no-referrer" -->
+<!-- ></script> -->
+
+<script>
+  function closeAlert1(e) {
+    console.log(e);
+    e.parentElement.style.display = "none";
+  }
+  let closeBtn2 = document.getElementsByClassName("closeBtn1");
+  let i;
+  for (i = 0; i < closeBtn2.length; i++) {
+    // closeBtn2[i].onclick = function () {
+    closeBtn2[i].onload = function () {
+      console.log(this);
+      let div = this.parentElement;
+      div.style.opacity = "0";
+      setTimeout(function () {
+        div.style.display = "none";
+      }, 600);
+    };
+  }
+
+  const alert = () => {
+    let main = document.getElementById("main");
+    let alert = document.createElement("div");
+    alert.className = "alert1";
+    alert.innerHTML = `<span class="closeBtn1">&times;</span>
+    Alert2 Box`;
+    let close = alert.getElementsByClassName("closeBtn1")[0];
+    close.addEventListener("click", () => {
+      alert.style.opacity = "0";
+      setTimeout(function () {
+        alert.style.display = "none";
+      }, 600);
+    });
+    setTimeout(function () {
+      alert.style.opacity = "0";
+      alert.style.display = "none";
+    }, 5000);
+    main.appendChild(alert);
+  };
+</script>

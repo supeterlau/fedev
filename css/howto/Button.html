@@ -1,7 +1,6 @@
 <title>How To</title>
 
-<link
-  href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+<link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.3/css/all.min.css"
   rel="stylesheet"
 />
 <style>
@@ -66,6 +65,42 @@
     opacity: 1;
     right: 0;
   }
+  .btn3 {
+    border:none;
+    color: white;
+    padding: 14px 28px;
+    cursor: pointer;
+  }
+  .success{
+    background-color: #04aa6d;
+  }
+  .success:hover{
+    background-color: #46a049;
+  }
+  .info {
+    background-color: #2196f3;
+  }
+  .info:hover {
+    background-color: #0b7dda;
+  }
+  .warning{
+    background-color: #ff9800;
+  }
+  .warning:hover{
+    background-color: #e68a00;
+  }
+  .danger{
+    background-color:#f44336;
+  }
+  .danger:hover{
+    background-color:#da190b;
+  }
+  .default{
+    background-color:#e7e7e7;
+  }
+  .default:hover{
+    background-color:#ddd;
+  }
 </style>
 
 <h3>Button</h3>
@@ -73,6 +108,12 @@
   <button class="btn1">Button 1: "pressed" effect on click</button>
   <!-- an arrow on hover -->
   <button class="btn2"><span>Button 2</span></button>
+  <!-- color button -->
+  <button class='btn3 success'>Success</button>
+  <button class='btn3 info'>Info</button>
+  <button class='btn3 warning'>Warning</button>
+  <button class='btn3 danger'>Danger</button>
+  <button class='btn3 default'>Deafult</button>
 </div>
 
 <script
