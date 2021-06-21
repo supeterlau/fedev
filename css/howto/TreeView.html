@@ -1,0 +1,94 @@
+<title>How To</title>
+
+<link
+  href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+  rel="stylesheet"
+/>
+
+<style>
+
+  ul, #note-tree {
+    list-style-type: none;
+    padding-inline-start: 0;
+  }
+
+  #note-tree {
+    margin: 0;
+    padding: 0;
+  }
+
+  .caret {
+    cursor: pointer;
+    /* prevent text selection */
+    user-select: none;
+  }
+
+  .caret::before {
+    content: "\25B6";
+    color: plum;
+    display: inline-block;
+    margin-right: 6px;
+  }
+
+  .caret-down::before {
+    transform: rotate(90deg);
+  }
+
+  .nested {
+    /* fold  */
+    display: none;
+  }
+
+  .active {
+    display: block;
+  }
+</style>
+
+<div>
+<ul id="note-tree">
+  <li>
+    <span class='caret'>Books</span>
+    <ul class="nested">
+      <li>book1</li>
+      <li>book2</li>
+      <li>
+        <span class='caret'>more</span>
+        <ul class='nested'>
+          <li>more1</li>
+          <li>more2</li>
+          <li>
+            <span class='caret'>more3</span>
+            <ul class='nested'>
+              <li>more31</li>
+              <li>more32</li>
+              <li>more33</li>
+              <li>more34</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+</div>
+
+<script src="https://cdn.bootcdn.net/ajax/libs/alpinejs/3.0.1/cdn.min.js"></script>
+
+<!-- <script -->
+<!--   src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.0.5/cdn.min.js" -->
+<!--   integrity="sha512-JzpmsnQFnevs64hXB/wyoAruXPo0nkBNuvZwKok/rsfBFUBLZUEssdz2wmq/gP5lohBeM4BNMHvcNkVxx23o/Q==" -->
+<!--   crossorigin="anonymous" -->
+<!--   referrerpolicy="no-referrer" -->
+<!-- ></script> -->
+
+<script>
+  let toggler = document.getElementsByClassName('caret')
+  let i;
+  for(i=0;i<toggler.length;i++) {
+    toggler[i].addEventListener('click', function() {
+      this.parentElement.querySelector('.nested').classList.toggle('active')
+      this.classList.toggle('caret-down')
+    })
+  }
+</script>
