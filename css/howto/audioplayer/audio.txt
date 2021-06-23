@@ -1,0 +1,129 @@
+- https://css-tricks.com/lets-create-a-custom-audio-player/
+
+custom audio player
+
+run a podcast and an audio player
+
+audio player 元素
+
+  play/pause button
+  seek slider
+  current time indicator
+  duration of sound file
+  mute audio
+  volume control slider
+
+- play/pause
+
+切换动画使用 Lotties https://airbnb.io/lottie/
+
+图表 icon8
+
+- current time / duration
+
+span * 2
+
+- Seek slider 和 volume control slider
+
+input * 2
+
+input[type='range'] {
+
+}
+
+需要很多 css 适配
+
+- Volume percentage
+
+output
+
+- Mute button
+
+- 功能
+
+audio preload
+参数
+none 不预加载
+metadata 按需求载入
+auto 载入全部文件
+
+HTMLMediaElement 有 readyState 属性
+0 表示 no data 
+1 metadata 可用
+2 data 可用 not enough to play more than a frame.
+3 data 可用 a little amount of frames from current playback position
+4 data 可用 正常播放
+
+readyState > 0 根据 metadata 显示 duration
+否则监听 metadata 载入时间
+As the audio starts playing, the browser begins to download more chunks.
+
+- seek slider
+
+设置 slider max 值为 audio 秒数
+
+seekSlider.max = Math.floor(audio.duration)
+
+- Buffered amount
+
+HTMLMediaElement 的 buffered 属性返回 TimeRanges 显示 browser 下载的 chunks of media
+
+seekable 返回可以 seek 的部分
+
+seekable 返回多个 chunks 因为 It returns multiple chunks of media because, more often than not, byte-range requests are enabled on the server. What this means is that multiple parts of the media can be downloaded simultaneously. 
+
+需要展示最接近 current playback position 的
+
+即 current last chunk returned by the buffered property
+
+audio.buffered.end(audio.buffered.length - 1); the time for the end of the last range in the TimeRanges object returned by the buffered property
+
+- current time 
+
+calculateTime 以 mm:ss 格式显示
+
+- play/pause
+
+当 playState 值为 play 且 button 被点击，就
+
+播放 audio 
+改变播放图标
+改变 playState 为 pause
+
+问题 audio 播放时，seek slider 的值一直被更新，无法响应用户输入
+
+在 handler 中，持续更新 slider 但其 input event 不会被触发，因为需要用户交互才能触发
+
+为解决第一个问题，我们需要在接收用户输入时，暂停更新 slider 值的 process，在 slider 失去焦点后恢复更新。但我们无法访问这个 process 需要通过 requestAnimationFrame() 进行 hack 
+
+使用 requestAnimationFrame() 需要以下几步
+
+创建函数 更新 slider value
+在函数中保存 requestID 用于暂停 update process 
+在 play pause 点击事件添加这个函数
+
+同时在 slider 失去焦点，也需要恢复 process
+
+- Volume-control
+
+audio.volume = 0.92 (0,1)
+
+- mute audio
+
+https://www.geeksforgeeks.org/create-a-music-player-using-javascript/
+
+https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules
+
+https://icons8.com/animated-icons 动态图标
+
+http://airbnb.io/lottie/#/
+
+https://lottiefiles.com/web-player
+
+https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame
+
+https://dev.to/code_mystery/animated-circular-progress-bar-using-html-and-css-1m9j
+
+https://www.dottedsquirrel.com/circular-progress-css/
