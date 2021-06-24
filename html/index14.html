@@ -1,0 +1,66 @@
+<title>HTML Files</title>
+
+<link
+  href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+  rel="stylesheet"
+/>
+
+<style></style>
+
+<div>
+  Input: <input id="file_input" type="file" multiple />
+  <hr />
+  Open:
+  <button id="open">OPEN</button>
+  <hr />
+  <audio src="" id="player" controls></audio>
+</div>
+
+<script src="https://cdn.bootcdn.net/ajax/libs/alpinejs/3.0.1/cdn.min.js"></script>
+
+<!-- <script -->
+<!--   src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.0.5/cdn.min.js" -->
+<!--   integrity="sha512-JzpmsnQFnevs64hXB/wyoAruXPo0nkBNuvZwKok/rsfBFUBLZUEssdz2wmq/gP5lohBeM4BNMHvcNkVxx23o/Q==" -->
+<!--   crossorigin="anonymous" -->
+<!--   referrerpolicy="no-referrer" -->
+<!-- ></script> -->
+
+<script>
+  // audio.src = URL.createObjectURL(
+  // document.getElementsByTagName("input")[0].files[0]
+  // );
+  let audio = document.getElementById("player");
+  let fileHandle;
+  let dirHandler;
+  let openFile = document.getElementById("open");
+  openFile.addEventListener("click", async () => {
+    // Destructure the one-element array.
+    // [fileHandle] = await window.showOpenFilePicker({ multiple: true });
+    // Do something with the file handle.
+    dirHandler = await window.showDirectoryPicker({
+      startIn: "music",
+    });
+    console.log(dirHandler);
+    for await (const entry of dirHandler.values()) {
+      console.log(entry.kind, entry.name);
+      let fileHandle = await dirHandler.getFileHandle(entry.name);
+      // console.log(await dirHandler.resolve(fileHandle));
+      const file = await fileHandle.getFile();
+      if (entry.name.endsWith("mp3")) {
+        console.log(file);
+        // if (srcObject' in audio)
+        // audio.srcObject = file;
+        audio.src = URL.createObjectURL(file);
+        break;
+      }
+      // const contents = await file.text();
+      // console.log(contents);
+      // console.log(entry);
+    }
+    /*
+    for await (const entry of dirHandler.entries()) {
+      console.log(entry);
+    }
+      */
+  });
+</script>
