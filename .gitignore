@@ -62,3 +62,5 @@ typings/
 
 fe.txt
 secret.txt
+tmp
+cache
