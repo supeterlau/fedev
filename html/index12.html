@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Audio</title>
+</head>
+<body>
+  <input type='file' accept='audio/*' capture id="recorder">
+  <audio id="player" controls></audio>
+  <hr />
+  <audio id="player1" controls></audio>
+  <a id="download-player1">Download Player1</a>
+  <button id='start-player1'>Start</button>
+  <button id='stop-player1'>Stop</button>
+  <script>
+    const recorder = document.getElementById('recorder')
+    const player = document.getElementById('player')
+
+    recorder.addEventListener('change', e => {
+      const file = e.target.files[0]
+      const url = URL.createObjectURL(file)
+      player.src=url
+    })
+
+    const player1 = document.getElementById('player1')
+    const downloadLink = document.getElementById('download-player1')
+    const startPlayer1 = document.getElementById('start-player1')
+    const stopPlayer1 = document.getElementById('stop-player1')
+
+    let shouldStop = false 
+    let stopped = false 
+
+    startPlayer1.addEventListener('click', () => {
+      navigator.mediaDevices.getUserMedia({ audio:true, video: false}).then(handleSuccess)
+    })
+
+    stopPlayer1.addEventListener('click', () => {
+      shouldStop = true
+    })
+
+    const handleSuccess = stream => {
+      // Web Audio API 可以连接到一些特殊 node 上
+      // 例如 ScriptProcessorNode
+      // const context = new AudioContext()
+      // const source = context.createMediaStreamSource(stream)
+      // const processor = context.createScriptProcessor(1024, 1, 1)
+
+      // source.connect(processor)
+      // processor.connect(context.destination)
+
+      // processor.onaudioprocess = e => {
+      //   // handle audio data
+      //   console.log(e.inputBuffer)
+      // }
+
+      const options = {mimeType: 'audio/webm'}
+      const recordedChunks = []
+      const mediaRecorder = new MediaRecorder(stream, options)
+console.log(mediaRecorder)
+      mediaRecorder.addEventListener('dataavailable', e => {
+        if(e.data.size > 0) {
+          console.log(e.data)
+          recordedChunks.push(e.data)
+        }
+
+        if(shouldStop === true && stopped === false) {
+          mediaRecorder.stop()
+          stopped = true
+        }
+      })
+
+      mediaRecorder.addEventListener('stop', () => {
+        downloadLink.href = URL.createObjectURL(new Blob(recordedChunks))
+        downloadLink.download = 'audioweb.wav'
+      })
+
+      mediaRecorder.start()
+
+      // if(window.URL) {
+      //   player1.srcObject = stream 
+      // } else {
+      //   player1.src = stream
+      // }
+    }
+
+    // choose a particular microphone
+
+    // navigator.mediaDevices.enumerateDevices().then((devices) => {
+    //   devices = devices.filter((d) => d.kind === 'audioinput');
+    // });
+    // navigator.mediaDevices.getUserMedia({
+    //   audio: {
+    //     deviceId: devices[0].deviceId
+    //   }
+    // });
+  </script>
+</body>
+</html>
+<p>&#x1F354</p>
