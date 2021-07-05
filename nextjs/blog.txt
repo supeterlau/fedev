@@ -1,0 +1,425 @@
+Refs:
+- https://nextjs.org/learn/basics/create-nextjs-app/setup
+- https://dev.to/telmo/build-a-markdown-blog-with-nextjs-4521
+- https://css-tricks.com/building-a-blog-with-next-js/
+
+===
+
+https://nextjs.org/learn/basics/create-nextjs-app/setup
+
+- write post in markdown
+
+
+The Next.js development server has the Hot Reloading feature
+
+2. Navigate
+
+Pages are associated with a route based on their file name
+
+pages/index.js -> / 
+pages/posts/first-post.js -> /posts/first-post 
+
+mkdir pages/posts
+
+add a link to the newly added page
+
+In Next.js, you use the <Link> React Component that wraps the <a> tag 可以实现 client-side navigation
+
+import Link from 'next/link'
+
+Client-side navigation means that the page transition happens using JavaScript, which is faster than the default navigation done by the browser.
+
+the browser does not load the full page and client-side navigation is working
+
+如果用 <a href=""></a> 而不是 Link。 浏览器会刷新页面
+
+代码切分，每个页面只载入它需要的部分
+Next.js does code splitting automatically, so each page only loads what’s necessary for that page.
+
+首页加载时，其他页面代码未初始化（not served initially.）。确保首页能快速加载。
+
+生产环境，Link组件出现在视野中 viewport 时，会预加载关联的页面，点击页面时会立即载入。
+
+关联外部链接继续用 a 就可以了。
+
+3. Assets, Metadata, and CSS
+
+Next.js 支持 css sass。
+
+- 渲染静态资源
+
+top-level public 文件夹
+
+The public directory is also useful for robots.txt, Google Site Verification, and any other static assets
+
+- 修改元数据
+<Head> is a React Component that is built into Next.js. It allows you to modify the <head> of a page
+
+- CSS 
+
+using a library called styled-jsx
+can also use other popular CSS-in-JS libraries such as styled-components or emotion
+
+Next.js 允许使用 .css 和 .scss 文件，支持 CSS Modules 
+
+CSS Modules, which lets you import CSS files in a React component.
+
+To use CSS Modules, the CSS file name must end with .module.css.
+
+CSS Modules automatically generates unique class names. As long as you use CSS Modules, you don’t have to worry about class name collisions.
+
+代码切分对 CSS 也有效果 ensures the minimal amount of CSS is loaded for each page。
+
+build 时，CSS Modules 从 JavaScript Bundles 中提取出来生成 .css 文件，被 next.js 自动载入。
+
+CSS Modules are useful for component-level styles 组件级别样式
+
+设置全局样式: 
+
+在 pages 中创建 _app.js
+
+export default function App({ Component, pageProps}) {
+  return <Component {...pageProps} />
+}
+
+App 组件是 top-level 组件，多个页面共用。可以用于页面跳转间保持状态
+
+* 需要重启 Development Server 
+
+添加全局 CSS 
+
+通过导入 _app.js 添加全局 CSS。不能从别的地方导入 CSS 
+
+You can place the global CSS file anywhere and use any name
+
+top-level styles directory  存放 全局样式
+
+Polishing Layout 优化布局
+
+Profile Picture
+
+样式 tips
+
+- Using classnames library to toggle classes
+
+- 定制 PostCSS 
+
+Out of the box 支持 PostCSS 
+
+create a top-level file called postcss.config.js
+
+https://nextjs.org/docs/advanced-features/customizing-postcss-config#default-behavior
+
+以 tailwindcss 为例
+
+yarn add tailwindcss postcss-preset-env postcss-flexbugs-fixes
+
+recommend removing unused CSS by specifying the purge option on tailwind.config.js:
+
+- 使用 Sass (yarn add sass)
+
+component-level Sass via CSS Modules and the .module.scss or .module.sass extension
+
+4. 预渲染和数据获取 Pre-rendering and Data Fetching
+
+fetch external blog data into our app
+
+store the blog content in the file system 也可以是 database 或 Headless CMS 
+
+- Pre-rendering 
+
+Next.js 预先为每个页面生成 HTML，而不是在客户端完成。获得更好性能和 SEO。
+
+每个 HTML 包含必需的 JavaScript。当页面载入时，代码执行使得页面可交互（这一过程叫 hydration）
+
+Pre-rendering
+
+初始载入，显示 HTML
+
+Hydration 初始化组件，使 App 可交互
+
+No Pre-rendering
+
+初始载入，无内容
+
+Hydration 初始化组件，使 App 可交互
+
+- 两种 Pre-rendering 形式
+
+Static Generation and Server-side Rendering
+
+区别在于何时生成 HTML 
+
+静态生成: 在 build 时产生 HTML。每个请求复用预渲染 HTML (next build)
+
+服务端渲染: 为每个请求生成 HTML 
+
+* 开发模式都是服务端生成的（使用 静态生成的也是）
+
+Next.js 允许为每个请求使用不同的预渲染策略。
+
+Static Generation:
+  页面可以一次构建，通过 CDN 托管
+  宣传页，博客，电商产品页，帮助和文档
+  能否在用户请求前预渲染页面，如果可以，就用 Static Generation 
+
+Server-Side Rendering:
+  无法提前渲染，经常变化的页面
+
+- Static Generation
+
+Static Generation can be done with and without data
+
+without data
+
+不依赖外部数据的页面，在生产环境会静态生成。
+
+with data 
+必须要部分外部数据 file system, external API, database 
+
+  using getStaticProps
+  异步函数，获取数据并作为 props 传入 page 
+
+  用 gray-matter 来获取 markdown metadata section 
+
+  重要事项:
+  1. 可以发送api请求或查询数据库
+  因为 getStaticProps 运行在 server side 不会被引入到浏览器中
+  2. 开发环境 npm run dev / yarn dev (每次请求中都会运行 getStaticProps)
+  生产环境 只在 build time 运行 getStaticProps (无法使用 query parameters 或 HTTP headers)
+  3. 只能从 page exported
+  One of the reasons for this restriction is that React needs to have all the required data before the page is rendered.
+
+  如果需要在请求时获取数据。可以考虑 Server-side Rendering 或 skipping pre-rendering.
+
+- Request Time 获取数据
+
+Server-side Rendering 
+
+需要实现 getServerSideProps
+
+export async function getServerSideProps(context) {
+  return {
+    props: {
+
+    }
+  }
+}
+
+这个函数在请求时调用，参数 context 包含请求特殊的参数
+
+Time to first byte (TTFB) 会比 getStaticProps 长。因为服务器需要计算每个请求结果，结果无法在 CDN 缓存（需要经过一定配置）
+
+Client-side Rendering 
+
+  1. 静态生成不依赖数据的部分
+  2. 载入页面后，通过客户端 JS 获取额外数据
+
+适用于 dashboard 页面。private user-specific SEO-irrelevant 不需要 pre-rendered 
+
+SWR 
+
+Next.js 团队开发了 React hook (SWR) 来获取数据。能处理客户端获取数据中的 缓存 revalidation focus-tracking refetching-on-interval
+
+5. Dynamic Routes 动态路由
+
+/posts/<id> /posts/ssg-ssr 
+
+创建 page  pages/posts/[id].js 
+
+[] 表示动态页面
+
+render post page pages/posts/[id].js 
+
+实现 getStaticPaths 返回 id 可能值
+
+实现 getStaticProps({params}) 根据 id 返回需要内容
+  params 中有 id 
+  params.id
+
+displayed the blog markdown content.
+
+use the remark library
+
+yarn add remark remark-html
+
+- 优化 Post Page 
+Polishing the Post Page
+  增加 title 
+
+  格式化日期 npm install date-fns
+
+- 优化 post index 
+
+  add links to each post page.
+
+- tips 
+  数据源可以是 api  数据库
+  Fallback
+    false -> 404 页面
+    true 
+      未生成页面不产生 404，而进入 fallback 版本的 page 
+  catch-all routes 
+    pages/posts/[...id].js
+    id 是数组 ['a', 'b', 'c']
+    params.id = ['a','b','c']
+
+  更复杂的 router 
+    https://nextjs.org/docs/routing/dynamic-routes
+
+  404 Page 
+    pages/404.js
+
+
+6. API Routes
+
+create an API endpoint inside a Next.js app
+
+在 pages/api 中创建函数
+
+export default (req, res) => {
+
+}
+
+req is an instance of http.IncomingMessage, plus some pre-built middlewares you can see here.
+
+res is an instance of http.ServerResponse, plus some helper functions you can see here.
+
+tips:
+
+不要用 getStaticProps/getStaticPaths fetch API Route (因为它们运行在服务端)
+
+yarn run build -> .next 
+&& yarn run start -> 服务端渲染
+
+Extra:
+
+7. use CSS-In-JS(emotion); import tailwindcss and bulma css
+
+https://tailwindcss.com/docs/controlling-file-size/
+https://purgecss.com/
+https://nystudio107.com/blog/using-tailwind-css-with-gatsby-react-emotion-styled-components
+https://dev.to/lpbayliss/how-and-why-i-use-emotion-with-tailwind-4elj
+https://dev.to/notrab/get-up-and-running-with-tailwind-css-and-next-js-3a73
+
+https://dev.to/lpbayliss/how-and-why-i-use-emotion-with-tailwind-4elj (outdate)
+
+https://github.com/ben-rogerson/twin.macro/blob/HEAD/docs/emotion/next.md
+
+Next + Emotion + Tailwind Twin starter 
+
+yarn add twin.macro @emotion/core @emotion/styled @emotion/babel-preset-css-prop
+
+> Use twin.macro instead, tailwind.macro is outdated.
+
+github.com/ben-rogerson/twin.macro
+
+结合 TS 
+
+https://github.com/ben-rogerson/twin.macro/blob/master/docs/emotion/typescript.md
+
+https://theme-ui.com/home
+
+覆盖第三方样式库
+  create-emotion
+
+
+next.js 
+mobx
+mobx-react
+bulma
+typescript 
+webpack (default)
+
+markdown 
+analysis (google baidu)
+comment
+author Portfolio
+
+po.et token
+GraphQL apollo
+MDX ?
+ThemeProvider ?
+  https://css-tricks.com/a-dark-mode-toggle-with-react-and-themeprovider/
+
+File                        Route
+----                        -----
+/pages/posts/[slug].js      /posts/1
+                            /posts/abc
+                            /posts/hello-world
+
+----                        -----
+/pages/authors/[name].js    /authors/1
+                            /authors/abc
+                            /authors/hello-world
+
+
+
+
+yarn create next-app with-typescript nextjs-mobx-ts
+
+yarn create next-app --example-path $HOME/source/next.js/examples/with-typescript nextjs-mobx-ts (useless ...)
+
+yarn add -D babel-plugin-module-resolver
+
+alias run_rsync='rsync -azP -e "ssh -i ~/.ssh/xubuntu_rsa" --exclude node_modules --exclude .git --exclude .next lxy@192.168.1.5:/home/lxy/remote/nextjs-mobx-ts  .'
+
+alias run_rsync='rsync -azP -e "ssh -i ~/.ssh/xubuntu_rsa" --exclude node_modules --exclude .git --exclude .next . lxy@192.168.1.5:/home/lxy/remote/nextjs-mobx-ts'
+
+fswatch -0 . -e node_modules -e yarn.lock -e .git | while read -d "" event;
+do
+  echo ${event}
+  run_rsync
+done
+
+fswatch : handle delete/rename
+
+## REMOTE - /home/lxy/remote/nextjs-mobx-ts
+
+HOST='0.0.0.0' yarn dev
+
+http://192.168.1.5:3000
+
+2020
+
+https://timber.io/blog/building-a-blog-with-next-js/
+
+https://strapi.io/blog/build-a-blog-with-next-react-js-strapi-and-apollo
+  Next.js icon search
+
+https://css-tricks.com/building-a-blog-with-next-js/
+
+https://dev.to/telmo/build-a-markdown-blog-with-nextjs-4521
+
+https://itnext.io/building-a-static-blog-site-with-markdown-and-next-js-702c515389b3
+
+https://www.storyblok.com/tp/next-js-react-guide
+
+https://steveholgado.com/nginx-for-nextjs
+
+https://www.codementor.io/@dukemai/how-and-why-i-built-blogs-with-nextjs-and-mdx-12eospluym
+
+https://paulintrognon.fr/blog/post/typescript-prettier-eslint-next-js
+
+https://whoisryosuke.com/blog/2020/using-mdx-with-nextjs/
+
+https://dev.to/margaretkrutikova/how-to-mobx-state-tree-react-typescript-3d5j
+https://dev.to/mgranados/how-to-build-a-simple-login-with-nextjs-and-react-hooks-255
+https://dev.to/jolvera/user-authentication-with-nextjs-4023
+
+https://netterminalmachine.com/blog/2020/bootstrapping-a-next-js-apollo-frontend
+
+2019
+https://christianalfoni.com/articles/building-a-developer-blog
+https://medium.com/@selvaganesh93/setup-next-js-with-typescript-integration-dece94e43cf5
+
+https://dev.to/creativesuraj/personal-blog-built-using-nextjs-and-typescript-50gk
+
+https://dev.to/saltyshiomix/introducing-an-alternative-to-next-js-12ph
+
+https://dev.to/vguleaev/nextjs-tutorial-nextjs-ssr-bulma-css-modules-github-api-vercel-48cn
+
+https://nextjs.org/docs/deployment
+https://nextjs.org/docs/advanced-features/static-html-export
+https://nextjs.org/docs/advanced-features/automatic-static-optimization
+https://nextjs.org/docs/basic-features/pages#server-side-rendering
