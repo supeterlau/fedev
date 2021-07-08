@@ -1,0 +1,40 @@
+https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html
+
+npm install -g typescript
+npm install -g ts-node
+
+yarn global add typescript
+yarn global add ts-node
+
+npx tsc file.tx 
+
+ts-node
+
+    # Execute a script as `node` + `tsc`. 
+    ts-node script.ts
+    
+    # Starts a TypeScript REPL. 
+    ts-node
+    
+    # Execute code with TypeScript. 
+    ts-node -e 'console.log("Hello, world!")'
+    
+    # Execute, and print, code with TypeScript. 
+    ts-node -p -e '"Hello, world!"'
+    
+    # Pipe scripts to execute with TypeScript. 
+    echo 'console.log("Hello, world!")' | ts-node
+    
+    # Equivalent to ts-node --script-mode 
+    ts-node-script scripts.ts
+    
+    # Equivalent to ts-node --transpile-only 
+    ts-node-transpile-only scripts.ts
+
+Docs:
+
+https://www.typescriptlang.org/docs/handbook/2/objects.html
+
+https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#type-aliases
+
+https://blog.logrocket.com/types-vs-interfaces-in-typescript/
