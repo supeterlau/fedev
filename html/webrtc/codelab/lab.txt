@@ -1,0 +1,148 @@
+1. intro
+
+WebRTC is an open source project to enable realtime communication of audio, video and data in Web and native apps.
+
+What is signaling?
+WebRTC uses RTCPeerConnection to communicate streaming data between browsers, but also needs a mechanism to coordinate communication and to send control messages, a process known as signaling. Signaling methods and protocols are not specified by WebRTC. In this codelab you will use Socket.IO for messaging. Alternatives (https://github.com/muaz-khan/WebRTC-Experiment/blob/master/Signaling.md)
+
+What are STUN and TURN?
+WebRTC is designed to work peer-to-peer, so users can connect by the most direct route possible. However, WebRTC is built to cope with real-world networking: client applications need to traverse NAT gateways and firewalls, and peer to peer networking needs fallbacks in case direct connection fails. As part of this process, the WebRTC APIs use STUN servers to get the IP address of your computer, and TURN servers to function as relay servers in case peer-to-peer communication fails. (WebRTC in the real world explains in more detail.)
+http://www.html5rocks.com/en/tutorials/webrtc/infrastructure/
+
+Is WebRTC secure?
+Encryption is mandatory for all WebRTC components, and its JavaScript APIs can only be used from secure origins (HTTPS or localhost). Signaling mechanisms aren't defined by WebRTC standards, so it's up to you make sure to use secure protocols.
+
+  Communication
+
+  Signaling mechanisms
+
+2. overview 
+
+Get video from webcam
+Stream video with RTCPeerConnection
+Stream data with RTCDataChannel
+Set up a signaling service to exchange messages
+Combine peer connection and signaling
+Take a photo and share it via a data channel
+
+4. Stream video from webcam
+
+getUserMedia() call, the browser requests permission from the user to access their camera
+
+成功授权并返回 MediaStream 时，修改 srcObject 显示 video 
+
+constraints 配置 media
+  video: true 默认 disable audio
+
+video: {
+  width: {
+    min: 1280
+  },
+  height: {
+    min: 720
+  }
+}
+
+more config: https://w3c.github.io/mediacapture-main/getusermedia.html#media-track-constraints
+
+To view the console in Chrome, press Ctrl-Shift-J, or Command-Option-J if you're on a Mac
+
+查看输出
+
+  localStream.getVideoTracks()
+
+  localStream.getVideoTracks()[0].stop()
+
+  获取原始 video 尺寸 (JavaScript) ?
+
+  add CSS filters
+
+  add SVG filters
+
+5. Stream video with RTCPeerConnection
+
+WebRTC shim, adapter.js 消除浏览器差异性
+
+用 RTCPeerConnection API stream video 
+
+控制 media capture 和 streaming
+
+RTCPeerConnection making WebRTC calls to stream video and audio, and exchange data.
+
+adapter.js 
+  https://github.com/webrtc/adapter
+
+6. 用 RTCDataChannel 交换数据
+
+7. Set up a signaling service to exchange messages
+
+用 socket.io 作为 signaling service 交换连接信息
+
+WebRTC clients (peers) need to exchange metadata:
+  
+  Candidate (network) information
+
+  Offer and answer messages providing information about media, such as resolution and codecs.
+
+NodeJS server 两个功能
+
+  relay message
+socket.on('message', function (message) {
+  log('Got message: ', message);
+  socket.broadcast.emit('message', message);
+});
+  manage WebRTC video chat room
+if (numClients === 0) {
+  socket.join(room);
+  socket.emit('created', room, socket.id);
+} else if (numClients === 1) {
+  socket.join(room);
+  socket.emit('joined', room, socket.id);
+  io.sockets.in(room).emit('ready');
+} else { // max two clients
+  socket.emit('full', room);
+}
+
+main_04
+
+https://socket.io/docs/v4/server-api/
+
+https://socket.io/docs/v4/client-installation/
+
+https://www.npmjs.com/package/node-static
+
+8. Combine peer connection and signaling
+
+步骤
+  https://developer.mozilla.org/en-US/docs/Web/Guide/API/WebRTC/Peer-to-peer_communications_with_WebRTC
+
+API
+  https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API
+  
+STUN serve
+
+https://bloggeek.me/google-free-turn-server/
+
+https://webrtc.github.io/samples/src/content/peerconnection/trickle-ice/
+
+https://gist.github.com/sagivo/3a4b2f2c7ac6e1b5267c2f1f59ac6c6b
+
+9. Take a photo and share it via a data channel
+
+
+
+
+https://webrtchacks.com/how-to-figure-out-webrtc-camera-resolutions/
+
+the world's best video chat app https://github.com/webrtc/apprtc
+
+
+https://www.studytonight.com/dbms/database-normalization.php
+https://www.tutorialspoint.com/Relational-Database-Management-System-RDMS
+
+Go Example:
+https://golangcode.com/download-a-file-from-a-url/
+https://golangdocs.com/golang-download-files
+https://golangcode.com/basic-web-scraper/
+
+https://reposhub.com/go/network-proxy/pry0cc-soxy.html
