@@ -1,0 +1,19 @@
+https://www.snowpack.dev/
+https://www.snowpack.dev/guides
+https://www.snowpack.dev/reference/configuration
+
+Create Snowpack App (CSA)
+https://github.com/snowpackjs/snowpack/tree/main/create-snowpack-app/cli
+
+# start 
+
+https://www.snowpack.dev/tutorials/getting-started
+
+yarn init -fy
+yarn add -D snowpack
+
+Run the Snowpack command-line tool locally
+  npx snowpack 
+  yarn snowpack
+
+snowpack init
