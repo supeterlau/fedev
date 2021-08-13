@@ -1,9 +1,6 @@
-<script>
-</script>
+<script></script>
 
 <!-- HTML tags -->
-<main>
-</main>
+<main></main>
 
-<style>
-</style>
+<style></style>
