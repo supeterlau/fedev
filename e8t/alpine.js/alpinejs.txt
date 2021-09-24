@@ -1,6 +1,9 @@
 https://github.com/alpinejs/alpine
 
 npm i alpinejs
+yarn add alpinejs
+
+import 'alpinejs'
 
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 
@@ -72,3 +75,168 @@ https://www.jsdelivr.com/
 
 https://romefrontend.dev/ Rome is a linter, compiler, bundler, and more for JavaScript, TypeScript, HTML, Markdown, and CSS.
 
+alpine.js
+tailwindcss
+
+## 1
+
+https://dev.to/nugetchar/starting-with-alpinejs-hjn Starting with AlpineJS - DEV Community 👩‍💻👨‍💻
+
+yarn add alpinejs
+
+yarn add -D gulp gulp-bro browser-sync
+
+(add some polyfills for IE11.)
+(You could use grunt, webpack, or anything else)
+
+(our app.js file is a node module and cannot be used in front-end scripts and HTML pages, can it?
+Well fortunately for us, there is a node package called gulp-bro (gulp-browserify is now blacklisted by NPM). This package allows us to use Browserify, a powerfull tool for using node modules in our front-end apps.)
+
+(BrowserSync allows you to live-refresh your browser when you modify your code)
+
+https://www.browsersync.io/docs/options
+
+set our dev environment. gulpfile.js
+
+## 2
+
+https://lukasznojek.com/blog/2020/02/add-behavior-to-html-using-alpine-js-a-todo-app
+
+x-data inits an Alpine component
+
+x-data="{ open: false }" 初始化为 false
+
+@click (x-on:click)
+
+x-show="open" 绑定为 open
+
+@click.away="open = false (away 表示 outside click)
+
+:class="{ 'active': tab === 'foo' }"
+
+:class (bind:class)
+
+x-text sets the inner text, whereas x-html sets the inner HTML.
+
+template x-for="item in items" :key="item"
+
+x-model="name" allows storing the value from this field in a special Alpine’s variable. In fact, it is a two-way binding.
+
+@keyup x-on:keyup
+
+x-ref $refs.ok.disabled=name.length===0
+
+  simpler than using document.getElementById() or another way to refer to the elemen
+
+x-init allows executing code after the component is initialized
+
+## 3
+
+https://blog.codecourse.com/build-an-rss-reader-with-alpine-js/
+
+## 4
+
+https://css-tricks.com/alpine-js-the-javascript-framework-thats-used-like-jquery-written-like-vue-and-inspired-by-tailwindcss/
+
+
+
+tailwind-gulp
+
+https://www.browsersync.io/docs/gulp
+
+https://thomaskane.io/build-a-chrome-extension-with-alpinejs-and-tailwindcss Build a Chrome Extension with Alpinejs & Tailwindcss — Thomas Kane
+
+https://ericbusch.net/install-jigsaw-tailwindcss-alpinejs Install Jigsaw + TailwindCSS + AlpineJS | Eric Busch
+  https://jigsaw.tighten.co/ Jigsaw – Static Sites for Laravel Developers
+
+https://css-tricks.com/eleventy-starter-with-tailwind-css-alpine-js/ An Eleventy Starter with Tailwind CSS and Alpine.js | CSS-Tricks
+
+https://dev.to/boywithsilverwings/tailwind-css-svelte-on-snowpack-svelte-preprocess-3841
+
+https://zellwk.com/blog/first-look-at-snowpack/ First look at Snowpack | Zell Liew
+https://zellwk.com/blog/eleventy-snowpack-sass-postcss/ Snowpack + Eleventy + Sass + PostCSS | Zell Liew
+
+
+https://solomonvictorino.com/reloading-unpacked-chrome-extensions-on-save-from-anywhere/ How to reload your unpacked Chrome extensions on-save from anywhere! - Solomon Victorino
+
+https://github.com/pikapkg/snowpack/tree/master/packages/%40snowpack/app-template-blank-typescript
+
+
+https://codewithhugo.com/tags/alpinejs/
+
+https://github.com/swlkr/ridgecss
+
+
+project-name
+  project-name
+  project-name-testing
+
+npm Dev:
+
+npm init -fy / yarn init -fy
+
+index.js
+
+module.exports = {}
+
+Test:
+npm init -y
+npm install ../project-name
+  可以测试 hooks pre-install post-install (https://docs.npmjs.com/misc/scripts)
+
+或者
+
+If you don't care about the best way to develop NPM projects locally is by using npm link
+
+create a symbolic link between your project and the dependency
+
+在 project-name 中
+
+npm link
+
+在 project-name-testing 中
+
+npm link project-name
+
+https://dev.to/therealdanvega/creating-your-first-npm-package-2ehf
+
+
+vue3
+Vue 3 + Vite + TypeScript
++ snowpack + TypeScript
+
+https://v3.vuejs.org/
+
+https://github.com/vuejs/vue-next
+
+https://github.com/vitejs/vite
+
+$ yarn create vite-app <project-name>
+$ cd <project-name>
+$ yarn
+$ yarn dev
+
+https://github.com/vuejs/vue-cli
+
+https://ant.design/
+https://github.com/ant-design
+
+https://cli.vuejs.org/
+
+https://vuejsexamples.com/
+
+https://vuejsexamples.com/a-small-components-library-to-use-rough-js-in-vue/
+  https://github.com/rough-stuff/rough
+  https://github.com/dneustadt/vue-rough
+
+https://morioh.com/p/cc293fcf6d37 Vue 3 Tutorial from Beginners with TypeScript 2020
+
+https://vuejsdevelopers.com/2020/03/16/vue-js-tutorial/#creating-a-new-vue-3-app
+
+https://auth0.com/blog/getting-started-with-vue-3-composition-api/
+
+https://dev.to/lmillucci/building-a-vue-3-component-with-typescript-4pge
+
+https://dev.to/koehr/a-store-implementation-from-scratch-using-vue3-s-composition-api-3p16
+
+https://dev.to/lmillucci/building-a-vue-3-component-with-typescript-4pge
