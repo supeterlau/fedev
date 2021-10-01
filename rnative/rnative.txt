@@ -1,0 +1,30 @@
+- note
+
+- diary
+
+- ontheway
+
+on the way to dream
+
+keydate/ wishseed
+
+<explore,dreams,keydate,setting>
+
+- 口语学习
+
+<root>
+  App.js
+  apps/01redux/
+  src/App.js
+
+nicetry 测试项目
+
+
+# State Management
+
+- Redux
+
+# UI
+
+- react-native-paper (material)
+

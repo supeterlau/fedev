@@ -1,0 +1,10 @@
+{
+  "auth": {
+    "rndemo0cda2970": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
+  }
+}
