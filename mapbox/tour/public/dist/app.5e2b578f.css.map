@@ -1,0 +1,1 @@
+{"version":3,"sources":["../src/app.css"],"names":[],"mappings":"AAAA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA","file":"app.5e2b578f.css","sourceRoot":"..","sourcesContent":["body {\n  margin: 0;\n  padding: 0;\n}\n#map {\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  width: 100%;\n}\n"]}

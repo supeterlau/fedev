@@ -1,0 +1,19 @@
+{
+  "name": "tour",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "snowpack dev",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "snowpack": "^3.3.7"
+  },
+  "dependencies": {
+    "mapbox-gl": "^2.2.0"
+  }
+}
