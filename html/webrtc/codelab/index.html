@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WebRTC</title>
+    <link rel="stylesheet" href="./css/main.css" />
+  </head>
+  <body>
+    <h3>WebRTC</h3>
+    <video id="localVideo" autoplay playsinline></video>
+    <video id="remoteVideo" autoplay playsinline></video>
+
+    <div id="buttons">
+      <button id="startBtn">Start</button>
+      <button id="callBtn">Call</button>
+      <button id="hangupBtn">Hang Up</button>
+    </div>
+
+    <textarea
+      id="dataChannelSend"
+      disabled
+      placeholder="Press Start, enter text, Press send"
+    ></textarea>
+    <textarea id="dataChannelReceive" disabled></textarea>
+
+    <div id="buttons">
+      <button id="textBtn">Start</button>
+      <button id="sendBtn">Send</button>
+      <button id="stopBtn">Stop</button>
+    </div>
+
+    <script src="node_modules/socket.io/client-dist/socket.io.min.js"></script>
+    <script src="./js/lib/adapter.js"></script>
+    <script src="./js/main.js"></script>
+  </body>
+</html>
+
