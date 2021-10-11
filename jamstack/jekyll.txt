@@ -1,0 +1,46 @@
+https://jekyllrb.com/docs/themes/
+https://github.com/topics/jekyll-theme?o=desc&s=stars
+
+https://www.siteleaf.com/blog/making-your-first-jekyll-theme-part-1/
+https://www.siteleaf.com/blog/making-your-first-jekyll-theme-part-2/
+  jekyll new-theme my-theme
+
+  jekyll new-theme mini
+  配置信息 .gemspec
+  样式 https://flaviocopes.com/
+  
+chalk
+  http://chalk.nielsenramon.com/
+
+码志
+  https://github.com/mzlogin/mzlogin.github.io
+
+kiko-now
+  https://github.com/AWEEKJ/kiko-now
+  https://github.com/Terminus2049/Terminus2049.github.io
+
+Tale
+  https://github.com/chesterhow/tale
+
+Reverie
+  https://github.com/amitmerchant1990/reverie
+
+Jekyll Klisé
+  https://klise.vercel.app/
+
+Hydejack
+  https://github.com/hydecorp/hydejack
+
+CV
+  https://github.com/sharu725/online-cv
+
+https://www.samanthaming.com/blog/building-my-new-site-with-tailwind/
+https://www.naxeem.com/articles/creating-a-blog-theme-with-tailwind-css/
+
+https://www.youtube.com/watch?v=vu9gPcPs3mY How To Build A Blog With Next.js And Tailwind: Part 1 - Next.js
+
+https://blog.tailwindcss.com/building-the-tailwind-blog
+
+fauna
+  superpeterlau@outlook.com
+  NTA5MGU1ZjNkY2Z
