@@ -1,0 +1,101 @@
+cobalt init myBlog
+
+cobalt serve
+cobalt serve --drafts
+  --host
+  --port
+
+cobalt new "Cats Around the World" 当前文件夹创建 cats-around-the-world.md
+cobalt new "Cats Around the World" --file posts 文件夹 posts 中创建 cats-around-the-world.md
+cobalt new "Cats Around the World" --file posts/cats.md 文件夹 posts 中创建 cats.md
+
+cobalt publish posts/cats-around-the-world.md
+cobalt publish drafts/dogs-around-the-world.md
+  添加 published_date 为当天
+
+To mark a post as draft you can either set is_draft: true in your frontmatter, or add it to the drafts folder.
+
+# Theme
+
+https://cobalt-org.github.io/docs/layouts/
+
+_layouts
+|  |- default.liquid
+
+在 formatter 中选择使用的 layout
+
+{% include "head.liquid" %} 对应 _includes 文件夹
+
+_data 在 {{ site.data }} 中获取
+
+_sass 可以导入的 .scss 的文件
+
+_site 默认输出位置
+
+_defaults 命令 cobalt new 创建文件时的模板
+
+|- _defaults
+|  |- pages.md
+|  |- posts.md
+
+cobalt new pages
+
+posts 文章位置
+
+_drafts Pages in this directory will be treated as draft blog posts. Can be modified in _cobalt.yml.
+
+static
+  css scss
+  js
+  images
+
+index.liquid
+
+base.liquid
+index.liquid
+
+home.liquid
+tags.liquid
+archive.liquid
+about.liquid
+post.liquid
+ins.liquid
+
+_includes
+  head
+  header
+  footer
+
+https://www.link-assistant.com/news/html-tags-for-seo.html
+
+https://ahrefs.com/blog/seo-meta-tags/
+https://ahrefs.com/blog/meta-keywords/
+
+https://www.seoptimer.com/meta-tag-generator
+
+https://websitesetup.org/favicon-generator/
+
+https://www.shopify.com/partners/shopify-cheat-sheet
+
+https://programmer.group/understanding-and-implementing-the-hot-update-principle-of-web-pack.html
+  cobalt 无法 hot reload browser
+
+https://stackoverflow.com/questions/5588658/auto-reload-browser-when-i-save-changes-to-html-file-in-chrome
+  https://browsersync.io/
+  https://browsersync.io/#install
+
+- 访问分析
+百度统计
+谷歌统计
+https://matomo.org/
+Hotjar
+
+
+matomo
+
+https://matomo.org/docs/requirements/
+https://matomo.org/docs/installation/
+https://github.com/matomo-org/matomo
+https://matomo.org/pricing/
+
+
