@@ -1,0 +1,21 @@
+https://vitejs.dev/guide/
+
+https://github.com/vitejs/vite/tree/main/packages/create-vite
+
+yarn create vite my-vue-app --template vue
+
+yarn create vite app --template react
+
+## hookstate
+
+https://hookstate.js.org/docs/getting-started
+
+- https://levelup.gitconnected.com/hookstate-the-simplest-state-management-tool-b02f7d3b01a4
+
+yarn add @hookstate/core @hookstate/persistence @hookstate/devtools
+
+https://pokeapi.co/docs/v2
+
+- https://blog.logrocket.com/simplify-react-state-management-with-hookstate/
+
+yarn add @hookstate/core
