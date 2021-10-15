@@ -1,0 +1,80 @@
+https://dat.foundation/
+
+https://docs.dat.foundation/
+
+https://awesome.datproject.org/
+
+http://chat.datproject.org/
+
+as library:
+  NodeJS 
+    https://github.com/datproject/sdk
+    npm install --save hyper-sdk
+  Web 
+    <script src="https://bundle.run/dat-sdk@1"></script>
+
+as cli:
+  npm install -g dat
+  yarn global add dat
+
+- Projects  
+
+https://github.com/hypercore-protocol/hypercore Hypercore is a secure, distributed append-only log.
+
+https://github.com/mafintosh/hyperirc Read IRC through hypercore.
+
+https://hashbase.io/ Hosting for the peer-to-peer Web
+
+- CLI
+
+https://docs.dat.foundation/docs/cli-intro
+
+dat share 
+  .datignore file
+
+dat clone 
+  .datdownload file
+  via dat.json key
+
+dat sync / dat pull
+
+dat create 
+  create folder and dat.json
+
+dat keys
+
+dat {link} {dir} = dat clone 
+
+dat {dir} = dat sync
+
+网络问题 
+
+  https://docs.dat.foundation/docs/cli-intro#networking-issues
+
+- Sharing files over HTTP
+
+https://docs.dat.foundation/docs/cli-more
+
+- SDK
+
+a high-level module
+  https://github.com/datproject/dat-node 
+
+a lower-level API
+  NodeJS 
+    https://github.com/datproject/sdk
+    npm install --save hyper-sdk
+  Web 
+    <script src="https://bundle.run/dat-sdk@1"></script>
+
+- Run dat on server 
+
+https://docs.dat.foundation/docs/dat-server
+
+- 检查
+
+dat doctor
+
+- FAQ
+
+https://docs.dat.foundation/docs/faq
