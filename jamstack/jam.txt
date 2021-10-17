@@ -1,0 +1,62 @@
+# stack
+
+jekyll
+cobalt
+hugo
+hexo
+wordpress
+
+# 组件
+
+博客模板 kiko-now https://github.com/AWEEKJ/kiko-now
+字体方案 http://cosx.org
+分享组件 Share.js https://github.com/overtrue/share.js
+GitHub Corners https://tholman.com/github-corners/
+pangu.js https://github.com/vinta/pangu.js/
+github-cards https://github.com/lepture/github-cards
+
+免费可靠的图床 
+  sm.ms
+  Git Repo
+    coding.net
+Chrome 扩展 reader-mode
+
+## Comment
+
+disqus
+
+github issue
+
+baas
+  mongodb alta
+    comment -> api function -> 
+      mongodb alta
+      serverless sqlite
+        https://www.sqlite.org/serverless.html
+        https://elvisciotti.medium.com/how-to-create-a-serverless-microservice-node-js-sqlite-44888abb3847
+        https://vercel.com/docs/concepts/solutions/databases
+      fauna https://fauna.com/pricing
+
+compare:
+WordPress
+DatoCMS
+Sanity
+TakeShape
+Prismic
+Contentful
+Strapi
+Agility CMS
+Cosmic
+ButterCMS
+Storyblok
+GraphCMS
+Kontent
+
+comment system
+  https://haacked.com/archive/2018/06/24/comments-for-jekyll-blogs/
+    submit comment
+    api function create comment file and pull request to repo
+    trigger site build and deploy
+
+## SEO
+
