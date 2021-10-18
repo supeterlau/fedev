@@ -1,0 +1,16 @@
+/*
+ * global.css
+ * Copyright (C) 2021 Peter Lau
+ *
+ * Distributed under terms of the MIT license.
+ */
+
+body {
+  background: white;
+  color: black;
+  font-family: sans-serif;
+}
+
+.font {
+  font-family: monospace;
+}
