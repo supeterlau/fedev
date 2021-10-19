@@ -1,0 +1,205 @@
+
+### GET STARTED
+
+1. set up
+
+https://code.visualstudio.com/api/get-started/your-first-extension
+
+安装
+npm install -g yo generator-code
+yarn global add yo  generator-code
+
+新建项目
+npx yo code
+
+What's the name of your extension? Demo
+
+What's the identifier of your extension? demo
+
+发布前需要填入 publisher 到 package.json
+
+what is New Extension Pack?
+  https://code.visualstudio.com/blogs/2017/03/07/extension-pack-roundup
+  https://code.visualstudio.com/api/references/extension-manifest#extension-packs
+  You can bundle separate extensions together in Extension Packs. An Extension Pack is a set of extensions that will be installed together.
+
+New Extension (TypeScript)
+
+piratemaker.demo
+
+press F5 compile and run the extension in a new Extension Development Host window.
+
+F5 打开 Extension Development Host window 窗口
+
+开发流程
+
+  修改代码
+
+  在新窗口中执行 Reload Window (macOS: CMD+R)
+
+  执行命令
+
+2. anatomy
+
+https://code.visualstudio.com/api/get-started/extension-anatomy
+
+示例代码中
+
+Registers the onCommand Activation Event: onCommand:extension.helloWorld
+
+Uses the contributes.commands Contribution Point to make the command Hello World available in the Command Palette 并绑定 command ID
+
+Uses the commands.registerCommand VS Code API to bind a function to the registered command ID extension.helloWorld 绑定函数
+
+核心概念
+
+Activation Events: events upon which your extension becomes active.
+
+Contribution Points: static declarations that you make in the package.json Extension Manifest to extend VS Code.
+
+VS Code API: a set of JavaScript APIs that you can invoke in your extension code.
+
+项目结构
+
+.
+├── .vscode
+│   ├── launch.json     // Config for launching and debugging the extension
+│   └── tasks.json      // Config for build task that compiles TypeScript
+├── .gitignore          // Ignore build output and node_modules
+├── README.md           // Readable description of your extension's functionality
+├── src
+│   └── extension.ts    // Extension source code
+├── package.json        // Extension manifest
+├── tsconfig.json       // TypeScript configuration
+
+./vscode
+
+  launch.json 配置 VS Code 调试
+  tasks.json 定义 VS Code 任务
+
+Extension Manifest 基于 package.json
+
+VS Code specific fields (https://code.visualstudio.com/api/references/extension-manifest)
+
+  name publisher: 用 <publisher>.<name> 做为 unique ID (uniquely identify your extension)
+
+  main: 插件入口
+
+  activationEvents: events upon which your extension becomes active
+
+  contributes: static declarations that you make in the package.json Extension Manifest to extend VS Code
+
+  engines.vscode: 支持的最小 VS Code API 版本
+
+插件入口文件
+
+  extension entry file exports two functions, activate and deactivate
+
+  activate is executed when your registered Activation Event happens.
+
+  deactivate gives you a chance to clean up before your extension becomes deactivate. (if an extension needs to perform an operation when VS Code is shutting down or the extension is disabled or uninstalled, this is the method to do so.)
+
+
+
+
+Contribution Points
+
+menus
+
+"menus": {
+  "editor/title": [
+    {
+      "when": "resourceLangId == markdown",
+      "command": "markdown.showPreview",
+      "alt": "markdown.showPreviewToSide",
+      "group": "navigation"
+    }
+  ]
+}
+
+
+打包 + 发布
+
+vscode engine 
+
+https://medium.com/@aleksandrasays/developing-vs-code-extensions-b6debc865a55
+
+npm install -g vsce
+yarn global add vsce
+
+VSIX package it’s a .vsix file that contains one or more Visual Studio extensions. Once you have it you can send this package to whoever you want.
+
+cd [extension]
+
+vsce package
+
+https://medium.com/@aleksandrasays/developing-vs-code-extensions-b6debc865a55
+
+安装 vsix
+
+code --install-extension myextension.vsix
+
+https://code.visualstudio.com/docs/editor/extension-gallery
+
+Key Bindings
+
+  菜单位置
+
+  File > Preferences > Keyboard Shortcuts. (Code > Preferences > Keyboard Shortcuts on macOS)
+
+
+https://code.visualstudio.com/docs/editor/editingevolved#_rename-symbol rename 选中部分(全部替换，类似 refactor)
+
+https://www.digitalocean.com/community/tutorials/how-to-create-your-first-visual-studio-code-extension
+https://opensource.com/article/20/6/vs-code-extension
+
+
+打开编辑器立即激活插件
+https://code.visualstudio.com/api/references/activation-events#Start-up
+"activationEvents": [
+    "*"
+]
+
+VS Code 填充时间
+https://stackoverflow.com/questions/39413783/dynamic-snippet-evaluation-in-vscode
+snippet-version:
+"⌚ Date Time SNIPPET": {
+    "prefix": "datetime",
+    "body": [
+        "${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}T${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND}",
+    ]
+}
+extension-version vscode.languages.registerCompletionItemProvider
+eg. https://github.com/Microsoft/vscode/issues/578
+https://github.com/OpencvIntellisense/opencv-intellisense/blob/master/src/extension.ts
+
+https://www.chaseadams.io/posts/markdown-tab-complete-vs-code/
+"editor.tabCompletion": "onlySnippets" 需要设为 on
+
+// 需要打开 suggestion
+// "editor.quickSuggestions": true,
+// https://stackoverflow.com/questions/60221762/vscode-languages-registercompletionitemprovider-not-working-with-markdown
+
+Laguage Service:
+https://code.visualstudio.com/api/language-extensions/language-server-extension-guide
+https://github.com/microsoft/TypeScript/wiki/Using-the-Language-Service-API
+https://geek-docs.com/vscode/vscode-plugin-dev/the-custom-language-vscode-plugin-development.html 开发自定义语言
+https://geek-docs.com/vscode/vscode-plugin-dev/vscode-plug-in-architecture.html 插件架构
+https://vscode.readthedocs.io/en/latest/extensions/example-language-server/
+https://developer.aliyun.com/article/697791 vscode插件快餐教程
+
+- a todo ext for vscode
+
+1. mark as todo (insert emoji)
+2. toggle todo and done
+3. sub-task ?
+
+
+### Wait List ###
+
+vscode weibo client
+
+绘制结构图 snippet
+vscode-alfred
+vscode-mark-sensitive-information
+  miniapp appid
