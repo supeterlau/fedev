@@ -1,0 +1,21 @@
+Components:
+  
+https://www.creative-tim.com/learning-lab/tailwind-starter-kit/documentation/login
+
+Easy:
+
+https://www.section.io/engineering-education/creating-a-responsive-navigation-bar-using-tailwind-css-and-javascript/
+  菜单收起
+  
+https://www.digitalocean.com/community/tutorials/build-a-beautiful-landing-page-with-tailwind-css
+
+https://w3collective.com/login-form-tailwind-css/
+
+https://nabendu82.medium.com/create-an-animated-landing-page-with-tailwind-css-b3ee2186955f
+
+
+https://blog.prototypr.io/design-a-landing-page-using-tailwind-css-3a1a68166c47
+
+Medium:
+
+https://applerinquest.com/building-landing-page-with-tailwind-css-final/
