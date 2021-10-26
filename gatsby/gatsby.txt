@@ -1,0 +1,3 @@
+npx gatsby new demo
+
+http://macappstore.org/pkg-config/
