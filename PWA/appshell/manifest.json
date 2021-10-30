@@ -1,0 +1,26 @@
+{
+  "name": "App Shell",
+  "short_name": "AS",
+  "theme_color": "#3700b3",
+  "background_color": "#fafafa",
+  "display": "standalone",
+  "orientation": "portrait",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "iconx/tile70x70.png",
+      "size": "70x70",
+      "type": "image/png"
+    },
+    {
+      "src": "iconx/tile150x150.png",
+      "size": "150x150",
+      "type": "image/png"
+    },
+    {
+      "src": "iconx/tile310x310.png",
+      "size": "310x310",
+      "type": "image/png"
+    }
+  ]
+}
