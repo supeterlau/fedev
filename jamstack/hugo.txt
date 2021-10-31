@@ -1,0 +1,48 @@
+Install:
+
+ubuntu
+
+  snap install hugo --channel=extended
+  snap install hugo
+  切换两个版本 snap refresh hugo --channel=extended or snap refresh hugo --channel=stable
+  
+  sudo apt-get install hugo (不推荐)
+
+macOS
+
+
+hugo version 
+hugo v0.88.1
+
+hugo new site <SiteName>
+hugo server -D --bind 0.0.0.0
+
+主题
+  https://themes.gohugo.io/themes/hugo-clarity/
+  https://github.dsrkafuu.su/hugo-template-aofuji/
+
+  https://themes.gohugo.io/themes/hugo-theme-zzo/
+
+https://git-scm.com/book/en/v2/Customizing-Git-Git-Configuration
+git config --global user.name ''
+git config --global user.email ''
+git init
+git submodule add https://github.com/chipzoller/hugo-clarity themes/hugo-clarity
+cp -a themes/hugo-clarity/exampleSite/* .
+
+
+
+
+自制主题
+https://retrolog.io/blog/creating-a-hugo-theme-from-scratch/
+hugo new site example
+hugo new theme hugo-novel
+
+hugo server -D --bind 0.0.0.0 --baseURL 192.168.101.9
+
+搜索
+  https://blog.jeremylikness.com/blog/dynamic-search-in-a-static-hugo-website/
+
+the psychology of money
+NFT + 数字艺术作品
+瑞灵顿凶杀案
