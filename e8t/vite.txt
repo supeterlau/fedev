@@ -14,8 +14,30 @@ https://hookstate.js.org/docs/getting-started
 
 yarn add @hookstate/core @hookstate/persistence @hookstate/devtools
 
+Store.js 全局状态
+
+创建 store
+
+创建 CRUD 操作
+
+Hookstate allows alterations or mutation to store objects through set(), merge() functions available in the store object
+
+use the persistence plugin to save the state in localStorage
+
+yarn add @hookstate/persistence
+
+https://react.semantic-ui.com/usage
+
+yarn add semantic-ui-react semantic-ui-css
+
+import the minified CSS file in your app's entry file:
+
+index.js
+import 'semantic-ui-css/semantic.min.css'
+
 https://pokeapi.co/docs/v2
 
 - https://blog.logrocket.com/simplify-react-state-management-with-hookstate/
 
 yarn add @hookstate/core
+
