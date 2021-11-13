@@ -6,7 +6,7 @@ Easy:
 
 https://www.section.io/engineering-education/creating-a-responsive-navigation-bar-using-tailwind-css-and-javascript/
   菜单收起
-  
+
 https://www.digitalocean.com/community/tutorials/build-a-beautiful-landing-page-with-tailwind-css
 
 https://w3collective.com/login-form-tailwind-css/
@@ -19,3 +19,8 @@ https://blog.prototypr.io/design-a-landing-page-using-tailwind-css-3a1a68166c47
 Medium:
 
 https://applerinquest.com/building-landing-page-with-tailwind-css-final/
+
+twitter
+  https://codepen.io/mithicher/pen/JjdgYdy
+dev.to
+  https://github.com/Rohithgilla12/react-tailwind-dev-to/
