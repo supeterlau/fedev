@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>App</title>
+    <link rel="stylesheet" type="text/css" href="/global.css" />
+    <style></style>
+  </head>
+  <body>
+    <div
+      id="app"
+      class="flex flex-col min-h-screen font-roboto dark:bg-gray-900"
+    >
+      <header
+        class="bg-white border-b dark:bg-gray-900 dark:border-gray-700 lg:fixed lg:w-full lg:top-0 lg:left-0 lg:z-40"
+      >
+        <div
+          class="container px-4 py-5 mx-auto space-y-4 lg:space-y-0 lg:flex lg:items-center lg:justify-between lg:space-x-10"
+        >
+          <div class="flex justify-between">
+            <a href="/" class="text-gray-800 dark:text-gray-200"
+              ><div class="flex items-center">
+                <svg
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 25 27"
+                  class="h-7 w-7 -mt-2 flex-shrink-0"
+                >
+                  <path
+                    d="M22.487.658s5.03 13.072-1.822 22.171C16.476 28.39 9.84 27.26 5.484 25.68c1.513-3.391 3.441-6.067 5.784-8.03 1.176.623 3.186.792 6.03.51-2.535-.221-4.284-.654-5.246-1.3l.125.08c2.122-1.546 4.556-2.556 7.303-3.029-3.16-.285-6.026.315-8.598 1.804-.577-.742-1.157-1.748-1.74-3.018.07 1.534.339 2.734.809 3.6-2.64 1.797-4.953 4.58-6.94 8.351a7.583 7.583 0 01-.188-.088c-.802-.358-1.328-1.037-1.755-2.036C-1.9 13.366 4.645 8.273 11.123 7.989 23.046 7.465 22.487.658 22.487.658z"
+                    fill="#0ED3CF"
+                  ></path>
+                </svg>
+                <p class="text-xl ml-2">tailwind<strong>components</strong></p>
+              </div></a
+            >
+            <div class="flex items-center space-x-2 lg:hidden">
+              <button
+                class="p-1 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 focus:bg-gray-100 dark:focus:bg-gray-800 focus:outline-none"
+              >
+                <svg
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  class="w-6 h-6 text-gray-700 dark:text-gray-300"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="flex flex-col space-y-4 lg:hidden" style="display: none">
+            <div
+              class="flex flex-col space-y-3 lg:space-y-0 lg:flex-row lg:space-x-6 xl:space-x-8 lg:items-center"
+            >
+              <a href="/" class="text-primary font-semibold">Home</a>
+              <a
+                href="/components"
+                class="text-gray-500 dark:text-gray-200 hover:text-gray-800 lg:hidden"
+                >Components</a
+              >
+              <div class="relative inline-block hidden lg:block">
+                <div>
+                  <button
+                    class="text-gray-500 dark:text-gray-200 hover:text-gray-800 flex items-center space-x-1 focus:outline-none"
+                  >
+                    <span>Components</span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      class="w-5 h-5"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                        clip-rule="evenodd"
+                      ></path>
+                    </svg>
+                  </button>
+                </div>
+                <!---->
+                <div
+                  class="absolute left-0 z-20 py-1 mt-2 bg-white border border-gray-100 rounded-md shadow-xl dark:border-gray-700 lg:left-auto lg:right-0 dark:bg-gray-800"
+                  style="display: none"
+                >
+                  <div class="w-36">
+                    <a
+                      href="/components"
+                      class="block px-4 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:text-primary dark:hover:text-primary"
+                    >
+                      All Components
+                    </a>
+                    <a
+                      href="/components/alpinejs"
+                      class="block px-4 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:text-primary dark:hover:text-primary"
+                    >
+                      Alpinejs
+                    </a>
+                    <a
+                      href="/components/buttons"
+                      class="block px-4 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:text-primary dark:hover:text-primary"
+                    >
+                      Buttons
+                    </a>
+                    <a
+                      href="/components/cards"
+                      class="block px-4 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:text-primary dark:hover:text-primary"
+                    >
+                      Cards
+                    </a>
+                    <a
+                      href="/components/dropdowns"
+                      class="block px-4 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:text-primary dark:hover:text-primary"
+                    >
+                      Dropdowns
+                    </a>
+                    <a
+                      href="/components/forms"
+                      class="block px-4 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:text-primary dark:hover:text-primary"
+                    >
+                      Forms
+                    </a>
+                    <a
+                      href="/components/inputs"
+                      class="block px-4 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:text-primary dark:hover:text-primary"
+                    >
+                      Inputs
+                    </a>
+                    <a
+                      href="/components/logins"
+                      class="block px-4 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:text-primary dark:hover:text-primary"
+                    >
+                      Logins
+                    </a>
+                    <a
+                      href="/components/modals"
+                      class="block px-4 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:text-primary dark:hover:text-primary"
+                    >
+                      Modals
+                    </a>
+                    <a
+                      href="/components/navigations"
+                      class="block px-4 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:text-primary dark:hover:text-primary"
+                    >
+                      Navigations
+                    </a>
+                    <a
+                      href="/components/pages"
+                      class="block px-4 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:text-primary dark:hover:text-primary"
+                    >
+                      Pages
+                    </a>
+                    <a
+                      href="/components/selects"
+                      class="block px-4 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:text-primary dark:hover:text-primary"
+                    >
+                      Selects
+                    </a>
+                    <a
+                      href="/components/tabs"
+                      class="block px-4 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:text-primary dark:hover:text-primary"
+                    >
+                      Tabs
+                    </a>
+                    <a
+                      href="/components/tables"
+                      class="block px-4 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:text-primary dark:hover:text-primary"
+                    >
+                      Tables
+                    </a>
+                    <a
+                      href="/components/widget"
+                      class="block px-4 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:text-primary dark:hover:text-primary"
+                    >
+                      Widget
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <a
+                href="/premium"
+                class="text-gray-500 dark:text-gray-200 hover:text-gray-800"
+                >Premium</a
+              >
+              <a
+                href="/blog"
+                class="text-gray-500 dark:text-gray-200 hover:text-gray-800"
+                >Blog</a
+              >
+              <a
+                href="/cheatsheet"
+                class="text-gray-500 dark:text-gray-200 hover:text-gray-800"
+                >Cheatsheet</a
+              >
+            </div>
+            <div
+              class="flex flex-col space-y-4 lg:space-y-0 lg:flex-row lg:items-center lg:space-x-4"
+            >
+              <button
+                type="button"
+                aria-label="Color Mode"
+                class="flex justify-center p-2 text-gray-500 transition duration-150 ease-in-out bg-gray-100 border border-transparent rounded-md lg:bg-white lg:dark:bg-gray-900 dark:text-gray-200 dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-gray-700 focus:outline-none focus:bg-gray-50 dark:focus:bg-gray-700 active:bg-gray-50"
+              >
+                <!---->
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  class="w-5 h-5 transform -rotate-90"
+                >
+                  <path
+                    d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"
+                  ></path>
+                </svg>
+              </button>
+              <a
+                href="/submit-component"
+                class="flex items-center justify-center h-12 px-4 text-sm font-semibold text-center text-white rounded-md lg:h-10 bg-primary hover:bg-teal-300"
+              >
+                Submit
+                <span class="lg:hidden xl:inline">&nbsp;new component</span></a
+              >
+              <a
+                href="/login"
+                class="flex items-center justify-center h-12 px-4 mt-2 text-sm text-center text-gray-600 transition-colors duration-200 transform border rounded-lg lg:h-10 dark:text-gray-300 dark:border-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none"
+              >
+                Login
+              </a>
+            </div>
+          </div>
+          <div
+            class="hidden lg:flex lg:flex-row lg:items-center lg:justify-between lg:flex-1 lg:space-x-2"
+          >
+            <div
+              class="flex flex-col space-y-3 lg:space-y-0 lg:flex-row lg:space-x-6 xl:space-x-8 lg:items-center"
+            >
+              <a href="/" class="text-primary font-semibold">Home</a>
+              <a
+                href="/components"
+                class="text-gray-500 dark:text-gray-200 hover:text-gray-800 lg:hidden"
+                >Components</a
+              >
+              <div class="relative inline-block hidden lg:block">
+                <div>
+                  <button
+                    class="text-gray-500 dark:text-gray-200 hover:text-gray-800 flex items-center space-x-1 focus:outline-none"
+                  >
+                    <span>Components</span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      class="w-5 h-5"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                        clip-rule="evenodd"
+                      ></path>
+                    </svg>
+                  </button>
+                </div>
+                <!---->
+                <div
+                  class="absolute left-0 z-20 py-1 mt-2 bg-white border border-gray-100 rounded-md shadow-xl dark:border-gray-700 lg:left-auto lg:right-0 dark:bg-gray-800"
+                  style="display: none"
+                >
+                  <div class="w-36">
+                    <a
+                      href="/components"
+                      class="block px-4 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:text-primary dark:hover:text-primary"
+                    >
+                      All Components
+                    </a>
+                    <a
+                      href="/components/alpinejs"
+                      class="block px-4 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:text-primary dark:hover:text-primary"
+                    >
+                      Alpinejs
+                    </a>
+                    <a
+                      href="/components/buttons"
+                      class="block px-4 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:text-primary dark:hover:text-primary"
+                    >
+                      Buttons
+                    </a>
+                    <a
+                      href="/components/cards"
+                      class="block px-4 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:text-primary dark:hover:text-primary"
+                    >
+                      Cards
+                    </a>
+                    <a
+                      href="/components/dropdowns"
+                      class="block px-4 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:text-primary dark:hover:text-primary"
+                    >
+                      Dropdowns
+                    </a>
+                    <a
+                      href="/components/forms"
+                      class="block px-4 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:text-primary dark:hover:text-primary"
+                    >
+                      Forms
+                    </a>
+                    <a
+                      href="/components/inputs"
+                      class="block px-4 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:text-primary dark:hover:text-primary"
+                    >
+                      Inputs
+                    </a>
+                    <a
+                      href="/components/logins"
+                      class="block px-4 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:text-primary dark:hover:text-primary"
+                    >
+                      Logins
+                    </a>
+                    <a
+                      href="/components/modals"
+                      class="block px-4 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:text-primary dark:hover:text-primary"
+                    >
+                      Modals
+                    </a>
+                    <a
+                      href="/components/navigations"
+                      class="block px-4 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:text-primary dark:hover:text-primary"
+                    >
+                      Navigations
+                    </a>
+                    <a
+                      href="/components/pages"
+                      class="block px-4 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:text-primary dark:hover:text-primary"
+                    >
+                      Pages
+                    </a>
+                    <a
+                      href="/components/selects"
+                      class="block px-4 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:text-primary dark:hover:text-primary"
+                    >
+                      Selects
+                    </a>
+                    <a
+                      href="/components/tabs"
+                      class="block px-4 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:text-primary dark:hover:text-primary"
+                    >
+                      Tabs
+                    </a>
+                    <a
+                      href="/components/tables"
+                      class="block px-4 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:text-primary dark:hover:text-primary"
+                    >
+                      Tables
+                    </a>
+                    <a
+                      href="/components/widget"
+                      class="block px-4 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:text-primary dark:hover:text-primary"
+                    >
+                      Widget
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <a
+                href="/premium"
+                class="text-gray-500 dark:text-gray-200 hover:text-gray-800"
+                >Premium</a
+              >
+              <a
+                href="/blog"
+                class="text-gray-500 dark:text-gray-200 hover:text-gray-800"
+                >Blog</a
+              >
+              <a
+                href="/cheatsheet"
+                class="text-gray-500 dark:text-gray-200 hover:text-gray-800"
+                >Cheatsheet</a
+              >
+            </div>
+            <div
+              class="flex flex-col space-y-4 lg:space-y-0 lg:flex-row lg:items-center lg:space-x-4"
+            >
+              <button
+                type="button"
+                aria-label="Color Mode"
+                class="flex justify-center p-2 text-gray-500 transition duration-150 ease-in-out bg-gray-100 border border-transparent rounded-md lg:bg-white lg:dark:bg-gray-900 dark:text-gray-200 dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-gray-700 focus:outline-none focus:bg-gray-50 dark:focus:bg-gray-700 active:bg-gray-50"
+              >
+                <!---->
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  class="w-5 h-5 transform -rotate-90"
+                >
+                  <path
+                    d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"
+                  ></path>
+                </svg>
+              </button>
+              <a
+                href="/submit-component"
+                class="flex items-center justify-center h-12 px-4 text-sm font-semibold text-center text-white rounded-md lg:h-10 bg-primary hover:bg-teal-300"
+              >
+                Submit
+                <span class="lg:hidden xl:inline">&nbsp;new component</span></a
+              >
+              <a
+                href="/login"
+                class="flex items-center justify-center h-12 px-4 mt-2 text-sm text-center text-gray-600 transition-colors duration-200 transform border rounded-lg lg:h-10 dark:text-gray-300 dark:border-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none"
+              >
+                Login
+              </a>
+            </div>
+          </div>
+        </div>
+      </header>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.0.5/cdn.min.js" integrity="sha512-JzpmsnQFnevs64hXB/wyoAruXPo0nkBNuvZwKok/rsfBFUBLZUEssdz2wmq/gP5lohBeM4BNMHvcNkVxx23o/Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  </body>
+</html>
