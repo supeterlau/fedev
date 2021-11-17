@@ -1,4 +1,4 @@
-WIP: 497
+https://svelte.dev/blog/
 
 npx degit sveltejs/template demo
 
@@ -8,7 +8,41 @@ npm run dev
 yarn
 yarn run dev
 
+## Inspire 
+
+https://github.com/malinajs/malinajs
+
+## sveltekit
+
+https://kit.svelte.dev/
+
+https://svelte.dev/blog/whats-the-deal-with-sveltekit
+https://www.infoq.com/news/2020/10/svelte-next-serverless-first/
+https://dev.to/jesseskinner/sapper-is-dead-what-s-next-in-svelte-4pbc
+https://dev.to/dansvel/sveltekit-svelte-next-with-tailwind-2-4dnn
+
+step1-1: 
+mkdir my-app
+cd my-app
+npm init svelte@next
+
+step1-2:
+npm init svelte@next my-app
+
+npm install
+npm run dev & open http://localhost:3000
+
+
+## testing 
+
+https://testing-library.com/docs/svelte-testing-library/example/
+
 ## use snowpack
+
+ts
+tailwind
+jest
+lint
 
 https://codechips.me/snowpack-svelte-typescript-tailwindcss/
 
@@ -96,6 +130,7 @@ add Parcel as a bundler (we will use es-build)
 error TS18003: No inputs were found in config file
   至少要有一个 ts 文件
 
+# tour 
 
 Rollup
 
@@ -496,11 +531,37 @@ bind:duration 等价于 bind:duration={duration}
 
 尽量少用 component bindings. 使用多了之后，很难 track flow of data around your application.
 
+7. Lifecycle
+
 https://svelte.dev/tutorial/onmount
 
+7.1 onMount
 
+每个组件都有 lifecycle 从创建到被摧毁
 
+最常用的一个 onMount
 
+首次渲染 DOM 后调用
+
+必须在 initialising 时调用,这样回调绑定在组件实例而不是在 setTimeout 中
+
+如果 onMount 返回函数,这个函数在组件被摧毁时调用
+
+7.2 onDestroy
+
+及时清除初始化数据，防止 memory leak
+
+可以在任何地方调用 onDestroy, 因而能够写在 utils.js 中独立管理清除任务
+
+import { onDestroy } from 'svelte';
+
+export function onInterval(callback, milliseconds) {
+	const interval = setInterval(callback, milliseconds);
+
+	onDestroy(() => {
+		clearInterval(interval);
+	});
+}
 
 
 
