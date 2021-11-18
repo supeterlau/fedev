@@ -33,6 +33,7 @@ class Report {
   @Column()
   public relationship: string;
 
+  // 对方信息
   @Column({ type: "text", nullable: true })
   public theOtherInfo: string;
 
@@ -51,6 +52,9 @@ class Report {
   // 提供选项
   @Column({ default: "submit" })
   public source: string;
+
+  @Column({ default: "submit" })
+  public progress: string;
 
   // 是否核时
   @Column()
