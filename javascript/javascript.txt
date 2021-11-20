@@ -116,8 +116,13 @@ bind()
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Function/bind Function.prototype.bind() - JavaScript | MDN
 
 
+## RxJS like observable
+
+## momad
 
 decorator
+  function 
+  class
 
 generator & iterater
   https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Iterators_and_generators Iterators and generators - JavaScript | MDN
