@@ -2,7 +2,7 @@
 # yarn lockfile v1
 
 
-"@apollo/client@^3.1.2", "@apollo/client@^3.1.5":
+"@apollo/client@^3.1.5":
   version "3.2.0"
   resolved "https://registry.npm.taobao.org/@apollo/client/download/@apollo/client-3.2.0.tgz#d16ea4384a2126bf60e7d87b0a6c6df00382220b"
   integrity sha1-0W6kOEohJr9g59h7Cmxt8AOCIgs=
@@ -1674,7 +1674,7 @@
     p-settle "^4.1.1"
     pg "^8.3.3"
 
-"@keystonejs/adapter-mongoose@^9.0.0", "@keystonejs/adapter-mongoose@^9.0.1", "@keystonejs/adapter-mongoose@^9.0.2", "@keystonejs/adapter-mongoose@^9.0.6":
+"@keystonejs/adapter-mongoose@^9.0.0", "@keystonejs/adapter-mongoose@^9.0.1", "@keystonejs/adapter-mongoose@^9.0.6":
   version "9.0.6"
   resolved "https://registry.npm.taobao.org/@keystonejs/adapter-mongoose/download/@keystonejs/adapter-mongoose-9.0.6.tgz#dc642d4c4f4c6fdaca72e49e15ebd1bf05f87a5d"
   integrity sha1-3GQtTE9Mb9rKcuSeFevRvwX4el0=
@@ -1687,7 +1687,7 @@
     p-settle "^4.1.1"
     pluralize "^7.0.0"
 
-"@keystonejs/app-admin-ui@^7.1.0", "@keystonejs/app-admin-ui@^7.2.0", "@keystonejs/app-admin-ui@^7.3.1", "@keystonejs/app-admin-ui@^7.3.5":
+"@keystonejs/app-admin-ui@^7.1.0", "@keystonejs/app-admin-ui@^7.2.0", "@keystonejs/app-admin-ui@^7.3.5":
   version "7.3.5"
   resolved "https://registry.npm.taobao.org/@keystonejs/app-admin-ui/download/@keystonejs/app-admin-ui-7.3.5.tgz#0be474b1c60ddbdfc3bd04e23e2047dced2d7e7a"
   integrity sha1-C+R0scYN29/DvQTiPiBH3O0tfno=
@@ -1893,15 +1893,6 @@
   dependencies:
     loader-utils "^2.0.0"
 
-"@keystonejs/fields-auto-increment@^5.1.11":
-  version "5.1.13"
-  resolved "https://registry.npm.taobao.org/@keystonejs/fields-auto-increment/download/@keystonejs/fields-auto-increment-5.1.13.tgz#3713bf88b0f03817ed7743ab02d9ea9594a3dbf7"
-  integrity sha1-NxO/iLDwOBftd0OrAtnqlZSj2/c=
-  dependencies:
-    "@babel/runtime" "^7.8.4"
-    "@keystonejs/adapter-knex" "^11.0.1"
-    "@keystonejs/fields" "^16.0.0"
-
 "@keystonejs/fields-auto-increment@^6.0.3":
   version "6.0.3"
   resolved "https://registry.npm.taobao.org/@keystonejs/fields-auto-increment/download/@keystonejs/fields-auto-increment-6.0.3.tgz#54c79d92af041f4bbd233ed7af748c3dd9e855ce"
@@ -2055,63 +2046,6 @@
     slate-react "^0.22.4"
     unsplash-js "^6.0.0"
 
-"@keystonejs/fields@^16.0.0":
-  version "16.1.0"
-  resolved "https://registry.npm.taobao.org/@keystonejs/fields/download/@keystonejs/fields-16.1.0.tgz#288b4a8192173048059b52bd952ab0b0a52058ec"
-  integrity sha1-KItKgZIXMEgFm1K9lSqwsKUgWOw=
-  dependencies:
-    "@apollo/client" "^3.1.2"
-    "@arch-ui/alert" "^0.0.17"
-    "@arch-ui/button" "^0.0.20"
-    "@arch-ui/controls" "^0.1.8"
-    "@arch-ui/day-picker" "^1.0.2"
-    "@arch-ui/drawer" "^0.0.21"
-    "@arch-ui/fields" "^3.0.3"
-    "@arch-ui/filters" "^0.0.19"
-    "@arch-ui/input" "^0.1.10"
-    "@arch-ui/layout" "^0.2.13"
-    "@arch-ui/loading" "^0.0.17"
-    "@arch-ui/lozenge" "^0.0.16"
-    "@arch-ui/options" "^0.0.22"
-    "@arch-ui/popout" "^0.0.19"
-    "@arch-ui/select" "^0.1.8"
-    "@arch-ui/theme" "^0.0.10"
-    "@arch-ui/tooltip" "^0.1.12"
-    "@arch-ui/typography" "^0.0.17"
-    "@babel/runtime" "^7.8.4"
-    "@emotion/core" "^10.0.28"
-    "@keystonejs/access-control" "^6.3.0"
-    "@keystonejs/adapter-knex" "^11.0.1"
-    "@keystonejs/adapter-mongoose" "^9.0.2"
-    "@keystonejs/app-admin-ui" "^7.3.1"
-    "@keystonejs/server-side-graphql-client" "^1.1.1"
-    "@keystonejs/utils" "^5.4.2"
-    "@primer/octicons-react" "^10.0.0"
-    "@sindresorhus/slugify" "^0.11.0"
-    apollo-errors "^1.9.0"
-    bcryptjs "^2.4.3"
-    cuid "^2.1.8"
-    date-fns "^2.14.0"
-    dumb-passwords "^0.2.1"
-    graphql "^14.6.0"
-    image-extensions "^1.1.0"
-    inflection "^1.12.0"
-    intersection-observer "^0.10.0"
-    lodash.groupby "^4.6.0"
-    lodash.isequal "^4.5.0"
-    luxon "^1.11.4"
-    mongoose "~5.9.11"
-    node-fetch "^2.3.0"
-    p-settle "^3.1.0"
-    pluralize "^7.0.0"
-    prop-types "^15.7.2"
-    react "^16.13.1"
-    react-day-picker "^8.0.0-alpha.45"
-    react-dom "^16.13.1"
-    react-image "^4.0.0"
-    react-select "^3.1.0"
-    react-toast-notifications "^2.4.0"
-
 "@keystonejs/fields@^17.1.2":
   version "17.1.2"
   resolved "https://registry.npm.taobao.org/@keystonejs/fields/download/@keystonejs/fields-17.1.2.tgz#b3da1b65a01ea317b4eaf1de3d3f4b5dc7ae532d"
@@ -2263,7 +2197,7 @@
     "@keystonejs/utils" "^5.4.1"
     cuid "^2.1.8"
 
-"@keystonejs/server-side-graphql-client@^1.1.1", "@keystonejs/server-side-graphql-client@^1.1.2":
+"@keystonejs/server-side-graphql-client@^1.1.2":
   version "1.1.2"
   resolved "https://registry.npm.taobao.org/@keystonejs/server-side-graphql-client/download/@keystonejs/server-side-graphql-client-1.1.2.tgz#f673f2d4547f1efac54c7290deda13403f9e2652"
   integrity sha1-9nPy1FR/HvrFTHKQ3toTQD+eJlI=
@@ -3497,7 +3431,7 @@ bindings@^1.5.0:
   dependencies:
     file-uri-to-path "1.0.0"
 
-bl@^2.2.0:
+bl@^2.2.0, bl@^2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/bl/-/bl-2.2.1.tgz#8c11a7b730655c5d56898cdc871224f40fd901d5"
   integrity sha512-6Pesp1w0DEX1N550i/uGV/TqucVL4AM/pgThFSN/Qq9si1/DF9aIHs1BxD8V/QU0HoeHO6cQRTAuYnLPKq1e4g==
@@ -3960,18 +3894,10 @@ clsx@^1.0.4:
 
 codemirror-graphql@^0.6.11, codemirror-graphql@timsuchanek/codemirror-graphql#details-fix:
   version "0.6.12"
-<<<<<<< HEAD
-  resolved "https://registry.npm.taobao.org/codemirror-graphql/download/codemirror-graphql-0.6.12.tgz#91a273fe5188857524a30221d06e645b4ca41f00"
-  integrity sha1-kaJz/lGIhXUkowIh0G5kW0ykHwA=
-  dependencies:
-    graphql-language-service-interface "^1.0.16"
-    graphql-language-service-parser "^0.1.14"
-=======
   resolved "https://codeload.github.com/timsuchanek/codemirror-graphql/tar.gz/801ec32683c38d6dc0f8f7bc19014a111edc9ebd"
   dependencies:
     graphql-language-service-interface "^1.0.18"
     graphql-language-service-parser "^1.0.18"
->>>>>>> 5dcc0be02e1a2e6821018b75faa1767c0ebe1101
 
 codemirror@^5.18.2, codemirror@^5.26.0, codemirror@^5.38.0:
   version "5.57.0"
@@ -5543,11 +5469,7 @@ graphql-import@^0.4.4:
   dependencies:
     lodash "^4.17.4"
 
-<<<<<<< HEAD
-graphql-language-service-interface@^1.0.16:
-=======
 graphql-language-service-interface@^1.0.18:
->>>>>>> 5dcc0be02e1a2e6821018b75faa1767c0ebe1101
   version "1.3.2"
   resolved "https://registry.npm.taobao.org/graphql-language-service-interface/download/graphql-language-service-interface-1.3.2.tgz#4bd5d49e23766c3d2ab65d110f26f10e321cc000"
   integrity sha1-S9XUniN2bD0qtl0RDybxDjIcwAA=
@@ -5557,20 +5479,6 @@ graphql-language-service-interface@^1.0.18:
     graphql-language-service-types "^1.2.2"
     graphql-language-service-utils "^1.2.2"
 
-<<<<<<< HEAD
-graphql-language-service-parser@^0.1.14, graphql-language-service-parser@^1.2.2:
-  version "1.6.4"
-  resolved "https://registry.npm.taobao.org/graphql-language-service-parser/download/graphql-language-service-parser-1.6.4.tgz#d5b92db1e50a91cdcf7f54f79253e13455e20257"
-  integrity sha1-1bktseUKkc3Pf1T3klPhNFXiAlc=
-  dependencies:
-    graphql-language-service-types "^1.6.3"
-    typescript "^3.9.5"
-
-graphql-language-service-types@^1.2.2, graphql-language-service-types@^1.6.3:
-  version "1.6.3"
-  resolved "https://registry.npm.taobao.org/graphql-language-service-types/download/graphql-language-service-types-1.6.3.tgz#1a6ba25140ec9ffc6d7f36eca7a4069e91500f3d"
-  integrity sha1-GmuiUUDsn/xtfzbsp6QGnpFQDz0=
-=======
 graphql-language-service-parser@^1.0.18, graphql-language-service-parser@^1.2.2:
   version "1.6.0"
   resolved "https://registry.npm.taobao.org/graphql-language-service-parser/download/graphql-language-service-parser-1.6.0.tgz#53a97619461ed41ae237b9070e7e20cfaca56118"
@@ -5580,7 +5488,6 @@ graphql-language-service-types@^1.2.2:
   version "1.6.0"
   resolved "https://registry.npm.taobao.org/graphql-language-service-types/download/graphql-language-service-types-1.6.0.tgz#32529bb9d2e3b8ae9dd6d9646e15481ac5dfe9ad"
   integrity sha1-MlKbudLjuK6d1tlkbhVIGsXf6a0=
->>>>>>> 5dcc0be02e1a2e6821018b75faa1767c0ebe1101
 
 graphql-language-service-utils@^1.2.2:
   version "1.2.2"
@@ -6460,7 +6367,7 @@ kind-of@^6.0.0, kind-of@^6.0.2, kind-of@^6.0.3:
   resolved "https://registry.npm.taobao.org/kind-of/download/kind-of-6.0.3.tgz#07c05034a6c349fa06e24fa35aa76db4580ce4dd"
   integrity sha1-B8BQNKbDSfoG4k+jWqdttFgM5N0=
 
-knex@^0.21.1, knex@^0.21.5:
+knex@^0.21.5:
   version "0.21.5"
   resolved "https://registry.npm.taobao.org/knex/download/knex-0.21.5.tgz#c4be1958488f348aed3510aa4b7115639ee1bd01"
   integrity sha1-xL4ZWEiPNIrtNRCqS3EVY57hvQE=
@@ -7043,7 +6950,7 @@ mongoose@^5.9.11:
     sift "7.0.1"
     sliced "1.0.1"
 
-mongoose@~5.9.11, mongoose@~5.9.29:
+mongoose@~5.9.29:
   version "5.9.29"
   resolved "https://registry.npm.taobao.org/mongoose/download/mongoose-5.9.29.tgz?cache=0&sync_timestamp=1600457809953&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fmongoose%2Fdownload%2Fmongoose-5.9.29.tgz#1b6b3451bfcb8e037b53ae8490caeb655c37b557"
   integrity sha1-G2s0Ub/LjgN7U66EkMrrZVw3tVc=
@@ -7279,9 +7186,9 @@ object-keys@^1.0.12, object-keys@^1.1.1:
   integrity sha1-HEfyct8nfzsdrwYWd9nILiMixg4=
 
 object-path@^0.11.4:
-  version "0.11.4"
-  resolved "https://registry.npm.taobao.org/object-path/download/object-path-0.11.4.tgz#370ae752fbf37de3ea70a861c23bba8915691949"
-  integrity sha1-NwrnUvvzfePqcKhhwju6iRVpGUk=
+  version "0.11.8"
+  resolved "https://registry.yarnpkg.com/object-path/-/object-path-0.11.8.tgz#ed002c02bbdd0070b78a27455e8ae01fc14d4742"
+  integrity sha512-YJjNZrlXJFM42wTBn6zgOJVar9KFJvzx6sTWDte8sWZF//cnjl0BxHNpfZx+ZffXX63A9q0b1zsFiBX4g4X5KA==
 
 object-visit@^1.0.0:
   version "1.0.1"
@@ -7688,7 +7595,7 @@ pg-types@^2.1.0:
     postgres-date "~1.0.4"
     postgres-interval "^1.1.0"
 
-pg@^8.0.3, pg@^8.3.3:
+pg@^8.3.3:
   version "8.3.3"
   resolved "https://registry.npm.taobao.org/pg/download/pg-8.3.3.tgz#0338631ca3c39b4fb425b699d494cab17f5bb7eb"
   integrity sha1-AzhjHKPDm0+0JbaZ1JTKsX9bt+s=
@@ -9694,11 +9601,6 @@ typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://registry.npm.taobao.org/typedarray/download/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
-
-typescript@^3.9.5:
-  version "3.9.7"
-  resolved "https://registry.npm.taobao.org/typescript/download/typescript-3.9.7.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Ftypescript%2Fdownload%2Ftypescript-3.9.7.tgz#98d600a5ebdc38f40cb277522f12dc800e9e25fa"
-  integrity sha1-mNYApevcOPQMsndSLxLcgA6eJfo=
 
 ua-parser-js@^0.7.18:
   version "0.7.22"
