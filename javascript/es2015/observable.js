@@ -1,3 +1,5 @@
+// https://www.stackchief.com/tutorials/JavaScript%20Observables%20in%205%20Minutes
+
 class Observable {
   constructor (func) {
     this._func = func
