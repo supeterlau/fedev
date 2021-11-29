@@ -263,7 +263,17 @@ findAll(@Res({ passthrough: true }) res: Response) {
 
 custom decorators
 
-Nest CLI provides a generator (schematic)
+- Nest CLI 
+
+provides a generator (schematic)
+
+npm install -g @nestjs/cli
+
+nest --help
+
+nest generate --help
+
+nest g --help
 
 
 开发相关:
@@ -340,5 +350,7 @@ Refs:
   https://github.com/nestjs/docs.nestjs.com nestjs/docs.nestjs.com: The official documentation https://docs.nestjs.com 📕
 
   https://morioh.com/p/71f993016161 Build a web app using Nestjs, Fastify, MongoDB and Angular 8
+
+http://tutorialspots.com/how-to-fix-error-namespace-servestatic-has-no-exported-member-requesthandlerconstructor-6483.html How to fix error: Namespace ‘serveStatic’ has no exported member ‘RequestHandlerConstructor’ | Free Online Tutorials
 
 https://handlebarsjs.com/
